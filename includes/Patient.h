@@ -11,6 +11,13 @@ enum RiskCategories {
     LOW
 };
 
+enum PatientEvents {
+    ATTEND_MEDICAL_HOUR, 
+    ATTEND_TEST_HOUR,
+    ATTEND_SOCIAL_HOUR,
+    ATTEND_PSYCHO_HOUR
+};
+
 class Patient : public Agent {
 
 private:
@@ -24,6 +31,8 @@ public:
     Patient(RiskCategories _clinical_risk, RiskCategories _social_risk);
 
     Patient();
+
+    int getId();
 };
 
 #endif // !PATIENT_H

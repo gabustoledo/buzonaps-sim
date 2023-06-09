@@ -13,6 +13,11 @@ private:
     int medical_hours_availability;
     int busy_medical_hours;
 
+public:
+    Cesfam();
+
+    int getId();
+
 };
 
 
