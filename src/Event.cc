@@ -11,6 +11,36 @@ Event::Event(short _caller_type, int _caller_id, double _start_time, double _exe
     this->next_event = _next_event;
 }
 
+Event::Event() {}
+
 void Event::setNextEvent(Event * e) {
     this->next_event = e;
+}
+
+double Event::getStartTime() {
+    return this->start_time;
+}
+
+double Event::getExecTime() {
+    return this->exec_time;
+}
+
+Event * Event::getNextEvent() {
+    return this->next_event;
+}
+
+Agent * Event::getCallerPtr() {
+    return this->caller_ptr;
+}
+
+int Event::getCallerId() {
+    return this->caller_id;
+}
+
+int Event::getId() {
+    return this->id;
+}
+
+short Event::getCallerType() {
+    return this->caller_type;
 }

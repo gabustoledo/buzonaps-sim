@@ -25,6 +25,8 @@ private:
 public:
     System(EventList * _event_list);
 
+    void processEvent(Event * e);
+
     ~System();
 
 };

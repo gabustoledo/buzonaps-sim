@@ -8,6 +8,8 @@ enum CallerType {
     SYSTEM
 };
 
+class Agent;
+
 class Event {
 
 private: 
@@ -23,7 +25,23 @@ private:
 public:
     Event(short _caller_type, int _caller_id, double _start_time, double _exec_time, Agent * _caller_ptr, Event * _next_event);
 
+    Event();
+
     void setNextEvent(Event * e);
+
+    double getStartTime();
+
+    double getExecTime();
+
+    Event * getNextEvent();
+
+    Agent * getCallerPtr();
+
+    int getCallerId();
+
+    int getId();
+
+    short getCallerType();
 
 };
 

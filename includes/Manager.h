@@ -30,6 +30,8 @@ public:
     int getId();
 
     void managePatient();
+
+    void processEvent(Event * e);
 };
 
 #endif // !MANAGER_H

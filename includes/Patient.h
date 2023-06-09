@@ -32,6 +32,8 @@ public:
 
     Patient();
 
+    void processEvent(Event * e);
+
     int getId();
 };
 

@@ -3,6 +3,8 @@
 
 #include "Event.h"
 
+class Event;
+
 class EventList {
 
 private:
@@ -18,6 +20,8 @@ public:
     Event * nextEvent();
 
     bool isEmpty();
+
+    double getClock();
 
     ~EventList();
 

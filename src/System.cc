@@ -1,5 +1,7 @@
 #include "../includes/System.h"
 
+System::System(EventList * _event_list) {}
+
 void System::initializeCesfams() {
     Cesfam * cesfam = new Cesfam();
     // ?
@@ -22,3 +24,7 @@ void System::initializeManagers() {
     // ?
     this->managers.insert({manager->getId(), manager});
 }
+
+void System::processEvent(Event * e) {}
+
+System::~System() {}
