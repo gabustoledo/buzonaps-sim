@@ -7,7 +7,7 @@ Patient::Patient(RiskCategories _clinical_risk, RiskCategories _social_risk) : i
     this->social_risk = _social_risk;
 }
 
-Patient::Patient(){
+Patient::Patient() : id(++_curr_id){
     random_device rd;
     mt19937 gen(rd());
     uniform_real_distribution<> dist(0.0, 1.0);
@@ -34,4 +34,16 @@ Patient::Patient(){
 
 int Patient::getId() {
     return this->id;
+}
+
+Manager * Patient::getManager() {
+    return this->manager;
+}
+
+void Patient::setManager(Manager * _manager) {
+    this->manager = _manager;
+}
+
+void Patient::processEvent(Event * e) {
+    printf("EN PACIENTE \n");
 }

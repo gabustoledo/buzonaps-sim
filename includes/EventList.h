@@ -1,6 +1,7 @@
 #ifndef EVENTLIST_H
 #define EVENTLIST_H
 
+#include "glob.h"
 #include "Event.h"
 
 class Event;

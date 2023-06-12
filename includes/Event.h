@@ -19,11 +19,13 @@ private:
     int caller_id;
     double start_time;
     double exec_time;
+    short event_type;
     Agent * caller_ptr;
+    Agent * objective_ptr;
     Event * next_event;
 
 public:
-    Event(short _caller_type, int _caller_id, double _start_time, double _exec_time, Agent * _caller_ptr, Event * _next_event);
+    Event(short _caller_type, int _caller_id, double _start_time, double _exec_time, short _event_type, Agent * _caller_ptr, Agent * _objective_ptr, Event * _next_event);
 
     Event();
 
@@ -37,11 +39,15 @@ public:
 
     Agent * getCallerPtr();
 
+    Agent * getObjectivePtr();
+
     int getCallerId();
 
     int getId();
 
     short getCallerType();
+
+    short getEventType();
 
 };
 

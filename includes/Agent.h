@@ -9,11 +9,11 @@ class Event;
 
 class Agent {
 
-private: 
+protected: 
     EventList * event_list;
 
 public:
-    void processEvent(Event * e);
+    virtual void processEvent(Event * e);
 
 };
 

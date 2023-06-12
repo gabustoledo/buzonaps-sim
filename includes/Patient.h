@@ -18,6 +18,8 @@ enum PatientEvents {
     ATTEND_PSYCHO_HOUR
 };
 
+class Manager;
+
 class Patient : public Agent {
 
 private:
@@ -26,15 +28,20 @@ private:
     RiskCategories clinical_risk;
     RiskCategories social_risk;
     Cesfam * cesfam;
+    Manager * manager;
 
 public:
     Patient(RiskCategories _clinical_risk, RiskCategories _social_risk);
 
     Patient();
 
-    void processEvent(Event * e);
+    void processEvent(Event * e) override;
 
     int getId();
+
+    Manager * getManager();
+
+    void setManager(Manager * _manager);
 };
 
 #endif // !PATIENT_H

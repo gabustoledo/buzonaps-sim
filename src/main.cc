@@ -1,12 +1,13 @@
 #include "../includes/main.h"
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
+    printf("INICIANDO SIMULACION\n");
     double END_SIM = 1000.0;
 
     EventList * event_list = new EventList(nullptr, 0.0, nullptr);
 
     System * sys = new System(event_list);
+    sys->initializeSystem();
 
     Agent * agent;
 
@@ -19,9 +20,9 @@ int main(int argc, char *argv[])
 
         if(e->getCallerType() == CallerType::AGENT && e->getCallerPtr() != nullptr)
         {
-            agent = e->getCallerPtr();
+            agent = e->getObjectivePtr();
             assert(last_clock <= event_list->getClock());
-            printf("[ID AGENT %d] - [ID EVENT %d] - [CLOCK %lf]\t",e->getCallerId(), e->getId(), event_list->getClock());
+            printf("[ID AGENT %d] - [ID EVENT %d] - [CLOCK %lf]\n", e->getCallerId(), e->getId(), event_list->getClock());
             agent->processEvent(e);
             continue; 
         }
