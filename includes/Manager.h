@@ -9,11 +9,22 @@
 #define ASK_CONSENT_TIME 1 // por paciente
 #define PRE_CLASSIFY_CLINICAL_RISK_TIME 1 // por paciente
 #define PRE_CLASSIFY_SOCIAL_RISK_TIME 1
+#define MANAGE_PATIENT_TIME 1
+#define RE_EVALUATE_LOW_RISK_TIME 1
+
+#define LOW_CLINICAL_RISK_PROB 0.3
+#define MEDIUM_CLINICAL_RISK_PROB 0.3
+#define HIGH_CLINICAL_RISK_PROB 0.3
+
+#define LOW_SOCIAL_RISK_PROB 0.3
+#define MEDIUM_SOCIAL_RISK_PROB 0.3
+#define HIGH_SOCIAL_RISK_PROB 0.3
 
 enum ManagerEvents {
     ASK_CONSENT,
     PRE_CLASSIFY_CLINICAL_RISK,
     PRE_CLASSIFY_SOCIAL_RISK,
+    MANAGE_PATIENT,
     MANAGE_MEDICAL_HOUR,
     MANAGE_TEST_HOUR,
     RE_EVALUATE_LOW_RISK, 
@@ -35,9 +46,15 @@ public:
 
     int getId();
 
-    void managePatient();
-
     void processEvent(Event * e) override;
+
+    void processPreClassifyClinicalRisk(Event * e);
+
+    void processPreClassifySocialRisk(Event * e);
+
+    void processReEvaluateLowRisk(Event * e);
+
+    void processManagePatient(Event * e);
 };
 
 #endif // !MANAGER_H

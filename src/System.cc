@@ -14,7 +14,7 @@ void System::initializeCesfams() {
 void System::initializePatients() {
     int i;
     for (i = 0; i < 3; i++) {
-        Patient * patient = new Patient();
+        Patient * patient = new Patient(this->event_list);
         // ?
         this->patients.insert({patient->getId(), patient});
         this->patients_vector.push_back(patient);
@@ -45,7 +45,8 @@ void System::initializeSystem() {
     int i = 0;
     printf("Cantidad de pacientes: %ld \n", this->patients.size());
     for (auto p = this->patients.begin(); p != this->patients.end(); ++p) {
-        e = new Event(CallerType::AGENT, p->first, (ASK_CONSENT_TIME * i), ASK_CONSENT_TIME, ManagerEvents::ASK_CONSENT, p->second, p->second->getManager(), nullptr);
+        e = new Event(CallerType::AGENT_MANAGER, p->first, (ASK_CONSENT_TIME * i), ASK_CONSENT_TIME, 
+                    ManagerEvents::ASK_CONSENT, p->second, p->second->getManager(), nullptr);
         printf("Evento: %d, puntero: %p, puntero manager: %p\n", i, e, p->second->getManager());
         this->event_list->insertEvent(e);
         i++;

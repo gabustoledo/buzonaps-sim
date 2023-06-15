@@ -7,29 +7,8 @@ Patient::Patient(RiskCategories _clinical_risk, RiskCategories _social_risk) : i
     this->social_risk = _social_risk;
 }
 
-Patient::Patient() : id(++_curr_id){
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_real_distribution<> dist(0.0, 1.0);
-    double prob = dist(gen);
-    printf("prob:  %f", prob);
-    double prob_social = dist(gen);
-    printf("prob_social: %f", prob_social);
-    if (prob < 0.3) {
-        this->clinical_risk = RiskCategories::LOW;
-    } else if (prob >= 0.3 && prob < 0.6) {
-        this->clinical_risk = RiskCategories::MEDIUM;
-    } else {
-        this->clinical_risk = RiskCategories::HIGH;
-    }
-
-    if (prob_social < 0.3) {
-        this->social_risk = RiskCategories::LOW;
-    } else if (prob >= 0.3 && prob < 0.6) {
-        this->social_risk = RiskCategories::MEDIUM;
-    } else {
-        this->social_risk = RiskCategories::HIGH;
-    }
+Patient::Patient(EventList * _event_list) : id(++_curr_id){
+    this->event_list = _event_list;
 }
 
 int Patient::getId() {
@@ -44,6 +23,46 @@ void Patient::setManager(Manager * _manager) {
     this->manager = _manager;
 }
 
+void Patient::setClinicalRisk(RiskCategories _clinical_risk) {
+    this->clinical_risk = _clinical_risk;
+}
+
+void Patient::setSocialRisk(RiskCategories _social_risk) {
+    this->social_risk = _social_risk;
+}
+
+RiskCategories Patient::getClinicalRisk() {
+    return this->clinical_risk;
+}
+
+RiskCategories Patient::getSocialRisk() {
+    return this->social_risk;
+}
+
 void Patient::processEvent(Event * e) {
-    printf("EN PACIENTE \n");
+    printf("[PROCESS EVENT - PATIENT] \n");
+
+    switch (e->getEventType())
+    {
+    case PatientEvents::ANSWER_CONSENT:
+        printf("\t[PROCESS - ANSWER_CONSENT] \n");
+        this->processAnswerConsent(e);
+        break;
+    
+    default:
+        break;
+    }
+}
+
+void Patient::processAnswerConsent(Event * e) {
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_real_distribution<> dist(0.0, 1.0);
+    double prob = dist(gen);
+    if (prob < ACCEPT_CONSENT_PROB) {
+        printf("\t[INSERT - PRE_CLASSIFY_CLINICAL_RISK] \n");
+        Event * ev = new Event(CallerType::AGENT_PATIENT, this->getId(), e->getStartTime() + e->getExecTime(), PRE_CLASSIFY_CLINICAL_RISK_TIME, 
+                            ManagerEvents::PRE_CLASSIFY_CLINICAL_RISK, this, this->getManager(), nullptr);
+        this->event_list->insertEvent(ev);
+    }
 }

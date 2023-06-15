@@ -4,7 +4,8 @@
 #include "Agent.h"
 
 enum CallerType {
-    AGENT, 
+    AGENT_MANAGER,
+    AGENT_PATIENT, 
     SYSTEM
 };
 

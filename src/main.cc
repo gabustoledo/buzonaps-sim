@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
         e = event_list->nextEvent();
         assert(e != nullptr);
 
-        if(e->getCallerType() == CallerType::AGENT && e->getCallerPtr() != nullptr)
+        if(e->getCallerType() != CallerType::SYSTEM && e->getCallerPtr() != nullptr)
         {
             agent = e->getObjectivePtr();
             assert(last_clock <= event_list->getClock());
