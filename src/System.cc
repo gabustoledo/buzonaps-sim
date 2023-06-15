@@ -11,9 +11,9 @@ void System::initializeCesfams() {
     printf("Saliendo de initializeCesfams");
 }
 
-void System::initializePatients() {
+void System::initializePatients(int amount) {
     int i;
-    for (i = 0; i < 3; i++) {
+    for (i = 0; i < amount; i++) {
         Patient * patient = new Patient(this->event_list);
         // ?
         this->patients.insert({patient->getId(), patient});
@@ -34,10 +34,10 @@ void System::initializeManagers() {
     printf("Saliendo de initializeManagers\n");
 }
 
-void System::initializeSystem() {
+void System::initializeSystem(int patients_amount) {
     printf("Entrando a initializeSystem\n");
     this->initializeCesfams();
-    this->initializePatients();
+    this->initializePatients(patients_amount);
     this->initializeManagers();
 
     // Se disparan los primeros eventos en base a los pacientes existentes

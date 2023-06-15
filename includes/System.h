@@ -18,14 +18,14 @@ private:
 
     void initializeCesfams();
 
-    void initializePatients();
+    void initializePatients(int amount);
 
     void initializeManagers();
     
 public:
     System(EventList * _event_list);
 
-    void initializeSystem();
+    void initializeSystem(int patients_amount);
 
     void processEvent(Event * e);
 

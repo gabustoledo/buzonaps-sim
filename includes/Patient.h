@@ -6,8 +6,21 @@
 #include "Cesfam.h"
 #include "Manager.h"
 
-#define ACCEPT_CONSENT_PROB 0.5
 #define ANSWER_CONSENT_TIME 1
+#define RECEIVE_MEDICAL_HOUR_TIME 1
+#define RECEIVE_TEST_HOUR_TIME 1
+#define RECEIVE_SOCIAL_HOUR_TIME 1
+#define RECEIVE_PSYCHO_HOUR_TIME 1
+#define ATTEND_MEDICAL_HOUR_TIME 1
+#define ATTEND_TEST_HOUR_TIME 1
+#define ATTEND_SOCIAL_HOUR_TIME 1
+#define ATTEND_PSYCHO_HOUR_TIME 1
+
+#define ACCEPT_CONSENT_PROB 0.5
+#define ATTEND_MEDICAL_HOUR_PROB 0.5
+#define ATTEND_TEST_HOUR_PROB 0.5
+#define ATTEND_SOCIAL_HOUR_PROB 0.5
+#define ATTEND_PSYCHO_HOUR_PROB 0.5
 
 enum RiskCategories {
     HIGH,
@@ -17,6 +30,10 @@ enum RiskCategories {
 
 enum PatientEvents {
     ANSWER_CONSENT,
+    RECEIVE_MEDICAL_HOUR, 
+    RECEIVE_TEST_HOUR,
+    RECEIVE_SOCIAL_HOUR,
+    RECEIVE_PSYCHO_HOUR,
     ATTEND_MEDICAL_HOUR, 
     ATTEND_TEST_HOUR,
     ATTEND_SOCIAL_HOUR,
@@ -57,6 +74,22 @@ public:
     void processEvent(Event * e) override;
 
     void processAnswerConsent(Event * e);
+
+    void processReceiveMedicalHour(Event * e);
+
+    void processReceiveTestHour(Event * e);
+
+    void processReceiveSocialHour(Event * e);
+
+    void processReceivePsychoHour(Event * e);
+
+    void processAttendMedicalHour(Event * e);
+
+    void processAttendTestHour(Event * e);
+
+    void processAttendSocialHour(Event * e);
+
+    void processAttendPsychoHour(Event * e);
 
 };
 
