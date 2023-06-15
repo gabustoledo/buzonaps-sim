@@ -1,0 +1,28 @@
+\hypertarget{classAgent}{}\doxysection{Referencia de la Clase Agent}
+\label{classAgent}\index{Agent@{Agent}}
+
+
+Diagrama de herencias de Agent
+% FIG 0
+
+
+Diagrama de colaboración para Agent\+:
+% FIG 1
+\doxysubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAgent_a93d1897fbaff53a2387e03307e8db44f}\label{classAgent_a93d1897fbaff53a2387e03307e8db44f}} 
+virtual void {\bfseries process\+Event} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Atributos protegidos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAgent_a615cf476ca31329b0722f692b3169e5b}\label{classAgent_a615cf476ca31329b0722f692b3169e5b}} 
+\mbox{\hyperlink{classEventList}{Event\+List}} $\ast$ {\bfseries event\+\_\+list}
+\end{DoxyCompactItemize}
+
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+includes/Agent.\+h\item 
+src/Agent.\+cc\end{DoxyCompactItemize}

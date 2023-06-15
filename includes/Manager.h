@@ -45,6 +45,10 @@ enum ManagerEvents {
 
 class Patient;
 
+/**
+ * @brief 
+ * 
+ */
 class Manager : public Agent {
 
 private:
@@ -54,6 +58,13 @@ private:
     map<Patient *, bool> patients; // false --> no intervenido; true --> intervenido
 
 public:
+    /**
+     * @brief Construct a new Manager object
+     * 
+     * @param _cesfam 
+     * @param _patients 
+     * @param _event_list 
+     */
     Manager(Cesfam * _cesfam, vector<Patient *> _patients, EventList * _event_list);
 
     int getId();

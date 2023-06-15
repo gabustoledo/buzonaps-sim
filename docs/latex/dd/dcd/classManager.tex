@@ -1,0 +1,80 @@
+\hypertarget{classManager}{}\doxysection{Referencia de la Clase Manager}
+\label{classManager}\index{Manager@{Manager}}
+
+
+Diagrama de herencias de Manager
+% FIG 0
+
+
+Diagrama de colaboración para Manager\+:
+% FIG 1
+\doxysubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classManager_a463a4d434ef93d3ad47aa166d4c31ba6}{Manager}} (\mbox{\hyperlink{classCesfam}{Cesfam}} $\ast$\+\_\+cesfam, vector$<$ \mbox{\hyperlink{classPatient}{Patient}} $\ast$ $>$ \+\_\+patients, \mbox{\hyperlink{classEventList}{Event\+List}} $\ast$\+\_\+event\+\_\+list)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classManager}{Manager}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classManager_a2dce1723f8fbac362c0890779fc9324d}\label{classManager_a2dce1723f8fbac362c0890779fc9324d}} 
+int {\bfseries get\+Id} ()
+\item 
+\mbox{\Hypertarget{classManager_af22766a12dab3517c29ee06d2145f846}\label{classManager_af22766a12dab3517c29ee06d2145f846}} 
+void {\bfseries process\+Event} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e) override
+\item 
+\mbox{\Hypertarget{classManager_a8a7272bbc053f036b63c15798e381bca}\label{classManager_a8a7272bbc053f036b63c15798e381bca}} 
+void {\bfseries process\+Ask\+Consent} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\item 
+\mbox{\Hypertarget{classManager_a2efa342b5888b568756e647b6519e44c}\label{classManager_a2efa342b5888b568756e647b6519e44c}} 
+void {\bfseries process\+Pre\+Classify\+Clinical\+Risk} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\item 
+\mbox{\Hypertarget{classManager_a527052c76386a16c4faa7ef2fd658a18}\label{classManager_a527052c76386a16c4faa7ef2fd658a18}} 
+void {\bfseries process\+Pre\+Classify\+Social\+Risk} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\item 
+\mbox{\Hypertarget{classManager_acc07368fdbc96e6db7b250a9a6a7cade}\label{classManager_acc07368fdbc96e6db7b250a9a6a7cade}} 
+void {\bfseries process\+Re\+Evaluate\+Low\+Risk} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\item 
+\mbox{\Hypertarget{classManager_abd46a00dd2d7b44bdc4949a4877aa438}\label{classManager_abd46a00dd2d7b44bdc4949a4877aa438}} 
+void {\bfseries process\+Re\+Evaluate\+Managed} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\item 
+\mbox{\Hypertarget{classManager_a7973ff215a2fb4f65e1eeb01ecbaa56c}\label{classManager_a7973ff215a2fb4f65e1eeb01ecbaa56c}} 
+void {\bfseries process\+Manage\+Patient} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\item 
+\mbox{\Hypertarget{classManager_a61bbfba83a2e3079099fa81cf2a8ae7e}\label{classManager_a61bbfba83a2e3079099fa81cf2a8ae7e}} 
+void {\bfseries process\+Medical\+Hour} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\item 
+\mbox{\Hypertarget{classManager_a0bc74b6b4d1af63e20e18b3f6d94dfca}\label{classManager_a0bc74b6b4d1af63e20e18b3f6d94dfca}} 
+void {\bfseries process\+Test\+Hour} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\item 
+\mbox{\Hypertarget{classManager_a340e3be2aab7c01eb00e6e93c7d594fc}\label{classManager_a340e3be2aab7c01eb00e6e93c7d594fc}} 
+void {\bfseries process\+Social\+Hour} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\item 
+\mbox{\Hypertarget{classManager_ac01b19a7cd7d2ca87539b8d56bc96077}\label{classManager_ac01b19a7cd7d2ca87539b8d56bc96077}} 
+void {\bfseries process\+Psycho\+Hour} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Otros miembros heredados}
+
+
+\doxysubsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{classManager_a463a4d434ef93d3ad47aa166d4c31ba6}\label{classManager_a463a4d434ef93d3ad47aa166d4c31ba6}} 
+\index{Manager@{Manager}!Manager@{Manager}}
+\index{Manager@{Manager}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{Manager()}{Manager()}}
+{\footnotesize\ttfamily Manager\+::\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCesfam}{Cesfam}} $\ast$}]{\+\_\+cesfam,  }\item[{vector$<$ \mbox{\hyperlink{classPatient}{Patient}} $\ast$ $>$}]{\+\_\+patients,  }\item[{\mbox{\hyperlink{classEventList}{Event\+List}} $\ast$}]{\+\_\+event\+\_\+list }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classManager}{Manager}} object. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em \+\_\+cesfam} & \\
+\hline
+{\em \+\_\+patients} & \\
+\hline
+{\em \+\_\+event\+\_\+list} & \\
+\hline
+\end{DoxyParams}
+
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+includes/Manager.\+h\item 
+src/Manager.\+cc\end{DoxyCompactItemize}
