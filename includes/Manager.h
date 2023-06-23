@@ -65,7 +65,7 @@ public:
      * @param _patients 
      * @param _event_list 
      */
-    Manager(Cesfam * _cesfam, vector<Patient *> _patients, EventList * _event_list);
+    Manager(Cesfam * _cesfam, vector<Patient *> _patients, EventList * _event_list, System * _system);
 
     int getId();
 

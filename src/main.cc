@@ -3,7 +3,7 @@
 int main(int argc, char *argv[]) {
     printf("INICIANDO SIMULACION\n");
     double END_SIM = 1000.0;
-    int patients_amount = 3;
+    int patients_amount = 10;
 
     EventList * event_list = new EventList(nullptr, 0.0, nullptr);
 

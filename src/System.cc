@@ -4,6 +4,11 @@ System::System(EventList * _event_list) {
     this->event_list = _event_list;
 }
 
+void System::log(json obj)
+{
+    this->monitor->writeLog(obj);
+}
+
 void System::initializeCesfams() {
     Cesfam * cesfam = new Cesfam();
     // ?
@@ -14,7 +19,7 @@ void System::initializeCesfams() {
 void System::initializePatients(int amount) {
     int i;
     for (i = 0; i < amount; i++) {
-        Patient * patient = new Patient(this->event_list);
+        Patient * patient = new Patient(this->event_list, this);
         // ?
         this->patients.insert({patient->getId(), patient});
         this->patients_vector.push_back(patient);
@@ -24,7 +29,7 @@ void System::initializePatients(int amount) {
 }   
 
 void System::initializeManagers() {
-    Manager * manager = new Manager(this->cesfams.at(1), this->patients_vector, this->event_list);
+    Manager * manager = new Manager(this->cesfams.at(1), this->patients_vector, this->event_list, this);
     size_t i;
     for(i = 0; i < this->patients_vector.size(); i++) {
         this->patients_vector[i]->setManager(manager);
@@ -39,6 +44,15 @@ void System::initializeSystem(int patients_amount) {
     this->initializeCesfams();
     this->initializePatients(patients_amount);
     this->initializeManagers();
+
+    // Se configura el monitor
+    auto t = time(nullptr);
+    auto tm = *localtime(&t);
+    ostringstream time;
+    time << put_time(&tm, "%d%m%Y_%H-%M-%S");
+    string output_str = "./out/out_" + time.str() + ".dat";
+    Monitor *monitor = new Monitor(output_str);
+    this->monitor = monitor;
 
     // Se disparan los primeros eventos en base a los pacientes existentes
     Event * e;

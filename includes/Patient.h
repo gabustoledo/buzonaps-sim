@@ -5,6 +5,7 @@
 #include "Agent.h"
 #include "Cesfam.h"
 #include "Manager.h"
+#include "System.h"
 
 #define ANSWER_CONSENT_TIME 1
 #define RECEIVE_MEDICAL_HOUR_TIME 1
@@ -23,9 +24,9 @@
 #define ATTEND_PSYCHO_HOUR_PROB 0.5
 
 enum RiskCategories {
-    HIGH,
-    MEDIUM,
-    LOW
+    HIGH = 3,
+    MEDIUM = 2,
+    LOW = 1
 };
 
 enum PatientEvents {
@@ -53,9 +54,7 @@ private:
     Manager * manager;
 
 public:
-    Patient(RiskCategories _clinical_risk, RiskCategories _social_risk);
-
-    Patient(EventList * _event_list);
+    Patient(EventList * _event_list, System * system);
 
     int getId();
 
@@ -70,6 +69,8 @@ public:
     RiskCategories getClinicalRisk();
 
     RiskCategories getSocialRisk();
+
+    RiskCategories calcFinalRisk();
 
     void processEvent(Event * e) override;
 

@@ -6,11 +6,13 @@
 
 class EventList;
 class Event;
+class System;
 
 class Agent {
 
 protected: 
     EventList * event_list;
+    System * system;
 
 public:
     virtual void processEvent(Event * e);

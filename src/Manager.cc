@@ -2,8 +2,9 @@
 
 int Manager::_curr_id(0);
 
-Manager::Manager(Cesfam * _cesfam, vector<Patient *> _patients, EventList * _event_list){
+Manager::Manager(Cesfam * _cesfam, vector<Patient *> _patients, EventList * _event_list, System * _system) : id(++_curr_id) {
     this->event_list = _event_list;
+    this->system = _system;
     this->cesfam = _cesfam;
     size_t i;
     for (i = 0; i < _patients.size(); i++) {
@@ -80,6 +81,13 @@ void Manager::processAskConsent(Event * e) {
     Event * ev = new Event(CallerType::AGENT_MANAGER, this->getId(), e->getStartTime() + e->getExecTime(), ANSWER_CONSENT_TIME, 
                     PatientEvents::ANSWER_CONSENT, this, e->getCallerPtr(), nullptr);
     this->event_list->insertEvent(ev);
+    json log;
+    log["agent_type"] = "MANAGER";
+    log["agent_id"] = this->id;
+    log["event_id"] = e->getId();
+    log["sim_clock"] = this->event_list->getClock();
+    log["process"] = "ASK_CONSENT";
+    this->system->log(log);
 }
 
 void Manager::processPreClassifyClinicalRisk(Event * e) {
@@ -101,25 +109,19 @@ void Manager::processPreClassifyClinicalRisk(Event * e) {
     if (e->getCallerType() == CallerType::AGENT_PATIENT) {
         Patient * patient = (Patient *)e->getCallerPtr();
         patient->setClinicalRisk(clinical_risk); 
-
-        if (clinical_risk == RiskCategories::MEDIUM || clinical_risk == RiskCategories::HIGH) {
-            printf("\t[INSERT - PRE_CLASSIFY_SOCIAL_RISK] \n");
-            Event * ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), PRE_CLASSIFY_SOCIAL_RISK_TIME, 
-                                ManagerEvents::PRE_CLASSIFY_SOCIAL_RISK, e->getCallerPtr(), this, nullptr); // Se determina como agente objetivo el mismo gestor dado que es este quien procesa el siguiente evento
-            this->event_list->insertEvent(ev);
-        } else if (this->patients.find(patient) != this->patients.end() && !this->patients.find(patient)->second) {
-            // Si es primera vez que el paciente es evaluado y obtiene un riesgo bajo, se reevalua en un tiempo determinado
-            printf("\t[INSERT - RE_EVALUATE_LOW_RISK] \n");
-            Event * ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), RE_EVALUATE_LOW_RISK_TIME, 
-                                ManagerEvents::RE_EVALUATE_LOW_RISK, e->getCallerPtr(), this, nullptr); // Se determina como agente objetivo el mismo gestor dado que es este quien procesa el siguiente evento
-            this->event_list->insertEvent(ev);
-            // Se marca al paciente como evaluado
-            if (this->patients.find(patient) != this->patients.end()) {
-                this->patients.find(patient)->second = true;
-            }
-            //TODO: Registrar el resultado del riesgo en la segunda evaluación
-        }
+        //TODO: Registrar el resultado del riesgo clínico
+        printf("\t[INSERT - PRE_CLASSIFY_SOCIAL_RISK] \n");
+        Event * ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), PRE_CLASSIFY_SOCIAL_RISK_TIME, 
+                            ManagerEvents::PRE_CLASSIFY_SOCIAL_RISK, e->getCallerPtr(), this, nullptr); // Se determina como agente objetivo el mismo gestor dado que es este quien procesa el siguiente evento
+        this->event_list->insertEvent(ev);
     }
+    json log;
+    log["agent_type"] = "MANAGER";
+    log["agent_id"] = this->id;
+    log["event_id"] = e->getId();
+    log["sim_clock"] = this->event_list->getClock();
+    log["process"] = "PRE_CLASSIFY_CLINICAL_RISK";
+    this->system->log(log);
 }
 
 void Manager::processPreClassifySocialRisk(Event * e) {
@@ -140,19 +142,28 @@ void Manager::processPreClassifySocialRisk(Event * e) {
     if (e->getCallerType() == CallerType::AGENT_PATIENT) {
         Patient * patient = (Patient *)e->getCallerPtr();
         patient->setSocialRisk(social_risk); 
-        // Si el paciente ya fue evaluado antes, no se gestionará
-        if (this->patients.find(patient) != this->patients.end() && !this->patients.find(patient)->second) {
-            if (social_risk == RiskCategories::MEDIUM || social_risk == RiskCategories::HIGH) {
-                printf("\t[INSERT - MANAGE_PATIENT] \n");
-                Event * ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), MANAGE_PATIENT_TIME, 
-                                    ManagerEvents::MANAGE_PATIENT, e->getCallerPtr(), this, nullptr); // Se determina como agente objetivo el mismo gestor dado que es este quien procesa el siguiente evento
-                this->event_list->insertEvent(ev);
-            }
-            // Independiente del riesgo que tenga, se marca como evaluado
-            this->patients.find(patient)->second = true; //?
+        //TODO: Registrar el resultado del riesgo social
+        RiskCategories final_risk = patient->calcFinalRisk();
+        if (final_risk == RiskCategories::MEDIUM || final_risk == RiskCategories::HIGH) {
+            printf("\t[INSERT - MANAGE_PATIENT] \n");
+            Event * ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), MANAGE_PATIENT_TIME, 
+                                ManagerEvents::MANAGE_PATIENT, e->getCallerPtr(), this, nullptr); // Se determina como agente objetivo el mismo gestor dado que es este quien procesa el siguiente evento
+            this->event_list->insertEvent(ev);
+        } else {
+            printf("\t[INSERT - RE_EVALUATE_LOW_RISK] \n");
+            Event * ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), RE_EVALUATE_LOW_RISK_TIME, 
+                                ManagerEvents::RE_EVALUATE_LOW_RISK, e->getCallerPtr(), this, nullptr); // Se determina como agente objetivo el mismo gestor dado que es este quien procesa el siguiente evento
+            this->event_list->insertEvent(ev);
         }
-        //TODO: Registrar el resultado del riesgo en la segunda evaluación
+        //TODO: Registrar el resultado del riesgo final
     }
+    json log;
+    log["agent_type"] = "MANAGER";
+    log["agent_id"] = this->id;
+    log["event_id"] = e->getId();
+    log["sim_clock"] = this->event_list->getClock();
+    log["process"] = "PRE_CLASSIFY_SOCIAL_RISK";
+    this->system->log(log);
 }
 
 void Manager::processReEvaluateLowRisk(Event * e) {
@@ -160,6 +171,13 @@ void Manager::processReEvaluateLowRisk(Event * e) {
     Event * ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), PRE_CLASSIFY_CLINICAL_RISK_TIME, 
                             ManagerEvents::PRE_CLASSIFY_CLINICAL_RISK, e->getCallerPtr(), this, nullptr);
     this->event_list->insertEvent(ev);
+    json log;
+    log["agent_type"] = "MANAGER";
+    log["agent_id"] = this->id;
+    log["event_id"] = e->getId();
+    log["sim_clock"] = this->event_list->getClock();
+    log["process"] = "RE_EVALUATE_LOW_RISK";
+    this->system->log(log);
 }
 
 void Manager::processReEvaluateManaged(Event * e) {
@@ -167,6 +185,13 @@ void Manager::processReEvaluateManaged(Event * e) {
     Event * ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), PRE_CLASSIFY_CLINICAL_RISK_TIME, 
                             ManagerEvents::PRE_CLASSIFY_CLINICAL_RISK, e->getCallerPtr(), this, nullptr);
     this->event_list->insertEvent(ev);
+    json log;
+    log["agent_type"] = "MANAGER";
+    log["agent_id"] = this->id;
+    log["event_id"] = e->getId();
+    log["sim_clock"] = this->event_list->getClock();
+    log["process"] = "RE_EVALUATE_MANAGED";
+    this->system->log(log);
 }
 
 void Manager::processManagePatient(Event * e) {
@@ -213,10 +238,17 @@ void Manager::processManagePatient(Event * e) {
     }
 
     // Se inserta el evento de reevaluar el riesgo
-    printf("\t[INSERT - MANAGE_PSYCHO_HOUR] \n");
+    printf("\t[INSERT - RE_EVALUATE_MANAGED] \n");
     ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), RE_EVALUATE_MANAGED_TIME, 
                             ManagerEvents::RE_EVALUATE_MANAGED, e->getCallerPtr(), this, nullptr);
     this->event_list->insertEvent(ev);
+    json log;
+    log["agent_type"] = "MANAGER";
+    log["agent_id"] = this->id;
+    log["event_id"] = e->getId();
+    log["sim_clock"] = this->event_list->getClock();
+    log["process"] = "MANAGE_PATIENT";
+    this->system->log(log);
 }
 
 void Manager::processMedicalHour(Event * e) {
@@ -224,6 +256,13 @@ void Manager::processMedicalHour(Event * e) {
     Event * ev = new Event(CallerType::AGENT_MANAGER, this->getId(), e->getStartTime() + e->getExecTime(), RECEIVE_MEDICAL_HOUR_TIME, 
                             PatientEvents::RECEIVE_MEDICAL_HOUR, this, e->getCallerPtr(), nullptr);
     this->event_list->insertEvent(ev);
+    json log;
+    log["agent_type"] = "MANAGER";
+    log["agent_id"] = this->id;
+    log["event_id"] = e->getId();
+    log["sim_clock"] = this->event_list->getClock();
+    log["process"] = "MANAGE_MEDICAL_HOUR";
+    this->system->log(log);
 }
 
 void Manager::processTestHour(Event * e) {
@@ -231,6 +270,13 @@ void Manager::processTestHour(Event * e) {
     Event * ev = new Event(CallerType::AGENT_MANAGER, this->getId(), e->getStartTime() + e->getExecTime(), RECEIVE_TEST_HOUR_TIME, 
                             PatientEvents::RECEIVE_TEST_HOUR, this, e->getCallerPtr(), nullptr);
     this->event_list->insertEvent(ev);
+    json log;
+    log["agent_type"] = "MANAGER";
+    log["agent_id"] = this->id;
+    log["event_id"] = e->getId();
+    log["sim_clock"] = this->event_list->getClock();
+    log["process"] = "MANAGE_TEST_HOUR";
+    this->system->log(log);
 }
 
 void Manager::processSocialHour(Event * e) {
@@ -238,6 +284,13 @@ void Manager::processSocialHour(Event * e) {
     Event * ev = new Event(CallerType::AGENT_MANAGER, this->getId(), e->getStartTime() + e->getExecTime(), RECEIVE_SOCIAL_HOUR_TIME, 
                             PatientEvents::RECEIVE_SOCIAL_HOUR, this, e->getCallerPtr(), nullptr);
     this->event_list->insertEvent(ev);
+    json log;
+    log["agent_type"] = "MANAGER";
+    log["agent_id"] = this->id;
+    log["event_id"] = e->getId();
+    log["sim_clock"] = this->event_list->getClock();
+    log["process"] = "MANAGE_SOCIAL_HOUR";
+    this->system->log(log);
 }
 
 void Manager::processPsychoHour(Event * e) {
@@ -245,4 +298,11 @@ void Manager::processPsychoHour(Event * e) {
     Event * ev = new Event(CallerType::AGENT_MANAGER, this->getId(), e->getStartTime() + e->getExecTime(), RECEIVE_PSYCHO_HOUR_TIME, 
                             PatientEvents::RECEIVE_PSYCHO_HOUR, this, e->getCallerPtr(), nullptr);
     this->event_list->insertEvent(ev);
+    json log;
+    log["agent_type"] = "MANAGER";
+    log["agent_id"] = this->id;
+    log["event_id"] = e->getId();
+    log["sim_clock"] = this->event_list->getClock();
+    log["process"] = "MANAGE_PSYCHO_HOUR";
+    this->system->log(log);
 }

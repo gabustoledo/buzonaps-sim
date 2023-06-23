@@ -2,8 +2,9 @@
 
 int Patient::_curr_id(0);
 
-Patient::Patient(EventList * _event_list) : id(++_curr_id){
+Patient::Patient(EventList * _event_list, System * _system) : id(++_curr_id){
     this->event_list = _event_list;
+    this->system = _system;
 }
 
 int Patient::getId() {
@@ -31,6 +32,13 @@ RiskCategories Patient::getClinicalRisk() {
 }
 
 RiskCategories Patient::getSocialRisk() {
+    return this->social_risk;
+}
+
+RiskCategories Patient::calcFinalRisk() {
+    if (this->clinical_risk > this->social_risk) {
+        return this->clinical_risk;
+    }
     return this->social_risk;
 }
 
@@ -100,6 +108,13 @@ void Patient::processAnswerConsent(Event * e) {
                             ManagerEvents::PRE_CLASSIFY_CLINICAL_RISK, this, this->getManager(), nullptr);
         this->event_list->insertEvent(ev);
     }
+    json log;
+    log["agent_type"] = "PATIENT";
+    log["agent_id"] = this->id;
+    log["event_id"] = e->getId();
+    log["sim_clock"] = this->event_list->getClock();
+    log["process"] = "ANSWER_CONSENT";
+    this->system->log(log);
 }
 
 void Patient::processReceiveMedicalHour(Event * e) {
@@ -114,6 +129,13 @@ void Patient::processReceiveMedicalHour(Event * e) {
                                 PatientEvents::ATTEND_MEDICAL_HOUR, this, this, nullptr);
         this->event_list->insertEvent(ev);
     }
+    json log;
+    log["agent_type"] = "PATIENT";
+    log["agent_id"] = this->id;
+    log["event_id"] = e->getId();
+    log["sim_clock"] = this->event_list->getClock();
+    log["process"] = "RECEIVE_MEDICAL_HOUR";
+    this->system->log(log);
 }
 
 void Patient::processReceiveTestHour(Event * e) {
@@ -128,6 +150,13 @@ void Patient::processReceiveTestHour(Event * e) {
                                 PatientEvents::ATTEND_TEST_HOUR, this, this, nullptr);
         this->event_list->insertEvent(ev);
     }
+    json log;
+    log["agent_type"] = "PATIENT";
+    log["agent_id"] = this->id;
+    log["event_id"] = e->getId();
+    log["sim_clock"] = this->event_list->getClock();
+    log["process"] = "RECEIVE_TEST_HOUR";
+    this->system->log(log);
 }
 
 void Patient::processReceiveSocialHour(Event * e) {
@@ -142,6 +171,13 @@ void Patient::processReceiveSocialHour(Event * e) {
                                 PatientEvents::ATTEND_SOCIAL_HOUR, this, this, nullptr);
         this->event_list->insertEvent(ev);
     }
+    json log;
+    log["agent_type"] = "PATIENT";
+    log["agent_id"] = this->id;
+    log["event_id"] = e->getId();
+    log["sim_clock"] = this->event_list->getClock();
+    log["process"] = "RECEIVE_SOCIAL_HOUR";
+    this->system->log(log);
 }
 
 void Patient::processReceivePsychoHour(Event * e) {
@@ -156,20 +192,51 @@ void Patient::processReceivePsychoHour(Event * e) {
                                 PatientEvents::ATTEND_PSYCHO_HOUR, this, this, nullptr);
         this->event_list->insertEvent(ev);
     }
+    json log;
+    log["agent_type"] = "PATIENT";
+    log["agent_id"] = this->id;
+    log["event_id"] = e->getId();
+    log["sim_clock"] = this->event_list->getClock();
+    log["process"] = "RECEIVE_PSYCHO_HOUR";
+    this->system->log(log);
 }
 
 void Patient::processAttendMedicalHour(Event * e) {
-
+    json log;
+    log["agent_type"] = "PATIENT";
+    log["agent_id"] = this->id;
+    log["event_id"] = e->getId();
+    log["sim_clock"] = this->event_list->getClock();
+    log["process"] = "ATTEND_MEDICAL_HOUR";
+    this->system->log(log);
 }
 
 void Patient::processAttendTestHour(Event * e) {
-
+    json log;
+    log["agent_type"] = "PATIENT";
+    log["agent_id"] = this->id;
+    log["event_id"] = e->getId();
+    log["sim_clock"] = this->event_list->getClock();
+    log["process"] = "ATTEND_TEST_HOUR";
+    this->system->log(log);
 }
 
 void Patient::processAttendSocialHour(Event * e) {
-
+    json log;
+    log["agent_type"] = "PATIENT";
+    log["agent_id"] = this->id;
+    log["event_id"] = e->getId();
+    log["sim_clock"] = this->event_list->getClock();
+    log["process"] = "ATTEND_SOCIAL_HOUR";
+    this->system->log(log);
 }
 
 void Patient::processAttendPsychoHour(Event * e) {
-
+    json log;
+    log["agent_type"] = "PATIENT";
+    log["agent_id"] = this->id;
+    log["event_id"] = e->getId();
+    log["sim_clock"] = this->event_list->getClock();
+    log["process"] = "ATTEND_PSYCHO_HOUR";
+    this->system->log(log);
 }

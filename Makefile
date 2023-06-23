@@ -4,14 +4,15 @@ SRC_DIR=src
 OBJ_DIR=obj
 SRC_FILES=$(wildcard $(SRC_DIR)/*.cc)
 OBJ_FILES=$(patsubst $(SRC_DIR)/%.cc,$(OBJ_DIR)/%.o,$(SRC_FILES))
+INCLUDE=-I./libs/nlohmann
 
 sim: main.o
 
 main.o: $(OBJ_FILES)
-	$(CXX) $(CXXFLAGS) -o build/sim.out $(OBJ_FILES)
+	$(CXX) $(CXXFLAGS) -o build/sim.out $(OBJ_FILES) $(INCLUDE)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cc
-	$(CXX) $(CXXFLAGS) -c -o $@ $^
+	$(CXX) $(CXXFLAGS) -c -o $@ $^ $(INCLUDE)
 
 -include $(SRC_FILES:%.cc=%.d)
 

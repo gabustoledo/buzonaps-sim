@@ -6,6 +6,10 @@
 #include "Manager.h"
 #include "Cesfam.h"
 #include "EventList.h"
+#include "Monitor.h"
+
+class Patient;
+class Manager;
 
 class System {
 
@@ -15,6 +19,7 @@ private:
     vector<Patient *> patients_vector;
     map<int, Manager *> managers;
     map<int, Cesfam *> cesfams;
+    Monitor * monitor;
 
     void initializeCesfams();
 
@@ -24,6 +29,8 @@ private:
     
 public:
     System(EventList * _event_list);
+
+    void log(json obj);
 
     void initializeSystem(int patients_amount);
 
