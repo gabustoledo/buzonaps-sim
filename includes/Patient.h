@@ -6,22 +6,7 @@
 #include "Cesfam.h"
 #include "Manager.h"
 #include "System.h"
-
-#define ANSWER_CONSENT_TIME 1
-#define RECEIVE_MEDICAL_HOUR_TIME 1
-#define RECEIVE_TEST_HOUR_TIME 1
-#define RECEIVE_SOCIAL_HOUR_TIME 1
-#define RECEIVE_PSYCHO_HOUR_TIME 1
-#define ATTEND_MEDICAL_HOUR_TIME 1
-#define ATTEND_TEST_HOUR_TIME 1
-#define ATTEND_SOCIAL_HOUR_TIME 1
-#define ATTEND_PSYCHO_HOUR_TIME 1
-
-#define ACCEPT_CONSENT_PROB 0.5
-#define ATTEND_MEDICAL_HOUR_PROB 0.5
-#define ATTEND_TEST_HOUR_PROB 0.5
-#define ATTEND_SOCIAL_HOUR_PROB 0.5
-#define ATTEND_PSYCHO_HOUR_PROB 0.5
+#include "SimConfig.h"
 
 enum RiskCategories {
     HIGH = 3,

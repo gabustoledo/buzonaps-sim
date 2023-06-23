@@ -58,6 +58,10 @@ void System::initializeSystem(int patients_amount) {
     Event * e;
     int i = 0;
     printf("Cantidad de pacientes: %ld \n", this->patients.size());
+
+    SimConfig * sim_config = SimConfig::getInstance("");
+    double ASK_CONSENT_TIME = sim_config->getParams()["ask_consent_time"].get<double>();
+
     for (auto p = this->patients.begin(); p != this->patients.end(); ++p) {
         e = new Event(CallerType::AGENT_MANAGER, p->first, (ASK_CONSENT_TIME * i), ASK_CONSENT_TIME, 
                     ManagerEvents::ASK_CONSENT, p->second, p->second->getManager(), nullptr);

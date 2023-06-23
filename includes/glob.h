@@ -11,6 +11,7 @@
 #include <mutex>
 #include <condition_variable>
 #include <queue>
+#include <getopt.h>
 
 
 using json = nlohmann::json;

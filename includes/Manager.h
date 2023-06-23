@@ -5,30 +5,7 @@
 #include "Agent.h"
 #include "Cesfam.h"
 #include "Patient.h"
-
-#define ASK_CONSENT_TIME 1 // por paciente
-#define PRE_CLASSIFY_CLINICAL_RISK_TIME 1 // por paciente
-#define PRE_CLASSIFY_SOCIAL_RISK_TIME 1
-#define MANAGE_PATIENT_TIME 1
-#define RE_EVALUATE_LOW_RISK_TIME 1
-#define RE_EVALUATE_MANAGED_TIME 1
-#define MANAGE_MEDICAL_HOUR_TIME 1
-#define MANAGE_TEST_HOUR_TIME 1
-#define MANAGE_SOCIAL_HOUR_TIME 1
-#define MANAGE_PSYCHO_HOUR_TIME 1
-
-#define LOW_CLINICAL_RISK_PROB 0.1
-#define MEDIUM_CLINICAL_RISK_PROB 0.5
-#define HIGH_CLINICAL_RISK_PROB 0.4
-
-#define LOW_SOCIAL_RISK_PROB 0.1
-#define MEDIUM_SOCIAL_RISK_PROB 0.5
-#define HIGH_SOCIAL_RISK_PROB 0.4
-
-#define MEDICAL_HOUR_PROB 0.2
-#define TEST_HOUR_PROB 0.2
-#define SOCIAL_HOUR_PROB 0.2
-#define PSYCHO_HOUR_PROB 0.2
+#include "SimConfig.h"
 
 enum ManagerEvents {
     ASK_CONSENT,

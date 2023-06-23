@@ -77,6 +77,9 @@ void Manager::processEvent(Event * e) {
 }
 
 void Manager::processAskConsent(Event * e) {
+    SimConfig * sim_config = SimConfig::getInstance("");
+    double ANSWER_CONSENT_TIME = sim_config->getParams()["answer_consent_time"].get<double>();
+
     printf("\t[INSERT - ANSWER_CONSENT] \n");
     Event * ev = new Event(CallerType::AGENT_MANAGER, this->getId(), e->getStartTime() + e->getExecTime(), ANSWER_CONSENT_TIME, 
                     PatientEvents::ANSWER_CONSENT, this, e->getCallerPtr(), nullptr);
@@ -91,6 +94,11 @@ void Manager::processAskConsent(Event * e) {
 }
 
 void Manager::processPreClassifyClinicalRisk(Event * e) {
+    SimConfig * sim_config = SimConfig::getInstance("");
+    double LOW_CLINICAL_RISK_PROB = sim_config->getParams()["low_clinical_risk_prob"].get<double>();
+    double MEDIUM_CLINICAL_RISK_PROB = sim_config->getParams()["medium_clinical_risk_prob"].get<double>();
+    double PRE_CLASSIFY_SOCIAL_RISK_TIME = sim_config->getParams()["pre_classify_social_risk_time"].get<double>();
+
     random_device rd;
     mt19937 gen(rd());
     uniform_real_distribution<> dist(0.0, 1.0);
@@ -125,6 +133,12 @@ void Manager::processPreClassifyClinicalRisk(Event * e) {
 }
 
 void Manager::processPreClassifySocialRisk(Event * e) {
+    SimConfig * sim_config = SimConfig::getInstance("");
+    double LOW_SOCIAL_RISK_PROB = sim_config->getParams()["low_social_risk_prob"].get<double>();
+    double MEDIUM_SOCIAL_RISK_PROB = sim_config->getParams()["medium_social_risk_prob"].get<double>();
+    double MANAGE_PATIENT_TIME = sim_config->getParams()["manage_patient_time"].get<double>();
+    double RE_EVALUATE_LOW_RISK_TIME = sim_config->getParams()["re_evaluate_low_risk_time"].get<double>();
+
     random_device rd;
     mt19937 gen(rd());
     uniform_real_distribution<> dist(0.0, 1.0);
@@ -167,6 +181,9 @@ void Manager::processPreClassifySocialRisk(Event * e) {
 }
 
 void Manager::processReEvaluateLowRisk(Event * e) {
+    SimConfig * sim_config = SimConfig::getInstance("");
+    double PRE_CLASSIFY_CLINICAL_RISK_TIME = sim_config->getParams()["pre_classify_clinical_risk_time"].get<double>();
+
     printf("\t[INSERT - PRE_CLASSIFY_CLINICAL_RISK] \n");
     Event * ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), PRE_CLASSIFY_CLINICAL_RISK_TIME, 
                             ManagerEvents::PRE_CLASSIFY_CLINICAL_RISK, e->getCallerPtr(), this, nullptr);
@@ -181,6 +198,9 @@ void Manager::processReEvaluateLowRisk(Event * e) {
 }
 
 void Manager::processReEvaluateManaged(Event * e) {
+    SimConfig * sim_config = SimConfig::getInstance("");
+    double PRE_CLASSIFY_CLINICAL_RISK_TIME = sim_config->getParams()["pre_classify_clinical_risk_time"].get<double>();
+
     printf("\t[INSERT - PRE_CLASSIFY_CLINICAL_RISK] \n");
     Event * ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), PRE_CLASSIFY_CLINICAL_RISK_TIME, 
                             ManagerEvents::PRE_CLASSIFY_CLINICAL_RISK, e->getCallerPtr(), this, nullptr);
@@ -195,6 +215,17 @@ void Manager::processReEvaluateManaged(Event * e) {
 }
 
 void Manager::processManagePatient(Event * e) {
+    SimConfig * sim_config = SimConfig::getInstance("");
+    double MEDICAL_HOUR_PROB = sim_config->getParams()["medical_hour_prob"].get<double>();
+    double TEST_HOUR_PROB = sim_config->getParams()["test_hour_prob"].get<double>();
+    double SOCIAL_HOUR_PROB = sim_config->getParams()["social_hour_prob"].get<double>();
+    double PSYCHO_HOUR_PROB = sim_config->getParams()["psycho_hour_prob"].get<double>();
+    double MANAGE_MEDICAL_HOUR_TIME = sim_config->getParams()["manage_medical_hour_time"].get<double>();
+    double MANAGE_TEST_HOUR_TIME = sim_config->getParams()["manage_test_hour_time"].get<double>();
+    double MANAGE_SOCIAL_HOUR_TIME = sim_config->getParams()["manage_social_hour_time"].get<double>();
+    double MANAGE_PSYCHO_HOUR_TIME = sim_config->getParams()["manage_psycho_hour_time"].get<double>();
+    double RE_EVALUATE_MANAGED_TIME = sim_config->getParams()["re_evaluate_managed_time"].get<double>();
+
     random_device rd;
     mt19937 gen(rd());
     uniform_real_distribution<> dist(0.0, 1.0);
@@ -252,6 +283,9 @@ void Manager::processManagePatient(Event * e) {
 }
 
 void Manager::processMedicalHour(Event * e) {
+    SimConfig * sim_config = SimConfig::getInstance("");
+    double RECEIVE_MEDICAL_HOUR_TIME = sim_config->getParams()["receive_medical_hour_time"].get<double>();
+
     printf("\t[INSERT - RECEIVE_MEDICAL_HOUR] \n");
     Event * ev = new Event(CallerType::AGENT_MANAGER, this->getId(), e->getStartTime() + e->getExecTime(), RECEIVE_MEDICAL_HOUR_TIME, 
                             PatientEvents::RECEIVE_MEDICAL_HOUR, this, e->getCallerPtr(), nullptr);
@@ -266,6 +300,9 @@ void Manager::processMedicalHour(Event * e) {
 }
 
 void Manager::processTestHour(Event * e) {
+    SimConfig * sim_config = SimConfig::getInstance("");
+    double RECEIVE_TEST_HOUR_TIME = sim_config->getParams()["receive_test_hour_time"].get<double>();
+
     printf("\t[INSERT - RECEIVE_TEST_HOUR] \n");
     Event * ev = new Event(CallerType::AGENT_MANAGER, this->getId(), e->getStartTime() + e->getExecTime(), RECEIVE_TEST_HOUR_TIME, 
                             PatientEvents::RECEIVE_TEST_HOUR, this, e->getCallerPtr(), nullptr);
@@ -280,6 +317,9 @@ void Manager::processTestHour(Event * e) {
 }
 
 void Manager::processSocialHour(Event * e) {
+    SimConfig * sim_config = SimConfig::getInstance("");
+    double RECEIVE_SOCIAL_HOUR_TIME = sim_config->getParams()["receive_social_hour_time"].get<double>();
+
     printf("\t[INSERT - RECEIVE_SOCIAL_HOUR] \n");
     Event * ev = new Event(CallerType::AGENT_MANAGER, this->getId(), e->getStartTime() + e->getExecTime(), RECEIVE_SOCIAL_HOUR_TIME, 
                             PatientEvents::RECEIVE_SOCIAL_HOUR, this, e->getCallerPtr(), nullptr);
@@ -294,6 +334,9 @@ void Manager::processSocialHour(Event * e) {
 }
 
 void Manager::processPsychoHour(Event * e) {
+    SimConfig * sim_config = SimConfig::getInstance("");
+    double RECEIVE_PSYCHO_HOUR_TIME = sim_config->getParams()["receive_psycho_hour_time"].get<double>();
+
     printf("\t[INSERT - RECEIVE_PSYCHO_HOUR] \n");
     Event * ev = new Event(CallerType::AGENT_MANAGER, this->getId(), e->getStartTime() + e->getExecTime(), RECEIVE_PSYCHO_HOUR_TIME, 
                             PatientEvents::RECEIVE_PSYCHO_HOUR, this, e->getCallerPtr(), nullptr);

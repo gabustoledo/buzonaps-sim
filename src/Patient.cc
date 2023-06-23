@@ -98,6 +98,10 @@ void Patient::processEvent(Event * e) {
 }
 
 void Patient::processAnswerConsent(Event * e) {
+    SimConfig * sim_config = SimConfig::getInstance("");
+    double PRE_CLASSIFY_CLINICAL_RISK_TIME = sim_config->getParams()["pre_classify_clinical_risk_time"].get<double>();
+    double ACCEPT_CONSENT_PROB = sim_config->getParams()["accept_consent_prob"].get<double>();
+
     random_device rd;
     mt19937 gen(rd());
     uniform_real_distribution<> dist(0.0, 1.0);
@@ -118,6 +122,10 @@ void Patient::processAnswerConsent(Event * e) {
 }
 
 void Patient::processReceiveMedicalHour(Event * e) {
+    SimConfig * sim_config = SimConfig::getInstance("");
+    double ATTEND_MEDICAL_HOUR_PROB = sim_config->getParams()["attend_medical_hour_prob"].get<double>();
+    double ATTEND_MEDICAL_HOUR_TIME = sim_config->getParams()["attend_medical_hour_time"].get<double>();
+
     random_device rd;
     mt19937 gen(rd());
     uniform_real_distribution<> dist(0.0, 1.0);
@@ -139,6 +147,10 @@ void Patient::processReceiveMedicalHour(Event * e) {
 }
 
 void Patient::processReceiveTestHour(Event * e) {
+    SimConfig * sim_config = SimConfig::getInstance("");
+    double ATTEND_TEST_HOUR_PROB = sim_config->getParams()["attend_test_hour_prob"].get<double>();
+    double ATTEND_TEST_HOUR_TIME = sim_config->getParams()["attend_test_hour_time"].get<double>();
+
     random_device rd;
     mt19937 gen(rd());
     uniform_real_distribution<> dist(0.0, 1.0);
@@ -160,6 +172,10 @@ void Patient::processReceiveTestHour(Event * e) {
 }
 
 void Patient::processReceiveSocialHour(Event * e) {
+    SimConfig * sim_config = SimConfig::getInstance("");
+    double ATTEND_SOCIAL_HOUR_PROB = sim_config->getParams()["attend_social_hour_prob"].get<double>();
+    double ATTEND_SOCIAL_HOUR_TIME = sim_config->getParams()["attend_social_hour_time"].get<double>();
+
     random_device rd;
     mt19937 gen(rd());
     uniform_real_distribution<> dist(0.0, 1.0);
@@ -181,6 +197,10 @@ void Patient::processReceiveSocialHour(Event * e) {
 }
 
 void Patient::processReceivePsychoHour(Event * e) {
+    SimConfig * sim_config = SimConfig::getInstance("");
+    double ATTEND_PSYCHO_HOUR_PROB = sim_config->getParams()["attend_psycho_hour_prob"].get<double>();
+    double ATTEND_PSYCHO_HOUR_TIME = sim_config->getParams()["attend_psycho_hour_time"].get<double>();
+
     random_device rd;
     mt19937 gen(rd());
     uniform_real_distribution<> dist(0.0, 1.0);

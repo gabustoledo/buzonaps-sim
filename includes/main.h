@@ -10,5 +10,6 @@
 #include "EventList.h"
 #include "Manager.h"
 #include "System.h"
+#include "SimConfig.h"
 
 #endif // !MAIN_H

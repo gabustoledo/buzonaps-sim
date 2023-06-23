@@ -1,8 +1,32 @@
 #include "../includes/main.h"
 
 int main(int argc, char *argv[]) {
+
+    int opt;
+    string config_filepath = "";
+    SimConfig * sim_config = nullptr;
+    while((opt = getopt(argc, argv, "f:")) != -1) {
+        switch(opt) {
+            case 'f':
+                config_filepath = optarg;
+                sim_config = SimConfig::getInstance(config_filepath);
+                break;
+            case 'h':
+                printf("HELP\n");
+                break;
+            default :
+                printf("DEMO\n");
+                break;
+        }
+    }
+
+    if (config_filepath == "") { 
+        config_filepath = "./config/config.json";
+        sim_config = SimConfig::getInstance(config_filepath);
+    }
+
     printf("INICIANDO SIMULACION\n");
-    double END_SIM = 1000.0;
+    double END_SIM = sim_config->getParams()["end_sim"].get<double>();
     int patients_amount = 10;
 
     EventList * event_list = new EventList(nullptr, 0.0, nullptr);
