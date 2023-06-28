@@ -4,12 +4,16 @@ int main(int argc, char *argv[]) {
 
     int opt;
     string config_filepath = "";
+    string out_filename = "";
     SimConfig * sim_config = nullptr;
-    while((opt = getopt(argc, argv, "f:")) != -1) {
+    while((opt = getopt(argc, argv, "f:o:")) != -1) {
         switch(opt) {
             case 'f':
                 config_filepath = optarg;
                 sim_config = SimConfig::getInstance(config_filepath);
+                break;
+            case 'o':
+                out_filename = optarg;
                 break;
             case 'h':
                 printf("HELP\n");
@@ -27,12 +31,12 @@ int main(int argc, char *argv[]) {
 
     printf("INICIANDO SIMULACION\n");
     double END_SIM = sim_config->getParams()["end_sim"].get<double>();
-    int patients_amount = 10;
+    int patients_amount = sim_config->getParams()["patients_amount"].get<int>();
 
     EventList * event_list = new EventList(nullptr, 0.0, nullptr);
 
     System * sys = new System(event_list);
-    sys->initializeSystem(patients_amount);
+    sys->initializeSystem(patients_amount, out_filename);
 
     Agent * agent;
 

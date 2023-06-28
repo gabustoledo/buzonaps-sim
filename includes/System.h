@@ -32,7 +32,7 @@ public:
 
     void log(json obj);
 
-    void initializeSystem(int patients_amount);
+    void initializeSystem(int patients_amount, string out_filename);
 
     void processEvent(Event * e);
 

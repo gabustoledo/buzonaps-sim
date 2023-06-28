@@ -39,7 +39,7 @@ void System::initializeManagers() {
     printf("Saliendo de initializeManagers\n");
 }
 
-void System::initializeSystem(int patients_amount) {
+void System::initializeSystem(int patients_amount, string out_filename) {
     printf("Entrando a initializeSystem\n");
     this->initializeCesfams();
     this->initializePatients(patients_amount);
@@ -50,7 +50,7 @@ void System::initializeSystem(int patients_amount) {
     auto tm = *localtime(&t);
     ostringstream time;
     time << put_time(&tm, "%d%m%Y_%H-%M-%S");
-    string output_str = "./out/out_" + time.str() + ".dat";
+    string output_str = "./out/out_" + out_filename + "_" + time.str() + ".dat";
     Monitor *monitor = new Monitor(output_str);
     this->monitor = monitor;
 

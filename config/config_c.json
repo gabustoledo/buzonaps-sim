@@ -1,5 +1,5 @@
 {
-    "end_sim": 1000,
+    "end_sim": 1100,
     "patients_amount": 10,
     "answer_consent_time": 1, 
     "receive_medical_hour_time": 1, 
@@ -33,8 +33,8 @@
     "high_social_risk_prob": 0.4, 
     "medical_hour_prob": 0.2, 
     "test_hour_prob": 0.2, 
-    "social_hour_prob": 0.2, 
-    "psycho_hour_prob": 0.2,
+    "social_hour_prob": 0.6, 
+    "psycho_hour_prob": 0.6,
     "medical_hour_factor": 5,
     "test_hour_factor": 5,
     "social_hour_factor": 5,
