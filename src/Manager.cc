@@ -87,6 +87,11 @@ void Manager::processAskConsent(Event * e) {
     json log;
     log["agent_type"] = "MANAGER";
     log["agent_id"] = this->id;
+    log["manager_id"] = this->id;
+    log["patient_id"] = ((Patient *)e->getCallerPtr())->getId();
+    log["clinical_risk"] = "";
+    log["social_risk"] = "";
+    log["final_risk"] = "";
     log["event_id"] = e->getId();
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "ASK_CONSENT";
@@ -116,7 +121,10 @@ void Manager::processPreClassifyClinicalRisk(Event * e) {
 
     if (e->getCallerType() == CallerType::AGENT_PATIENT) {
         Patient * patient = (Patient *)e->getCallerPtr();
-        patient->setClinicalRisk(clinical_risk); 
+        // Si no tiene un riesgo asociado, se asigna uno aleatorio
+        if (patient->getClinicalRisk() == RiskCategories::UNDEFINED) {
+            patient->setClinicalRisk(clinical_risk);
+        } 
         //TODO: Registrar el resultado del riesgo clínico
         printf("\t[INSERT - PRE_CLASSIFY_SOCIAL_RISK] \n");
         Event * ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), PRE_CLASSIFY_SOCIAL_RISK_TIME, 
@@ -126,6 +134,11 @@ void Manager::processPreClassifyClinicalRisk(Event * e) {
     json log;
     log["agent_type"] = "MANAGER";
     log["agent_id"] = this->id;
+    log["manager_id"] = this->id;
+    log["patient_id"] = ((Patient *)e->getCallerPtr())->getId();
+    log["clinical_risk"] = "";
+    log["social_risk"] = "";
+    log["final_risk"] = "";
     log["event_id"] = e->getId();
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "PRE_CLASSIFY_CLINICAL_RISK";
@@ -155,7 +168,10 @@ void Manager::processPreClassifySocialRisk(Event * e) {
 
     if (e->getCallerType() == CallerType::AGENT_PATIENT) {
         Patient * patient = (Patient *)e->getCallerPtr();
-        patient->setSocialRisk(social_risk); 
+        // Si no tiene un riesgo asociado, se asigna uno aleatorio
+        if (patient->getSocialRisk() == RiskCategories::UNDEFINED) {
+            patient->setSocialRisk(social_risk); 
+        }
         //TODO: Registrar el resultado del riesgo social
         RiskCategories final_risk = patient->calcFinalRisk();
         if (final_risk == RiskCategories::MEDIUM || final_risk == RiskCategories::HIGH) {
@@ -174,6 +190,11 @@ void Manager::processPreClassifySocialRisk(Event * e) {
     json log;
     log["agent_type"] = "MANAGER";
     log["agent_id"] = this->id;
+    log["manager_id"] = this->id;
+    log["patient_id"] = ((Patient *)e->getCallerPtr())->getId();
+    log["clinical_risk"] = "";
+    log["social_risk"] = "";
+    log["final_risk"] = "";
     log["event_id"] = e->getId();
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "PRE_CLASSIFY_SOCIAL_RISK";
@@ -191,6 +212,11 @@ void Manager::processReEvaluateLowRisk(Event * e) {
     json log;
     log["agent_type"] = "MANAGER";
     log["agent_id"] = this->id;
+    log["manager_id"] = this->id;
+    log["patient_id"] = ((Patient *)e->getCallerPtr())->getId();
+    log["clinical_risk"] = "";
+    log["social_risk"] = "";
+    log["final_risk"] = "";
     log["event_id"] = e->getId();
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "RE_EVALUATE_LOW_RISK";
@@ -208,6 +234,11 @@ void Manager::processReEvaluateManaged(Event * e) {
     json log;
     log["agent_type"] = "MANAGER";
     log["agent_id"] = this->id;
+    log["manager_id"] = this->id;
+    log["patient_id"] = ((Patient *)e->getCallerPtr())->getId();
+    log["clinical_risk"] = "";
+    log["social_risk"] = "";
+    log["final_risk"] = "";
     log["event_id"] = e->getId();
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "RE_EVALUATE_MANAGED";
@@ -276,6 +307,11 @@ void Manager::processManagePatient(Event * e) {
     json log;
     log["agent_type"] = "MANAGER";
     log["agent_id"] = this->id;
+    log["manager_id"] = this->id;
+    log["patient_id"] = ((Patient *)e->getCallerPtr())->getId();
+    log["clinical_risk"] = "";
+    log["social_risk"] = "";
+    log["final_risk"] = "";
     log["event_id"] = e->getId();
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "MANAGE_PATIENT";
@@ -293,6 +329,11 @@ void Manager::processMedicalHour(Event * e) {
     json log;
     log["agent_type"] = "MANAGER";
     log["agent_id"] = this->id;
+    log["manager_id"] = this->id;
+    log["patient_id"] = ((Patient *)e->getCallerPtr())->getId();
+    log["clinical_risk"] = "";
+    log["social_risk"] = "";
+    log["final_risk"] = "";
     log["event_id"] = e->getId();
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "MANAGE_MEDICAL_HOUR";
@@ -310,6 +351,11 @@ void Manager::processTestHour(Event * e) {
     json log;
     log["agent_type"] = "MANAGER";
     log["agent_id"] = this->id;
+    log["manager_id"] = this->id;
+    log["patient_id"] = ((Patient *)e->getCallerPtr())->getId();
+    log["clinical_risk"] = "";
+    log["social_risk"] = "";
+    log["final_risk"] = "";
     log["event_id"] = e->getId();
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "MANAGE_TEST_HOUR";
@@ -327,6 +373,11 @@ void Manager::processSocialHour(Event * e) {
     json log;
     log["agent_type"] = "MANAGER";
     log["agent_id"] = this->id;
+    log["manager_id"] = this->id;
+    log["patient_id"] = ((Patient *)e->getCallerPtr())->getId();
+    log["clinical_risk"] = "";
+    log["social_risk"] = "";
+    log["final_risk"] = "";
     log["event_id"] = e->getId();
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "MANAGE_SOCIAL_HOUR";
@@ -344,6 +395,11 @@ void Manager::processPsychoHour(Event * e) {
     json log;
     log["agent_type"] = "MANAGER";
     log["agent_id"] = this->id;
+    log["manager_id"] = this->id;
+    log["patient_id"] = ((Patient *)e->getCallerPtr())->getId();
+    log["clinical_risk"] = "";
+    log["social_risk"] = "";
+    log["final_risk"] = "";
     log["event_id"] = e->getId();
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "MANAGE_PSYCHO_HOUR";

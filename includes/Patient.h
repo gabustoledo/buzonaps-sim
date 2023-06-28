@@ -9,9 +9,10 @@
 #include "SimConfig.h"
 
 enum RiskCategories {
-    HIGH = 3,
-    MEDIUM = 2,
-    LOW = 1
+    HIGH = 30,
+    MEDIUM = 20,
+    LOW = 10,
+    UNDEFINED = 0
 };
 
 enum PatientEvents {
@@ -26,6 +27,15 @@ enum PatientEvents {
     ATTEND_PSYCHO_HOUR
 };
 
+enum HoursTypes {
+    MEDICAL_HOUR, 
+    TEST_HOUR,
+    SOCIAL_HOUR, 
+    PSYCHO_HOUR
+};
+
+
+
 class Manager;
 
 class Patient : public Agent {
@@ -33,10 +43,14 @@ class Patient : public Agent {
 private:
     static int _curr_id;
     int id;
-    RiskCategories clinical_risk;
-    RiskCategories social_risk;
+    RiskCategories clinical_risk = RiskCategories::UNDEFINED;
+    RiskCategories social_risk = RiskCategories::UNDEFINED;
     Cesfam * cesfam;
     Manager * manager;
+    map<HoursTypes, int> hours_attended;
+
+    RiskCategories classifyIntRisk(int value);
+    void setHoursAttended(HoursTypes type, int amount);
 
 public:
     Patient(EventList * _event_list, System * system);
@@ -54,6 +68,8 @@ public:
     RiskCategories getClinicalRisk();
 
     RiskCategories getSocialRisk();
+
+    RiskCategories getFinalRisk();
 
     RiskCategories calcFinalRisk();
 

@@ -27,6 +27,17 @@ void Patient::setSocialRisk(RiskCategories _social_risk) {
     this->social_risk = _social_risk;
 }
 
+// La idea de este método es que el paciente acumule (o pierda) "puntaje" para disminuir (o aumentar) su riesgo
+void Patient::setHoursAttended(HoursTypes type, int amount) {
+    // Si no existe el tipo de hora en el paciente, se inserta con su cantidad (positiva o negativa)
+    if (this->hours_attended.find(type) == this->hours_attended.end()) {
+        this->hours_attended.insert({type, amount});
+    } else {
+        // Si existe, se actualiza el "puntaje" asociado al tipo de hora
+        this->hours_attended.find(type)->second += amount;
+    }
+}
+
 RiskCategories Patient::getClinicalRisk() {
     return this->clinical_risk;
 }
@@ -35,7 +46,63 @@ RiskCategories Patient::getSocialRisk() {
     return this->social_risk;
 }
 
+RiskCategories Patient::getFinalRisk() {
+    if (this->clinical_risk > this->social_risk) {
+        return this->clinical_risk;
+    }
+    return this->social_risk;
+}
+
+RiskCategories Patient::classifyIntRisk(int value) {
+    RiskCategories result;
+    if (value >= RiskCategories::HIGH) {
+        result = RiskCategories::HIGH;
+    } else if (value < RiskCategories::HIGH && value >= RiskCategories::MEDIUM) {
+        result = RiskCategories::MEDIUM;
+    } else {
+        result = RiskCategories::LOW;
+    }
+    return result;
+}
+
+// Se calcula el riesgo en base a las horas que tiene
 RiskCategories Patient::calcFinalRisk() {
+    SimConfig * sim_config = SimConfig::getInstance("");
+    int MEDICAL_HOUR_FACTOR = sim_config->getParams()["medical_hour_factor"].get<int>();
+    int TEST_HOUR_FACTOR = sim_config->getParams()["test_hour_factor"].get<int>();
+    int SOCIAL_HOUR_FACTOR = sim_config->getParams()["social_hour_factor"].get<int>();
+    int PSYCHO_HOUR_FACTOR = sim_config->getParams()["psycho_hour_factor"].get<int>();
+    int clinical_r = this->clinical_risk;
+    int social_r = this->social_risk;
+    // Si el mapa de horas agendadas tiene algún dato, se puede modificar el riesgo según sus horas agendadas considerando a las que asistió y a las que no
+    if (!this->hours_attended.empty()) {
+        if (this->hours_attended.find(HoursTypes::MEDICAL_HOUR) != this->hours_attended.end()) {
+            // Se consindera el "puntaje" asociado a las horas médicas para recalcular el riesgo clínico
+            int medical = this->hours_attended.find(HoursTypes::MEDICAL_HOUR)->second * MEDICAL_HOUR_FACTOR;
+            clinical_r += (-1 * medical);
+        } 
+        if (this->hours_attended.find(HoursTypes::TEST_HOUR) != this->hours_attended.end()) {
+            // Se consindera el "puntaje" asociado a las horas médicas para recalcular el riesgo clínico
+            int test = this->hours_attended.find(HoursTypes::TEST_HOUR)->second * TEST_HOUR_FACTOR;
+            clinical_r += (-1 * test);
+        } 
+        // Se modifica el riesgo como enum de riesgos para riesgo clínico
+        this->clinical_risk = classifyIntRisk(clinical_r);
+        if (this->hours_attended.find(HoursTypes::SOCIAL_HOUR) != this->hours_attended.end()) {
+            // Se consindera el "puntaje" asociado a las horas médicas para recalcular el riesgo social
+            int social = this->hours_attended.find(HoursTypes::SOCIAL_HOUR)->second * SOCIAL_HOUR_FACTOR;
+            social_r += (-1 * social);
+        }
+        if (this->hours_attended.find(HoursTypes::PSYCHO_HOUR) != this->hours_attended.end()) {
+            // Se consindera el "puntaje" asociado a las horas médicas para recalcular el riesgo social
+            int psycho = this->hours_attended.find(HoursTypes::PSYCHO_HOUR)->second * PSYCHO_HOUR_FACTOR;
+            social_r += (-1 * psycho);
+        }
+        // Se modifica el riesgo como enum de riesgos para riesgo social
+        this->social_risk = classifyIntRisk(social_r);
+    }
+
+    // Se define el riesgo final como el mayor entre ambos (clínico y social)
     if (this->clinical_risk > this->social_risk) {
         return this->clinical_risk;
     }
@@ -115,6 +182,11 @@ void Patient::processAnswerConsent(Event * e) {
     json log;
     log["agent_type"] = "PATIENT";
     log["agent_id"] = this->id;
+    log["manager_id"] = this->getManager()->getId();
+    log["patient_id"] = this->id;
+    log["clinical_risk"] = this->clinical_risk;
+    log["social_risk"] = this->social_risk;
+    log["final_risk"] = this->getFinalRisk();
     log["event_id"] = e->getId();
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "ANSWER_CONSENT";
@@ -136,10 +208,20 @@ void Patient::processReceiveMedicalHour(Event * e) {
         Event * ev = new Event(CallerType::AGENT_PATIENT, this->getId(), e->getStartTime() + e->getExecTime(), ATTEND_MEDICAL_HOUR_TIME, 
                                 PatientEvents::ATTEND_MEDICAL_HOUR, this, this, nullptr);
         this->event_list->insertEvent(ev);
+        // Si va, se agrega a las horas a las que ha asisitido con valor 1
+        setHoursAttended(HoursTypes::MEDICAL_HOUR, 1);
+    } else {
+        // Si no va, se agrega a las horas a las que ha asistido con valor -1
+        setHoursAttended(HoursTypes::MEDICAL_HOUR, -1);
     }
     json log;
     log["agent_type"] = "PATIENT";
     log["agent_id"] = this->id;
+    log["manager_id"] = this->getManager()->getId();
+    log["patient_id"] = this->id;
+    log["clinical_risk"] = this->clinical_risk;
+    log["social_risk"] = this->social_risk;
+    log["final_risk"] = this->getFinalRisk();
     log["event_id"] = e->getId();
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "RECEIVE_MEDICAL_HOUR";
@@ -160,11 +242,20 @@ void Patient::processReceiveTestHour(Event * e) {
         printf("\t[INSERT - ATTEND_TEST_HOUR] \n");
         Event * ev = new Event(CallerType::AGENT_PATIENT, this->getId(), e->getStartTime() + e->getExecTime(), ATTEND_TEST_HOUR_TIME, 
                                 PatientEvents::ATTEND_TEST_HOUR, this, this, nullptr);
-        this->event_list->insertEvent(ev);
+        this->event_list->insertEvent(ev);// Si va, se agrega a las horas a las que ha asisitido con valor 1
+        setHoursAttended(HoursTypes::TEST_HOUR, 1);
+    } else {
+        // Si no va, se agrega a las horas a las que ha asistido con valor -1
+        setHoursAttended(HoursTypes::TEST_HOUR, -1);
     }
     json log;
     log["agent_type"] = "PATIENT";
     log["agent_id"] = this->id;
+    log["manager_id"] = this->getManager()->getId();
+    log["patient_id"] = this->id;
+    log["clinical_risk"] = this->clinical_risk;
+    log["social_risk"] = this->social_risk;
+    log["final_risk"] = this->getFinalRisk();
     log["event_id"] = e->getId();
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "RECEIVE_TEST_HOUR";
@@ -185,11 +276,20 @@ void Patient::processReceiveSocialHour(Event * e) {
         printf("\t[INSERT - ATTEND_SOCIAL_HOUR] \n");
         Event * ev = new Event(CallerType::AGENT_PATIENT, this->getId(), e->getStartTime() + e->getExecTime(), ATTEND_SOCIAL_HOUR_TIME, 
                                 PatientEvents::ATTEND_SOCIAL_HOUR, this, this, nullptr);
-        this->event_list->insertEvent(ev);
+        this->event_list->insertEvent(ev);// Si va, se agrega a las horas a las que ha asisitido con valor 1
+        setHoursAttended(HoursTypes::SOCIAL_HOUR, 1);
+    } else {
+        // Si no va, se agrega a las horas a las que ha asistido con valor -1
+        setHoursAttended(HoursTypes::SOCIAL_HOUR, -1);
     }
     json log;
     log["agent_type"] = "PATIENT";
     log["agent_id"] = this->id;
+    log["manager_id"] = this->getManager()->getId();
+    log["patient_id"] = this->id;
+    log["clinical_risk"] = this->clinical_risk;
+    log["social_risk"] = this->social_risk;
+    log["final_risk"] = this->getFinalRisk();
     log["event_id"] = e->getId();
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "RECEIVE_SOCIAL_HOUR";
@@ -210,11 +310,20 @@ void Patient::processReceivePsychoHour(Event * e) {
         printf("\t[INSERT - ATTEND_PSYCHO_HOUR] \n");
         Event * ev = new Event(CallerType::AGENT_PATIENT, this->getId(), e->getStartTime() + e->getExecTime(), ATTEND_PSYCHO_HOUR_TIME, 
                                 PatientEvents::ATTEND_PSYCHO_HOUR, this, this, nullptr);
-        this->event_list->insertEvent(ev);
+        this->event_list->insertEvent(ev);// Si va, se agrega a las horas a las que ha asisitido con valor 1
+        setHoursAttended(HoursTypes::PSYCHO_HOUR, 1);
+    } else {
+        // Si no va, se agrega a las horas a las que ha asistido con valor -1
+        setHoursAttended(HoursTypes::PSYCHO_HOUR, -1);
     }
     json log;
     log["agent_type"] = "PATIENT";
     log["agent_id"] = this->id;
+    log["manager_id"] = this->getManager()->getId();
+    log["patient_id"] = this->id;
+    log["clinical_risk"] = this->clinical_risk;
+    log["social_risk"] = this->social_risk;
+    log["final_risk"] = this->getFinalRisk();
     log["event_id"] = e->getId();
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "RECEIVE_PSYCHO_HOUR";
@@ -225,6 +334,11 @@ void Patient::processAttendMedicalHour(Event * e) {
     json log;
     log["agent_type"] = "PATIENT";
     log["agent_id"] = this->id;
+    log["manager_id"] = this->getManager()->getId();
+    log["patient_id"] = this->id;
+    log["clinical_risk"] = this->clinical_risk;
+    log["social_risk"] = this->social_risk;
+    log["final_risk"] = this->getFinalRisk();
     log["event_id"] = e->getId();
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "ATTEND_MEDICAL_HOUR";
@@ -235,6 +349,11 @@ void Patient::processAttendTestHour(Event * e) {
     json log;
     log["agent_type"] = "PATIENT";
     log["agent_id"] = this->id;
+    log["manager_id"] = this->getManager()->getId();
+    log["patient_id"] = this->id;
+    log["clinical_risk"] = this->clinical_risk;
+    log["social_risk"] = this->social_risk;
+    log["final_risk"] = this->getFinalRisk();
     log["event_id"] = e->getId();
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "ATTEND_TEST_HOUR";
@@ -245,6 +364,11 @@ void Patient::processAttendSocialHour(Event * e) {
     json log;
     log["agent_type"] = "PATIENT";
     log["agent_id"] = this->id;
+    log["manager_id"] = this->getManager()->getId();
+    log["patient_id"] = this->id;
+    log["clinical_risk"] = this->clinical_risk;
+    log["social_risk"] = this->social_risk;
+    log["final_risk"] = this->getFinalRisk();
     log["event_id"] = e->getId();
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "ATTEND_SOCIAL_HOUR";
@@ -255,6 +379,11 @@ void Patient::processAttendPsychoHour(Event * e) {
     json log;
     log["agent_type"] = "PATIENT";
     log["agent_id"] = this->id;
+    log["manager_id"] = this->getManager()->getId();
+    log["patient_id"] = this->id;
+    log["clinical_risk"] = this->clinical_risk;
+    log["social_risk"] = this->social_risk;
+    log["final_risk"] = this->getFinalRisk();
     log["event_id"] = e->getId();
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "ATTEND_PSYCHO_HOUR";

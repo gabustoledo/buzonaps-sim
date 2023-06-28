@@ -33,5 +33,9 @@
     "medical_hour_prob": 0.2, 
     "test_hour_prob": 0.2, 
     "social_hour_prob": 0.2, 
-    "psycho_hour_prob": 0.2
+    "psycho_hour_prob": 0.2,
+    "medical_hour_factor": 5,
+    "test_hour_factor": 5,
+    "social_hour_factor": 5,
+    "psycho_hour_factor": 5
 }
