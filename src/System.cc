@@ -72,6 +72,8 @@ void System::initializeSystem(int patients_amount, string out_filename) {
     printf("Saliendo de initilizeSystem\n");
 }
 
-void System::processEvent(Event * e) {}
+void System::processEvent(Event * e) {
+    delete e;
+}
 
 System::~System() {}

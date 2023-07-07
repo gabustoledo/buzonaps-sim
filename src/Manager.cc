@@ -74,6 +74,7 @@ void Manager::processEvent(Event * e) {
     default:
         break;
     }
+    delete e;
 }
 
 void Manager::processAskConsent(Event * e) {

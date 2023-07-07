@@ -162,6 +162,7 @@ void Patient::processEvent(Event * e) {
     default:
         break;
     }
+    delete e;
 }
 
 void Patient::processAnswerConsent(Event * e) {

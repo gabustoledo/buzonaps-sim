@@ -60,8 +60,6 @@ int main(int argc, char *argv[]) {
     }
     delete event_list;
     delete sys;
-    if(e != nullptr)
-        delete e;
-
+    
     exit(EXIT_SUCCESS);
 }
