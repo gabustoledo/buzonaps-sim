@@ -67,6 +67,8 @@ public:
     void processSocialHour(Event * e);
 
     void processPsychoHour(Event * e);
+
+    double outOfTime() override;
 };
 
 #endif // !MANAGER_H

@@ -38,5 +38,7 @@
     "medical_hour_factor": 5,
     "test_hour_factor": 5,
     "social_hour_factor": 5,
-    "psycho_hour_factor": 5
+    "psycho_hour_factor": 5,
+    "manager_start_hour": 8,
+    "manager_end_hour": 18
 }

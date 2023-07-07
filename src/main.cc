@@ -58,8 +58,9 @@ int main(int argc, char *argv[]) {
         }
         sys->processEvent(e);
     }
+    printf("TOTAL EVENTS = %d \n", event_list->getLastEvent()->getId());
     delete event_list;
     delete sys;
-    
+
     exit(EXIT_SUCCESS);
 }

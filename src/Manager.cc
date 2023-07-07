@@ -20,59 +20,71 @@ void Manager::processEvent(Event * e) {
 
     printf("[PROCESS MANAGER EVENT - MANAGER %d - PATIENT %d] \n", this->id, e->getCallerId());
 
-    switch (e->getEventType()) {
-    case ManagerEvents::ASK_CONSENT:
-        printf("\t[PROCESS - ASK_CONSENT] \n");
-        this->processAskConsent(e);
-        break;
-    
-    case ManagerEvents::PRE_CLASSIFY_CLINICAL_RISK:
-        printf("\t[PROCESS - PRE_CLASSIFY_CLINICAL_RISK] \n");
-        this->processPreClassifyClinicalRisk(e);
-        break;
+    // Si el evento ocurre fuera del horario laboral del gestor, se inserta nuevamente el evento al inicio de su jornada
+    double out_of_time = this->outOfTime();
+    if (out_of_time != 0) {
+        printf("\t[MANAGER OUT OF TIME - EVENT TYPE %d] \n", e->getEventType());
+        double start_time = e->getStartTime() + out_of_time;
+        Event * ev = new Event(e->getCallerType(), e->getCallerId(), start_time, e->getExecTime(), 
+                                e->getEventType(), e->getCallerPtr(), e->getObjectivePtr(), nullptr);
+        this->event_list->insertEvent(ev);
+    }
+    // Si ocurre dentro del horario laboral, se procesa el evento
+    else {
+        switch (e->getEventType()) {
+        case ManagerEvents::ASK_CONSENT:
+            printf("\t[PROCESS - ASK_CONSENT] \n");
+            this->processAskConsent(e);
+            break;
+        
+        case ManagerEvents::PRE_CLASSIFY_CLINICAL_RISK:
+            printf("\t[PROCESS - PRE_CLASSIFY_CLINICAL_RISK] \n");
+            this->processPreClassifyClinicalRisk(e);
+            break;
 
-    case ManagerEvents::PRE_CLASSIFY_SOCIAL_RISK:
-        printf("\t[PROCESS - PRE_CLASSIFY_SOCIAL_RISK] \n");
-        this->processPreClassifySocialRisk(e);
-        break;
+        case ManagerEvents::PRE_CLASSIFY_SOCIAL_RISK:
+            printf("\t[PROCESS - PRE_CLASSIFY_SOCIAL_RISK] \n");
+            this->processPreClassifySocialRisk(e);
+            break;
 
-    case ManagerEvents::MANAGE_PATIENT:
-        printf("\t[PROCESS - MANAGE_PATIENT] \n");
-        this->processManagePatient(e);
-        break;
+        case ManagerEvents::MANAGE_PATIENT:
+            printf("\t[PROCESS - MANAGE_PATIENT] \n");
+            this->processManagePatient(e);
+            break;
 
-    case ManagerEvents::MANAGE_MEDICAL_HOUR:
-        printf("\t[PROCESS - MANAGE_MEDICAL_HOUR] \n");
-        this->processMedicalHour(e);
-        break;
+        case ManagerEvents::MANAGE_MEDICAL_HOUR:
+            printf("\t[PROCESS - MANAGE_MEDICAL_HOUR] \n");
+            this->processMedicalHour(e);
+            break;
 
-    case ManagerEvents::MANAGE_TEST_HOUR:
-        printf("\t[PROCESS - MANAGE_TEST_HOUR] \n");
-        this->processTestHour(e);
-        break;
+        case ManagerEvents::MANAGE_TEST_HOUR:
+            printf("\t[PROCESS - MANAGE_TEST_HOUR] \n");
+            this->processTestHour(e);
+            break;
 
-    case ManagerEvents::MANAGE_SOCIAL_HOUR:
-        printf("\t[PROCESS - MANAGE_SOCIAL_HOUR] \n");
-        this->processSocialHour(e);
-        break;
+        case ManagerEvents::MANAGE_SOCIAL_HOUR:
+            printf("\t[PROCESS - MANAGE_SOCIAL_HOUR] \n");
+            this->processSocialHour(e);
+            break;
 
-    case ManagerEvents::MANAGE_PSYCHO_HOUR:
-        printf("\t[PROCESS - MANAGE_PSYCHO_HOUR] \n");
-        this->processPsychoHour(e);
-        break;
-    
-    case ManagerEvents::RE_EVALUATE_LOW_RISK:
-        printf("\t[PROCESS - RE_EVALUATE_LOW_RISK] \n");
-        this->processReEvaluateLowRisk(e);
-        break;
+        case ManagerEvents::MANAGE_PSYCHO_HOUR:
+            printf("\t[PROCESS - MANAGE_PSYCHO_HOUR] \n");
+            this->processPsychoHour(e);
+            break;
+        
+        case ManagerEvents::RE_EVALUATE_LOW_RISK:
+            printf("\t[PROCESS - RE_EVALUATE_LOW_RISK] \n");
+            this->processReEvaluateLowRisk(e);
+            break;
 
-    case ManagerEvents::RE_EVALUATE_MANAGED:
-        printf("\t[PROCESS - RE_EVALUATE_MANAGED] \n");
-        this->processReEvaluateManaged(e);
-        break;
+        case ManagerEvents::RE_EVALUATE_MANAGED:
+            printf("\t[PROCESS - RE_EVALUATE_MANAGED] \n");
+            this->processReEvaluateManaged(e);
+            break;
 
-    default:
-        break;
+        default:
+            break;
+        }
     }
     delete e;
 }
@@ -405,4 +417,23 @@ void Manager::processPsychoHour(Event * e) {
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "MANAGE_PSYCHO_HOUR";
     this->system->log(log);
+}
+
+double Manager::outOfTime() {
+    SimConfig * sim_config = SimConfig::getInstance("");
+    int MANAGER_START_HOUR = sim_config->getParams()["manager_start_hour"].get<int>();
+    int MANAGER_END_HOUR = sim_config->getParams()["manager_end_hour"].get<int>();
+
+    int curr_clock = (int)this->event_list->getClock();
+    // Se calcula en base a las 24 horas del día
+    int curr_hour = curr_clock % 24;
+
+    if (curr_hour >= MANAGER_START_HOUR && curr_hour <= MANAGER_END_HOUR) {
+        return 0;
+    } else if (curr_hour < MANAGER_START_HOUR) {
+        return MANAGER_START_HOUR - curr_hour;
+    } else if (curr_hour > MANAGER_END_HOUR) {
+        return 24 - curr_hour + MANAGER_START_HOUR;
+    }
+    return -1;
 }

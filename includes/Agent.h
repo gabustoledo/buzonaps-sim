@@ -17,6 +17,8 @@ protected:
 public:
     virtual void processEvent(Event * e);
 
+    virtual double outOfTime();
+
 };
 
 #endif // !AGENT_H

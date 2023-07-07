@@ -47,6 +47,10 @@ double EventList::getClock() {
     return this->clock;
 }
 
+Event * EventList::getLastEvent() {
+    return this->last;
+}
+
 bool EventList::isEmpty() {
     return this->first == nullptr;
 }

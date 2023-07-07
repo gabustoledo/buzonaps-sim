@@ -24,6 +24,8 @@ public:
 
     double getClock();
 
+    Event * getLastEvent();
+
     ~EventList();
 
 };
