@@ -329,6 +329,14 @@ void Manager::processManagePatient(Event * e) {
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "MANAGE_PATIENT";
     this->system->log(log);
+
+    Stats * stats = Stats::getInstance();
+    bool managed_state = ((Patient *)e->getCallerPtr())->getManagedState();
+    if (!managed_state) {
+        stats->updateManagedPatientsAmount();
+        ((Patient *)e->getCallerPtr())->setManagedState(true);
+    }
+    stats->updateTotalInterventions();
 }
 
 void Manager::processMedicalHour(Event * e) {

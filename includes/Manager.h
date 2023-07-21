@@ -6,6 +6,7 @@
 #include "Cesfam.h"
 #include "Patient.h"
 #include "SimConfig.h"
+#include "Stats.h"
 
 enum ManagerEvents {
     ASK_CONSENT,

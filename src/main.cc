@@ -29,6 +29,8 @@ int main(int argc, char *argv[]) {
         sim_config = SimConfig::getInstance(config_filepath);
     }
 
+    Stats * stats = Stats::getInstance();
+
     printf("INICIANDO SIMULACION\n");
     double END_SIM = sim_config->getParams()["end_sim"].get<double>();
     int patients_amount = sim_config->getParams()["patients_amount"].get<int>();
@@ -58,6 +60,9 @@ int main(int argc, char *argv[]) {
         }
         sys->processEvent(e);
     }
+
+    stats->writeOutput("./out/general");
+
     printf("TOTAL EVENTS = %d \n", event_list->getLastEvent()->getId());
     delete event_list;
     delete sys;

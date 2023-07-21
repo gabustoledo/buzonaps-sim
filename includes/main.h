@@ -11,5 +11,6 @@
 #include "Manager.h"
 #include "System.h"
 #include "SimConfig.h"
+#include "Stats.h"
 
 #endif // !MAIN_H

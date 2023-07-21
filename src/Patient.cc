@@ -19,6 +19,14 @@ void Patient::setManager(Manager * _manager) {
     this->manager = _manager;
 }
 
+void Patient::setManagedState(bool value) {
+    this->managed_state = value;
+}
+
+bool Patient::getManagedState() {
+    return this->managed_state;
+}
+
 void Patient::setClinicalRisk(RiskCategories _clinical_risk) {
     this->clinical_risk = _clinical_risk;
 }
@@ -67,6 +75,7 @@ RiskCategories Patient::classifyIntRisk(int value) {
 
 // Se calcula el riesgo en base a las horas que tiene
 RiskCategories Patient::calcFinalRisk() {
+    RiskCategories actual_risk = this->getFinalRisk();
     SimConfig * sim_config = SimConfig::getInstance("");
     int MEDICAL_HOUR_FACTOR = sim_config->getParams()["medical_hour_factor"].get<int>();
     int TEST_HOUR_FACTOR = sim_config->getParams()["test_hour_factor"].get<int>();
@@ -102,11 +111,22 @@ RiskCategories Patient::calcFinalRisk() {
         this->social_risk = classifyIntRisk(social_r);
     }
 
+    RiskCategories new_risk;
     // Se define el riesgo final como el mayor entre ambos (clínico y social)
     if (this->clinical_risk > this->social_risk) {
-        return this->clinical_risk;
+        new_risk = this->clinical_risk;
     }
-    return this->social_risk;
+    new_risk = this->social_risk;
+    
+    if (actual_risk > new_risk) {
+        Stats * stats = Stats::getInstance();
+        stats->updateDecreasedRiskEvents();
+    } else if (actual_risk < new_risk) {
+        Stats * stats = Stats::getInstance();
+        stats->updateIncreasedRiskEvents();
+    }
+
+    return new_risk;
 }
 
 void Patient::processEvent(Event * e) {
@@ -227,6 +247,9 @@ void Patient::processReceiveMedicalHour(Event * e) {
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "RECEIVE_MEDICAL_HOUR";
     this->system->log(log);
+
+    Stats * stats = Stats::getInstance();
+    stats->updateTotalMedicalHourReceived();
 }
 
 void Patient::processReceiveTestHour(Event * e) {
@@ -261,6 +284,9 @@ void Patient::processReceiveTestHour(Event * e) {
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "RECEIVE_TEST_HOUR";
     this->system->log(log);
+
+    Stats * stats = Stats::getInstance();
+    stats->updateTotalTestHourReceived();
 }
 
 void Patient::processReceiveSocialHour(Event * e) {
@@ -295,6 +321,9 @@ void Patient::processReceiveSocialHour(Event * e) {
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "RECEIVE_SOCIAL_HOUR";
     this->system->log(log);
+
+    Stats * stats = Stats::getInstance();
+    stats->updateTotalSocialHourReceived();
 }
 
 void Patient::processReceivePsychoHour(Event * e) {
@@ -329,6 +358,9 @@ void Patient::processReceivePsychoHour(Event * e) {
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "RECEIVE_PSYCHO_HOUR";
     this->system->log(log);
+
+    Stats * stats = Stats::getInstance();
+    stats->updateTotalPsychoHourReceived();
 }
 
 void Patient::processAttendMedicalHour(Event * e) {
@@ -344,6 +376,9 @@ void Patient::processAttendMedicalHour(Event * e) {
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "ATTEND_MEDICAL_HOUR";
     this->system->log(log);
+
+    Stats * stats = Stats::getInstance();
+    stats->updateTotalMedicalHourAttended();
 }
 
 void Patient::processAttendTestHour(Event * e) {
@@ -359,6 +394,9 @@ void Patient::processAttendTestHour(Event * e) {
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "ATTEND_TEST_HOUR";
     this->system->log(log);
+
+    Stats * stats = Stats::getInstance();
+    stats->updateTotalTestHourAttended();
 }
 
 void Patient::processAttendSocialHour(Event * e) {
@@ -374,6 +412,9 @@ void Patient::processAttendSocialHour(Event * e) {
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "ATTEND_SOCIAL_HOUR";
     this->system->log(log);
+
+    Stats * stats = Stats::getInstance();
+    stats->updateTotalSocialHourAttended();
 }
 
 void Patient::processAttendPsychoHour(Event * e) {
@@ -389,4 +430,7 @@ void Patient::processAttendPsychoHour(Event * e) {
     log["sim_clock"] = this->event_list->getClock();
     log["process"] = "ATTEND_PSYCHO_HOUR";
     this->system->log(log);
+
+    Stats * stats = Stats::getInstance();
+    stats->updateTotalPsychoHourAttended();
 }

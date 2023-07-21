@@ -7,6 +7,7 @@
 #include "Manager.h"
 #include "System.h"
 #include "SimConfig.h"
+#include "Stats.h"
 
 enum RiskCategories {
     HIGH = 30,
@@ -48,6 +49,7 @@ private:
     Cesfam * cesfam;
     Manager * manager;
     map<HoursTypes, int> hours_attended;
+    bool managed_state = false;
 
     RiskCategories classifyIntRisk(int value);
     void setHoursAttended(HoursTypes type, int amount);
@@ -60,6 +62,10 @@ public:
     Manager * getManager();
 
     void setManager(Manager * _manager);
+
+    void setManagedState(bool value);
+
+    bool getManagedState();
 
     void setClinicalRisk(RiskCategories _clinical_risk);
 
