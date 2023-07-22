@@ -2,18 +2,27 @@
 
 int Manager::_curr_id(0);
 
-Manager::Manager(Cesfam * _cesfam, vector<Patient *> _patients, EventList * _event_list, System * _system) : id(++_curr_id) {
+Manager::Manager(Cesfam * _cesfam, EventList * _event_list, System * _system, int _location) : id(++_curr_id) {
     this->event_list = _event_list;
     this->system = _system;
     this->cesfam = _cesfam;
-    size_t i;
-    for (i = 0; i < _patients.size(); i++) {
-        this->patients.insert({_patients[i], false});
-    }
+    this->location = _location;
 }
 
 int Manager::getId() {
     return this->id;
+}
+
+int Manager::getLocation() {
+    return this->location;
+}
+
+void Manager::addPatient(Patient * patient) {
+    this->patients.insert({patient, false});
+}
+
+map<Patient *, bool> Manager::getPatients() {
+    return this->patients;
 }
 
 void Manager::processEvent(Event * e) {

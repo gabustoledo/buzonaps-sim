@@ -33,12 +33,14 @@ int main(int argc, char *argv[]) {
 
     printf("INICIANDO SIMULACION\n");
     double END_SIM = sim_config->getParams()["end_sim"].get<double>();
+    int cesfam_amount = sim_config->getParams()["cesfam_amount"].get<int>();
+    int managers_amount = sim_config->getParams()["managers_amount"].get<int>();
     int patients_amount = sim_config->getParams()["patients_amount"].get<int>();
 
     EventList * event_list = new EventList(nullptr, 0.0, nullptr);
 
     System * sys = new System(event_list);
-    sys->initializeSystem(patients_amount, out_filename);
+    sys->initializeSystem(cesfam_amount, managers_amount, patients_amount, out_filename);
 
     Agent * agent;
 

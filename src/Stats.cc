@@ -60,6 +60,10 @@ void Stats::updateTotalPsychoHourAttended() {
 }
 
 void Stats::writeOutput(string filepath) {
+    SimConfig * sim_config = SimConfig::getInstance("");
+    int cesfam_amount = sim_config->getParams()["cesfam_amount"].get<int>();
+    int managers_amount = sim_config->getParams()["managers_amount"].get<int>();
+    int patients_amount = sim_config->getParams()["patients_amount"].get<int>();
     auto t = time(nullptr);
     auto tm = *localtime(&t);
     ostringstream time;
@@ -68,6 +72,9 @@ void Stats::writeOutput(string filepath) {
     ofstream general_output_file;
     general_output_file.open(output_str);
     json output;
+    output["cesfam_amount"] = cesfam_amount;
+    output["managers_amount"] = managers_amount;
+    output["patients_amount"] = patients_amount;
     output["managed_patients_amount"] = this->managed_patients_amount;
     output["total_interventions"] = this->total_interventions;
     output["decreased_risk_events"] = this->decreased_risk_events;

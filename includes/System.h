@@ -20,19 +20,28 @@ private:
     map<int, Manager *> managers;
     map<int, Cesfam *> cesfams;
     Monitor * monitor;
+    map<int, Cesfam *> locations_cesfam;
+    map<int, vector<Patient *>> locations_patients;
+    map<int, vector<Manager *>> locations_managers;
 
-    void initializeCesfams();
+    void initializeCesfams(int amount);
 
-    void initializePatients(int amount);
+    void initializePatients(int amount, int cesfam_amount);
 
-    void initializeManagers();
+    void initializeManagers(int amount, int cesfam_amount);
+
+    void addLocaltionsCesfam(int location, Cesfam * cesfam);
+
+    void addLocationsPatients(int location, Patient * patient);
+
+    void addLocationsManagers(int location, Manager * manager);
     
 public:
     System(EventList * _event_list);
 
     void log(json obj);
 
-    void initializeSystem(int patients_amount, string out_filename);
+    void initializeSystem(int cesfam_amount, int manager_amount, int patients_amount, string out_filename);
 
     void processEvent(Event * e);
 

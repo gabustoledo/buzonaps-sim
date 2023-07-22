@@ -1,6 +1,8 @@
 {
     "end_sim": 1100,
-    "patients_amount": 10,
+    "cesfam_amount": 5,
+    "patients_amount": 50,
+    "managers_amount": 2,
     "answer_consent_time": 1, 
     "receive_medical_hour_time": 1, 
     "receive_test_hour_time": 1,

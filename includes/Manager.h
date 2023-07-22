@@ -34,6 +34,7 @@ private:
     int id;
     Cesfam * cesfam;
     map<Patient *, bool> patients; // false --> no intervenido; true --> intervenido
+    int location;
 
 public:
     /**
@@ -43,9 +44,15 @@ public:
      * @param _patients 
      * @param _event_list 
      */
-    Manager(Cesfam * _cesfam, vector<Patient *> _patients, EventList * _event_list, System * _system);
+    Manager(Cesfam * _cesfam, EventList * _event_list, System * _system, int _location);
 
     int getId();
+
+    int getLocation();
+
+    void addPatient(Patient *);
+
+    map<Patient *, bool> getPatients();
 
     void processEvent(Event * e) override;
 

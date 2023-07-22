@@ -50,12 +50,13 @@ private:
     Manager * manager;
     map<HoursTypes, int> hours_attended;
     bool managed_state = false;
+    int location;
 
     RiskCategories classifyIntRisk(int value);
     void setHoursAttended(HoursTypes type, int amount);
 
 public:
-    Patient(EventList * _event_list, System * system);
+    Patient(EventList * _event_list, System * system, int _location);
 
     int getId();
 
@@ -66,6 +67,8 @@ public:
     void setManagedState(bool value);
 
     bool getManagedState();
+
+    int getLocation();
 
     void setClinicalRisk(RiskCategories _clinical_risk);
 

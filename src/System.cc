@@ -9,41 +9,121 @@ void System::log(json obj)
     this->monitor->writeLog(obj);
 }
 
-void System::initializeCesfams() {
-    Cesfam * cesfam = new Cesfam();
-    // ?
-    this->cesfams.insert({cesfam->getId(), cesfam});
+void System::initializeCesfams(int amount) {
+    int i;
+    for (i = 0; i < amount; i++) {
+        Cesfam * cesfam = new Cesfam();
+        this->cesfams.insert({cesfam->getId(), cesfam});
+        this->locations_cesfam.insert({i, cesfam});
+    }
     printf("Saliendo de initializeCesfams");
 }
 
-void System::initializePatients(int amount) {
+void System::initializePatients(int amount, int cesfam_amount) {
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_real_distribution<> dist(0.0, cesfam_amount);
+    int location;
     int i;
     for (i = 0; i < amount; i++) {
-        Patient * patient = new Patient(this->event_list, this);
+        location = dist(gen);
+        Patient * patient = new Patient(this->event_list, this, location);
         // ?
         this->patients.insert({patient->getId(), patient});
-        this->patients_vector.push_back(patient);
+        this->addLocationsPatients(location, patient);
     }
     printf("Cantidad de pacientes: %ld - i: %d\n", this->patients.size(), i);
     printf("Saliendo de initializePatients\n");
 }   
 
-void System::initializeManagers() {
-    Manager * manager = new Manager(this->cesfams.at(1), this->patients_vector, this->event_list, this);
-    size_t i;
-    for(i = 0; i < this->patients_vector.size(); i++) {
-        this->patients_vector[i]->setManager(manager);
+void System::initializeManagers(int amount, int cesfam_amount) {
+    
+    int i;
+    int ces;
+    for (ces = 0; ces < cesfam_amount; ces++) {
+        for (i = 0; i < amount; i++) {
+            Manager * manager = new Manager(this->locations_cesfam.find(i)->second, this->event_list, this, ces);
+            this->managers.insert({manager->getId(), manager});
+            this->addLocationsManagers(ces, manager);
+        }
     }
-    // ?
-    this->managers.insert({manager->getId(), manager});
+
+    int j;
+    int k;
+    int p;
+    // Itero por las locaciones
+    for (auto it = this->locations_managers.begin(); it != this->locations_managers.end(); it++) {
+        int patients_vector_size = this->locations_patients.find(it->first)->second.size();
+        int managers_vector_size = this->locations_managers.find(it->first)->second.size();
+        int patients_per_manager = patients_vector_size/managers_vector_size;
+        // printf("Patients vector size: %d \n", patients_vector_size);
+        // printf("Managers vector size: %d \n", managers_vector_size);
+        // printf("patients_per_manager: %d \n", patients_per_manager);
+        k = 0;
+        // Itero por los managers de la locación
+        for (p = 0; p < managers_vector_size; p++) {
+            int limit;
+            // Si es el último ciclo, el máximo es la cantidad de pacientes
+            if (p+1 == managers_vector_size) {
+                limit = patients_vector_size;
+            } else {
+                limit = patients_per_manager*(p+1);
+            }
+            // printf("limit: %d \n", limit);
+            // printf("k = %d \n", k);
+            // Itero por los pacientes de esa locación
+            for (j = k; j < limit; j++) {
+                // Se agrega el paciente al manager
+                this->locations_managers.find(it->first)->second[p]->addPatient(this->locations_patients.find(it->first)->second[j]);
+                // Se setea el manager del paciente al manager actual
+                this->locations_patients.find(it->first)->second[j]->setManager(this->locations_managers.find(it->first)->second[p]);
+            }
+            k = j;
+        }
+    }
+
+    // map<Patient *, bool> patients;
+    // for (auto o = this->managers.begin(); o != this->managers.end(); o++) {
+    //     printf("MANAGER ID: %d - location: %d \n", o->second->getId(), o->second->getLocation());
+    //     patients = o->second->getPatients();
+    //     for (auto h = patients.begin(); h != patients.end(); h++) {
+    //         printf("\t Patient ID: %d - location: %d - manager ptr: %p \n", h->first->getId(), h->first->getLocation(), h->first->getManager());
+    //     }
+    // }
+
+    // for (auto h = this->patients.begin(); h != this->patients.end(); h++) {
+    //     printf("\t Patient ID: %d - location: %d - manager ptr: %p \n", h->second->getId(), h->second->getLocation(), h->second->getManager());
+    // }
+
+    // exit(EXIT_SUCCESS);
     printf("Saliendo de initializeManagers\n");
 }
 
-void System::initializeSystem(int patients_amount, string out_filename) {
+void System::addLocaltionsCesfam(int location, Cesfam * cesfam) {
+    this->locations_cesfam.insert({location, cesfam});
+}
+
+void System::addLocationsPatients(int location, Patient * patient) {
+    if (this->locations_patients.find(location) == this->locations_patients.end()) {
+        vector<Patient *> patients;
+        this->locations_patients.insert({location, patients});
+    }
+    this->locations_patients.find(location)->second.push_back(patient);
+}
+
+void System::addLocationsManagers(int location, Manager * manager) {
+    if (this->locations_managers.find(location) == this->locations_managers.end()) {
+        vector<Manager *> managers;
+        this->locations_managers.insert({location, managers});
+    }
+    this->locations_managers.find(location)->second.push_back(manager);
+}
+
+void System::initializeSystem(int cesfam_amount, int manager_amount, int patients_amount, string out_filename) {
     printf("Entrando a initializeSystem\n");
-    this->initializeCesfams();
-    this->initializePatients(patients_amount);
-    this->initializeManagers();
+    this->initializeCesfams(cesfam_amount);
+    this->initializePatients(patients_amount, cesfam_amount);
+    this->initializeManagers(manager_amount, cesfam_amount);
 
     // Se configura el monitor
     auto t = time(nullptr);

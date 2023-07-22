@@ -2,9 +2,10 @@
 
 int Patient::_curr_id(0);
 
-Patient::Patient(EventList * _event_list, System * _system) : id(++_curr_id){
+Patient::Patient(EventList * _event_list, System * _system, int _location) : id(++_curr_id){
     this->event_list = _event_list;
     this->system = _system;
+    this->location = _location;
 }
 
 int Patient::getId() {
@@ -25,6 +26,10 @@ void Patient::setManagedState(bool value) {
 
 bool Patient::getManagedState() {
     return this->managed_state;
+}
+
+int Patient::getLocation() {
+    return this->location;
 }
 
 void Patient::setClinicalRisk(RiskCategories _clinical_risk) {
