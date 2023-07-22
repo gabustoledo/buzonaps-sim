@@ -56,7 +56,7 @@ public:
 
     void updateTotalPsychoHourAttended();
 
-    void writeOutput(string filepath);
+    void writeOutput(string filepath, string time);
 
 };
 

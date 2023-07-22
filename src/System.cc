@@ -119,18 +119,14 @@ void System::addLocationsManagers(int location, Manager * manager) {
     this->locations_managers.find(location)->second.push_back(manager);
 }
 
-void System::initializeSystem(int cesfam_amount, int manager_amount, int patients_amount, string out_filename) {
+void System::initializeSystem(int cesfam_amount, int manager_amount, int patients_amount, string out_filename, string time) {
     printf("Entrando a initializeSystem\n");
     this->initializeCesfams(cesfam_amount);
     this->initializePatients(patients_amount, cesfam_amount);
     this->initializeManagers(manager_amount, cesfam_amount);
 
     // Se configura el monitor
-    auto t = time(nullptr);
-    auto tm = *localtime(&t);
-    ostringstream time;
-    time << put_time(&tm, "%d%m%Y_%H-%M-%S");
-    string output_str = "./out/out_" + out_filename + "_" + time.str() + ".dat";
+    string output_str = "./out/out_" + out_filename + "_" + time + ".dat";
     Monitor *monitor = new Monitor(output_str);
     this->monitor = monitor;
 

@@ -41,7 +41,7 @@ public:
 
     void log(json obj);
 
-    void initializeSystem(int cesfam_amount, int manager_amount, int patients_amount, string out_filename);
+    void initializeSystem(int cesfam_amount, int manager_amount, int patients_amount, string out_filename, string time);
 
     void processEvent(Event * e);
 

@@ -39,8 +39,13 @@ int main(int argc, char *argv[]) {
 
     EventList * event_list = new EventList(nullptr, 0.0, nullptr);
 
+    auto t = time(nullptr);
+    auto tm = *localtime(&t);
+    ostringstream time;
+    time << put_time(&tm, "%d%m%Y_%H-%M-%S");
+
     System * sys = new System(event_list);
-    sys->initializeSystem(cesfam_amount, managers_amount, patients_amount, out_filename);
+    sys->initializeSystem(cesfam_amount, managers_amount, patients_amount, out_filename, time.str());
 
     Agent * agent;
 
@@ -63,7 +68,7 @@ int main(int argc, char *argv[]) {
         sys->processEvent(e);
     }
 
-    stats->writeOutput("./out/general");
+    stats->writeOutput("./out/general", time.str());
 
     printf("TOTAL EVENTS = %d \n", event_list->getLastEvent()->getId());
     delete event_list;

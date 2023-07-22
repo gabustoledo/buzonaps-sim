@@ -59,16 +59,13 @@ void Stats::updateTotalPsychoHourAttended() {
     this->total_psycho_hours_attended++;
 }
 
-void Stats::writeOutput(string filepath) {
+void Stats::writeOutput(string filepath, string time) {
     SimConfig * sim_config = SimConfig::getInstance("");
     int cesfam_amount = sim_config->getParams()["cesfam_amount"].get<int>();
     int managers_amount = sim_config->getParams()["managers_amount"].get<int>();
     int patients_amount = sim_config->getParams()["patients_amount"].get<int>();
-    auto t = time(nullptr);
-    auto tm = *localtime(&t);
-    ostringstream time;
-    time << put_time(&tm, "%d%m%Y_%H-%M-%S");
-    string output_str = filepath + "_" + time.str() + ".dat";
+    
+    string output_str = filepath + "_" + time + ".dat";
     ofstream general_output_file;
     general_output_file.open(output_str);
     json output;
