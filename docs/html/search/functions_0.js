@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['manager_14',['Manager',['../dd/dcd/classManager.html#a463a4d434ef93d3ad47aa166d4c31ba6',1,'Manager']]]
+  ['addpatient_144',['addPatient',['../dd/dcd/classManager.html#afed01e6fc4fbdd4412b2671fc213bcbd',1,'Manager']]]
 ];

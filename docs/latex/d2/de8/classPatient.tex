@@ -2,6 +2,15 @@
 \label{classPatient}\index{Patient@{Patient}}
 
 
+Clase que representa al agente de tipo paciente en la simulación.  
+
+
+
+
+{\ttfamily \#include $<$Patient.\+h$>$}
+
+
+
 Diagrama de herencias de Patient
 % FIG 0
 
@@ -11,67 +20,406 @@ Diagrama de colaboración para Patient\+:
 \doxysubsection*{Métodos públicos}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classPatient_a20df874fb14cd85c6e9fe69dc707554d}\label{classPatient_a20df874fb14cd85c6e9fe69dc707554d}} 
-{\bfseries Patient} (Risk\+Categories \+\_\+clinical\+\_\+risk, Risk\+Categories \+\_\+social\+\_\+risk)
-\item 
-\mbox{\Hypertarget{classPatient_a585c790e44e341c6bd730e87e74380cc}\label{classPatient_a585c790e44e341c6bd730e87e74380cc}} 
-{\bfseries Patient} (\mbox{\hyperlink{classEventList}{Event\+List}} $\ast$\+\_\+event\+\_\+list)
-\item 
-\mbox{\Hypertarget{classPatient_a25888c17f3639c33ed5a28afc78a7768}\label{classPatient_a25888c17f3639c33ed5a28afc78a7768}} 
-int {\bfseries get\+Id} ()
-\item 
-\mbox{\Hypertarget{classPatient_aaa2d973bcc8027846e23dedc864a38da}\label{classPatient_aaa2d973bcc8027846e23dedc864a38da}} 
-\mbox{\hyperlink{classManager}{Manager}} $\ast$ {\bfseries get\+Manager} ()
-\item 
-\mbox{\Hypertarget{classPatient_a575a4ca0e70dc800c84074d59fb90f29}\label{classPatient_a575a4ca0e70dc800c84074d59fb90f29}} 
-void {\bfseries set\+Manager} (\mbox{\hyperlink{classManager}{Manager}} $\ast$\+\_\+manager)
-\item 
-\mbox{\Hypertarget{classPatient_aae511e2217e61be89a8abcd1dbc9a572}\label{classPatient_aae511e2217e61be89a8abcd1dbc9a572}} 
-void {\bfseries set\+Clinical\+Risk} (Risk\+Categories \+\_\+clinical\+\_\+risk)
-\item 
-\mbox{\Hypertarget{classPatient_aff00a3b2a853d4101014add786241171}\label{classPatient_aff00a3b2a853d4101014add786241171}} 
-void {\bfseries set\+Social\+Risk} (Risk\+Categories \+\_\+clinical\+\_\+social)
-\item 
-\mbox{\Hypertarget{classPatient_a6b9e4d86fe06eee3056751196407a282}\label{classPatient_a6b9e4d86fe06eee3056751196407a282}} 
-Risk\+Categories {\bfseries get\+Clinical\+Risk} ()
-\item 
-\mbox{\Hypertarget{classPatient_a4dd9ca14ce1369f20440522a61622c30}\label{classPatient_a4dd9ca14ce1369f20440522a61622c30}} 
-Risk\+Categories {\bfseries get\+Social\+Risk} ()
-\item 
-\mbox{\Hypertarget{classPatient_ab647d0fd03df818d23c9a87fd54d0a12}\label{classPatient_ab647d0fd03df818d23c9a87fd54d0a12}} 
-void {\bfseries process\+Event} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e) override
-\item 
-\mbox{\Hypertarget{classPatient_ad953b46e814a022f7162fff069111a24}\label{classPatient_ad953b46e814a022f7162fff069111a24}} 
-void {\bfseries process\+Answer\+Consent} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\item 
-\mbox{\Hypertarget{classPatient_a6f19c963ee1963d78f32470a9909a4d2}\label{classPatient_a6f19c963ee1963d78f32470a9909a4d2}} 
-void {\bfseries process\+Receive\+Medical\+Hour} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\item 
-\mbox{\Hypertarget{classPatient_af6edb076dfe7a00b55fab57a4af3920b}\label{classPatient_af6edb076dfe7a00b55fab57a4af3920b}} 
-void {\bfseries process\+Receive\+Test\+Hour} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\item 
-\mbox{\Hypertarget{classPatient_acb299b1e403e10ffe756e42c2d989b52}\label{classPatient_acb299b1e403e10ffe756e42c2d989b52}} 
-void {\bfseries process\+Receive\+Social\+Hour} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\item 
-\mbox{\Hypertarget{classPatient_ab0f64c8e5ddea6222b2b4c957e151ca5}\label{classPatient_ab0f64c8e5ddea6222b2b4c957e151ca5}} 
-void {\bfseries process\+Receive\+Psycho\+Hour} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\item 
-\mbox{\Hypertarget{classPatient_ae9ca61301646792be5c27111baa3d259}\label{classPatient_ae9ca61301646792be5c27111baa3d259}} 
-void {\bfseries process\+Attend\+Medical\+Hour} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\item 
-\mbox{\Hypertarget{classPatient_a8617833dfbfc04457fb0bb1523c58f04}\label{classPatient_a8617833dfbfc04457fb0bb1523c58f04}} 
-void {\bfseries process\+Attend\+Test\+Hour} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\item 
-\mbox{\Hypertarget{classPatient_af824d49cead8d28dac7f3a1ec94a7860}\label{classPatient_af824d49cead8d28dac7f3a1ec94a7860}} 
-void {\bfseries process\+Attend\+Social\+Hour} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\item 
-\mbox{\Hypertarget{classPatient_a07dffa1b834e517cf76bb09c7fe769e1}\label{classPatient_a07dffa1b834e517cf76bb09c7fe769e1}} 
-void {\bfseries process\+Attend\+Psycho\+Hour} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{classPatient_afde205ae8be80f765be3be45ee9af602}{Patient}} (\mbox{\hyperlink{classEventList}{Event\+List}} $\ast$\+\_\+event\+\_\+list, \mbox{\hyperlink{classSystem}{System}} $\ast$\mbox{\hyperlink{classAgent_a9143d19be77c7d33db6eeb7583ec1095}{system}}, int \+\_\+location)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPatient}{Patient}} object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classPatient_a25888c17f3639c33ed5a28afc78a7768}{get\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el identificador del gestor en la simulación. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classManager}{Manager}} $\ast$ \mbox{\hyperlink{classPatient_aaa2d973bcc8027846e23dedc864a38da}{get\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el puntero al gestor asociado al paciente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPatient_a575a4ca0e70dc800c84074d59fb90f29}{set\+Manager}} (\mbox{\hyperlink{classManager}{Manager}} $\ast$\+\_\+manager)
+\begin{DoxyCompactList}\small\item\em Modifica el gestor al que se asocia el paciente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPatient_a08e9e07386c6e17632656b5a5d8a514d}{set\+Managed\+State}} (bool value)
+\begin{DoxyCompactList}\small\item\em Modifica el estado de gestionado del paciente. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPatient_af3cc490e52f6e065ae7f3f7ace318ce0}{get\+Managed\+State}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el estado de gestionado del paciente. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classPatient_a5e552dc545585d763983cc7b1b2afe3d}{get\+Location}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene la ubicación del gestor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPatient_aae511e2217e61be89a8abcd1dbc9a572}{set\+Clinical\+Risk}} (\mbox{\hyperlink{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171}{Risk\+Categories}} \+\_\+clinical\+\_\+risk)
+\begin{DoxyCompactList}\small\item\em Modifica el riesgo clínico del paciente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPatient_aff00a3b2a853d4101014add786241171}{set\+Social\+Risk}} (\mbox{\hyperlink{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171}{Risk\+Categories}} \+\_\+clinical\+\_\+social)
+\begin{DoxyCompactList}\small\item\em Modifica el riesgo social del paciente. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171}{Risk\+Categories}} \mbox{\hyperlink{classPatient_a6b9e4d86fe06eee3056751196407a282}{get\+Clinical\+Risk}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el riesgo clínico del paciente. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171}{Risk\+Categories}} \mbox{\hyperlink{classPatient_a4dd9ca14ce1369f20440522a61622c30}{get\+Social\+Risk}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el riesgo social del paciente. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171}{Risk\+Categories}} \mbox{\hyperlink{classPatient_a56c5913aa678d0be558b5d6448c07fcd}{get\+Final\+Risk}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el riesgo final del paciente (mayor entre ambos riesgos) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171}{Risk\+Categories}} \mbox{\hyperlink{classPatient_ab9b37f37bce25c826fb7e1f7b381b0ef}{calc\+Final\+Risk}} ()
+\begin{DoxyCompactList}\small\item\em Calcula el riesgo final del paciente en base a su asistencia y/o inasistencia a horas gestionadas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPatient_ab647d0fd03df818d23c9a87fd54d0a12}{process\+Event}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e) override
+\begin{DoxyCompactList}\small\item\em Genera el procesamiento completo de un evento (contiene a los demás métodos que procesan eventos) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPatient_ad953b46e814a022f7162fff069111a24}{process\+Answer\+Consent}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento tipo A\+N\+S\+W\+E\+R\+\_\+\+C\+O\+N\+S\+E\+NT. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPatient_a6f19c963ee1963d78f32470a9909a4d2}{process\+Receive\+Medical\+Hour}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento tipo R\+E\+C\+E\+I\+V\+E\+\_\+\+M\+E\+D\+I\+C\+A\+L\+\_\+\+H\+O\+UR. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPatient_af6edb076dfe7a00b55fab57a4af3920b}{process\+Receive\+Test\+Hour}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento tipo R\+E\+C\+E\+I\+V\+E\+\_\+\+T\+E\+S\+T\+\_\+\+H\+O\+UR. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPatient_acb299b1e403e10ffe756e42c2d989b52}{process\+Receive\+Social\+Hour}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento tipo R\+E\+C\+E\+I\+V\+E\+\_\+\+S\+O\+C\+I\+A\+L\+\_\+\+H\+O\+UR. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPatient_ab0f64c8e5ddea6222b2b4c957e151ca5}{process\+Receive\+Psycho\+Hour}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento tipo R\+E\+C\+E\+I\+V\+E\+\_\+\+P\+S\+Y\+C\+H\+O\+\_\+\+H\+O\+UR. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPatient_ae9ca61301646792be5c27111baa3d259}{process\+Attend\+Medical\+Hour}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento tipo A\+T\+T\+E\+N\+D\+\_\+\+M\+E\+D\+I\+C\+A\+L\+\_\+\+H\+O\+UR. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPatient_a8617833dfbfc04457fb0bb1523c58f04}{process\+Attend\+Test\+Hour}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento tipo A\+T\+T\+E\+N\+D\+\_\+\+T\+E\+S\+T\+\_\+\+H\+O\+UR. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPatient_af824d49cead8d28dac7f3a1ec94a7860}{process\+Attend\+Social\+Hour}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento tipo A\+T\+T\+E\+N\+D\+\_\+\+S\+O\+C\+I\+A\+L\+\_\+\+H\+O\+UR. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPatient_a07dffa1b834e517cf76bb09c7fe769e1}{process\+Attend\+Psycho\+Hour}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento tipo A\+T\+T\+E\+N\+D\+\_\+\+P\+S\+Y\+C\+H\+O\+\_\+\+H\+O\+UR. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Otros miembros heredados}
+
+
+\doxysubsection{Descripción detallada}
+Clase que representa al agente de tipo paciente en la simulación. 
+
+
+
+\doxysubsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{classPatient_afde205ae8be80f765be3be45ee9af602}\label{classPatient_afde205ae8be80f765be3be45ee9af602}} 
+\index{Patient@{Patient}!Patient@{Patient}}
+\index{Patient@{Patient}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{Patient()}{Patient()}}
+{\footnotesize\ttfamily Patient\+::\+Patient (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventList}{Event\+List}} $\ast$}]{\+\_\+event\+\_\+list,  }\item[{\mbox{\hyperlink{classSystem}{System}} $\ast$}]{system,  }\item[{int}]{\+\_\+location }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classPatient}{Patient}} object. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em \+\_\+event\+\_\+list} & Puntero a la lista de eventos de la simulación \\
+\hline
+{\em system} & Puntero al sistema de la simulación \\
+\hline
+{\em \+\_\+location} & Número que representa la ubicación del paciente \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{classPatient_ab9b37f37bce25c826fb7e1f7b381b0ef}\label{classPatient_ab9b37f37bce25c826fb7e1f7b381b0ef}} 
+\index{Patient@{Patient}!calcFinalRisk@{calcFinalRisk}}
+\index{calcFinalRisk@{calcFinalRisk}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{calcFinalRisk()}{calcFinalRisk()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171}{Risk\+Categories}} Patient\+::calc\+Final\+Risk (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calcula el riesgo final del paciente en base a su asistencia y/o inasistencia a horas gestionadas. 
+
+\begin{DoxyReturn}{Devuelve}
+Risk\+Categories 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPatient_a6b9e4d86fe06eee3056751196407a282}\label{classPatient_a6b9e4d86fe06eee3056751196407a282}} 
+\index{Patient@{Patient}!getClinicalRisk@{getClinicalRisk}}
+\index{getClinicalRisk@{getClinicalRisk}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{getClinicalRisk()}{getClinicalRisk()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171}{Risk\+Categories}} Patient\+::get\+Clinical\+Risk (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el riesgo clínico del paciente. 
+
+\begin{DoxyReturn}{Devuelve}
+Risk\+Categories 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPatient_a56c5913aa678d0be558b5d6448c07fcd}\label{classPatient_a56c5913aa678d0be558b5d6448c07fcd}} 
+\index{Patient@{Patient}!getFinalRisk@{getFinalRisk}}
+\index{getFinalRisk@{getFinalRisk}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{getFinalRisk()}{getFinalRisk()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171}{Risk\+Categories}} Patient\+::get\+Final\+Risk (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el riesgo final del paciente (mayor entre ambos riesgos) 
+
+\begin{DoxyReturn}{Devuelve}
+Risk\+Categories 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPatient_a25888c17f3639c33ed5a28afc78a7768}\label{classPatient_a25888c17f3639c33ed5a28afc78a7768}} 
+\index{Patient@{Patient}!getId@{getId}}
+\index{getId@{getId}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily int Patient\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el identificador del gestor en la simulación. 
+
+\begin{DoxyReturn}{Devuelve}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPatient_a5e552dc545585d763983cc7b1b2afe3d}\label{classPatient_a5e552dc545585d763983cc7b1b2afe3d}} 
+\index{Patient@{Patient}!getLocation@{getLocation}}
+\index{getLocation@{getLocation}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{getLocation()}{getLocation()}}
+{\footnotesize\ttfamily int Patient\+::get\+Location (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene la ubicación del gestor. 
+
+\begin{DoxyReturn}{Devuelve}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPatient_af3cc490e52f6e065ae7f3f7ace318ce0}\label{classPatient_af3cc490e52f6e065ae7f3f7ace318ce0}} 
+\index{Patient@{Patient}!getManagedState@{getManagedState}}
+\index{getManagedState@{getManagedState}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{getManagedState()}{getManagedState()}}
+{\footnotesize\ttfamily bool Patient\+::get\+Managed\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el estado de gestionado del paciente. 
+
+\begin{DoxyReturn}{Devuelve}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPatient_aaa2d973bcc8027846e23dedc864a38da}\label{classPatient_aaa2d973bcc8027846e23dedc864a38da}} 
+\index{Patient@{Patient}!getManager@{getManager}}
+\index{getManager@{getManager}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{getManager()}{getManager()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classManager}{Manager}} $\ast$ Patient\+::get\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el puntero al gestor asociado al paciente. 
+
+\begin{DoxyReturn}{Devuelve}
+Manager$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPatient_a4dd9ca14ce1369f20440522a61622c30}\label{classPatient_a4dd9ca14ce1369f20440522a61622c30}} 
+\index{Patient@{Patient}!getSocialRisk@{getSocialRisk}}
+\index{getSocialRisk@{getSocialRisk}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{getSocialRisk()}{getSocialRisk()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171}{Risk\+Categories}} Patient\+::get\+Social\+Risk (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el riesgo social del paciente. 
+
+\begin{DoxyReturn}{Devuelve}
+Risk\+Categories 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPatient_ad953b46e814a022f7162fff069111a24}\label{classPatient_ad953b46e814a022f7162fff069111a24}} 
+\index{Patient@{Patient}!processAnswerConsent@{processAnswerConsent}}
+\index{processAnswerConsent@{processAnswerConsent}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{processAnswerConsent()}{processAnswerConsent()}}
+{\footnotesize\ttfamily void Patient\+::process\+Answer\+Consent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento tipo A\+N\+S\+W\+E\+R\+\_\+\+C\+O\+N\+S\+E\+NT. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El evento a procesar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPatient_ae9ca61301646792be5c27111baa3d259}\label{classPatient_ae9ca61301646792be5c27111baa3d259}} 
+\index{Patient@{Patient}!processAttendMedicalHour@{processAttendMedicalHour}}
+\index{processAttendMedicalHour@{processAttendMedicalHour}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{processAttendMedicalHour()}{processAttendMedicalHour()}}
+{\footnotesize\ttfamily void Patient\+::process\+Attend\+Medical\+Hour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento tipo A\+T\+T\+E\+N\+D\+\_\+\+M\+E\+D\+I\+C\+A\+L\+\_\+\+H\+O\+UR. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El evento a procesar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPatient_a07dffa1b834e517cf76bb09c7fe769e1}\label{classPatient_a07dffa1b834e517cf76bb09c7fe769e1}} 
+\index{Patient@{Patient}!processAttendPsychoHour@{processAttendPsychoHour}}
+\index{processAttendPsychoHour@{processAttendPsychoHour}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{processAttendPsychoHour()}{processAttendPsychoHour()}}
+{\footnotesize\ttfamily void Patient\+::process\+Attend\+Psycho\+Hour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento tipo A\+T\+T\+E\+N\+D\+\_\+\+P\+S\+Y\+C\+H\+O\+\_\+\+H\+O\+UR. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El evento a procesar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPatient_af824d49cead8d28dac7f3a1ec94a7860}\label{classPatient_af824d49cead8d28dac7f3a1ec94a7860}} 
+\index{Patient@{Patient}!processAttendSocialHour@{processAttendSocialHour}}
+\index{processAttendSocialHour@{processAttendSocialHour}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{processAttendSocialHour()}{processAttendSocialHour()}}
+{\footnotesize\ttfamily void Patient\+::process\+Attend\+Social\+Hour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento tipo A\+T\+T\+E\+N\+D\+\_\+\+S\+O\+C\+I\+A\+L\+\_\+\+H\+O\+UR. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El evento a procesar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPatient_a8617833dfbfc04457fb0bb1523c58f04}\label{classPatient_a8617833dfbfc04457fb0bb1523c58f04}} 
+\index{Patient@{Patient}!processAttendTestHour@{processAttendTestHour}}
+\index{processAttendTestHour@{processAttendTestHour}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{processAttendTestHour()}{processAttendTestHour()}}
+{\footnotesize\ttfamily void Patient\+::process\+Attend\+Test\+Hour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento tipo A\+T\+T\+E\+N\+D\+\_\+\+T\+E\+S\+T\+\_\+\+H\+O\+UR. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El evento a procesar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPatient_ab647d0fd03df818d23c9a87fd54d0a12}\label{classPatient_ab647d0fd03df818d23c9a87fd54d0a12}} 
+\index{Patient@{Patient}!processEvent@{processEvent}}
+\index{processEvent@{processEvent}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{processEvent()}{processEvent()}}
+{\footnotesize\ttfamily void Patient\+::process\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Genera el procesamiento completo de un evento (contiene a los demás métodos que procesan eventos) 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El puntero al evento a procesar \\
+\hline
+\end{DoxyParams}
+
+
+Reimplementado de \mbox{\hyperlink{classAgent_a93d1897fbaff53a2387e03307e8db44f}{Agent}}.
+
+\mbox{\Hypertarget{classPatient_a6f19c963ee1963d78f32470a9909a4d2}\label{classPatient_a6f19c963ee1963d78f32470a9909a4d2}} 
+\index{Patient@{Patient}!processReceiveMedicalHour@{processReceiveMedicalHour}}
+\index{processReceiveMedicalHour@{processReceiveMedicalHour}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{processReceiveMedicalHour()}{processReceiveMedicalHour()}}
+{\footnotesize\ttfamily void Patient\+::process\+Receive\+Medical\+Hour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento tipo R\+E\+C\+E\+I\+V\+E\+\_\+\+M\+E\+D\+I\+C\+A\+L\+\_\+\+H\+O\+UR. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El evento a procesar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPatient_ab0f64c8e5ddea6222b2b4c957e151ca5}\label{classPatient_ab0f64c8e5ddea6222b2b4c957e151ca5}} 
+\index{Patient@{Patient}!processReceivePsychoHour@{processReceivePsychoHour}}
+\index{processReceivePsychoHour@{processReceivePsychoHour}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{processReceivePsychoHour()}{processReceivePsychoHour()}}
+{\footnotesize\ttfamily void Patient\+::process\+Receive\+Psycho\+Hour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento tipo R\+E\+C\+E\+I\+V\+E\+\_\+\+P\+S\+Y\+C\+H\+O\+\_\+\+H\+O\+UR. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El evento a procesar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPatient_acb299b1e403e10ffe756e42c2d989b52}\label{classPatient_acb299b1e403e10ffe756e42c2d989b52}} 
+\index{Patient@{Patient}!processReceiveSocialHour@{processReceiveSocialHour}}
+\index{processReceiveSocialHour@{processReceiveSocialHour}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{processReceiveSocialHour()}{processReceiveSocialHour()}}
+{\footnotesize\ttfamily void Patient\+::process\+Receive\+Social\+Hour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento tipo R\+E\+C\+E\+I\+V\+E\+\_\+\+S\+O\+C\+I\+A\+L\+\_\+\+H\+O\+UR. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El evento a procesar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPatient_af6edb076dfe7a00b55fab57a4af3920b}\label{classPatient_af6edb076dfe7a00b55fab57a4af3920b}} 
+\index{Patient@{Patient}!processReceiveTestHour@{processReceiveTestHour}}
+\index{processReceiveTestHour@{processReceiveTestHour}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{processReceiveTestHour()}{processReceiveTestHour()}}
+{\footnotesize\ttfamily void Patient\+::process\+Receive\+Test\+Hour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento tipo R\+E\+C\+E\+I\+V\+E\+\_\+\+T\+E\+S\+T\+\_\+\+H\+O\+UR. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El evento a procesar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPatient_aae511e2217e61be89a8abcd1dbc9a572}\label{classPatient_aae511e2217e61be89a8abcd1dbc9a572}} 
+\index{Patient@{Patient}!setClinicalRisk@{setClinicalRisk}}
+\index{setClinicalRisk@{setClinicalRisk}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{setClinicalRisk()}{setClinicalRisk()}}
+{\footnotesize\ttfamily void Patient\+::set\+Clinical\+Risk (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171}{Risk\+Categories}}}]{\+\_\+clinical\+\_\+risk }\end{DoxyParamCaption})}
+
+
+
+Modifica el riesgo clínico del paciente. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em \+\_\+clinical\+\_\+risk} & El nuevo riesgo clínico del paciente \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPatient_a08e9e07386c6e17632656b5a5d8a514d}\label{classPatient_a08e9e07386c6e17632656b5a5d8a514d}} 
+\index{Patient@{Patient}!setManagedState@{setManagedState}}
+\index{setManagedState@{setManagedState}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{setManagedState()}{setManagedState()}}
+{\footnotesize\ttfamily void Patient\+::set\+Managed\+State (\begin{DoxyParamCaption}\item[{bool}]{value }\end{DoxyParamCaption})}
+
+
+
+Modifica el estado de gestionado del paciente. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em value} & Estado de gestionado del paciente (actualmente solo se llama con true) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPatient_a575a4ca0e70dc800c84074d59fb90f29}\label{classPatient_a575a4ca0e70dc800c84074d59fb90f29}} 
+\index{Patient@{Patient}!setManager@{setManager}}
+\index{setManager@{setManager}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{setManager()}{setManager()}}
+{\footnotesize\ttfamily void Patient\+::set\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classManager}{Manager}} $\ast$}]{\+\_\+manager }\end{DoxyParamCaption})}
+
+
+
+Modifica el gestor al que se asocia el paciente. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em \+\_\+manager} & El puntero al nuevo gestor del paciente \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPatient_aff00a3b2a853d4101014add786241171}\label{classPatient_aff00a3b2a853d4101014add786241171}} 
+\index{Patient@{Patient}!setSocialRisk@{setSocialRisk}}
+\index{setSocialRisk@{setSocialRisk}!Patient@{Patient}}
+\doxysubsubsection{\texorpdfstring{setSocialRisk()}{setSocialRisk()}}
+{\footnotesize\ttfamily void Patient\+::set\+Social\+Risk (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171}{Risk\+Categories}}}]{\+\_\+clinical\+\_\+social }\end{DoxyParamCaption})}
+
+
+
+Modifica el riesgo social del paciente. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em \+\_\+clinical\+\_\+social} & El nuevo riesgo social del paciente \\
+\hline
+\end{DoxyParams}
 
 
 La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
 \item 
-includes/Patient.\+h\item 
+includes/\mbox{\hyperlink{Patient_8h}{Patient.\+h}}\item 
 src/Patient.\+cc\end{DoxyCompactItemize}

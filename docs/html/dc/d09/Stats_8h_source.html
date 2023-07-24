@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>buzon-sim: Fichero Fuente includes/Stats.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">buzon-sim
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_09e761304027c904456130627fd4dcf5.html">includes</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Stats.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../dc/d09/Stats_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef STATS_H</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define STATS_H</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;glob.h&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/dee/SimConfig_8h.html">SimConfig.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="../../db/df7/classStats.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../db/df7/classStats.html">Stats</a> {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../db/df7/classStats.html">Stats</a> * instance; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">int</span> managed_patients_amount = 0; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">int</span> total_interventions = 0; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">int</span> decreased_risk_events = 0; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">int</span> increased_risk_events = 0; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">int</span> total_medical_hours_received = 0; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">int</span> total_test_hours_received = 0; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">int</span> total_social_hours_received = 0; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">int</span> total_psycho_hours_received = 0; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">int</span> total_medical_hours_attended = 0; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">int</span> total_test_hours_attended = 0; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">int</span> total_social_hours_attended = 0; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">int</span> total_psycho_hours_attended = 0; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">public</span>: </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="../../db/df7/classStats.html#aed79e2b7167040dada2cb2ba8b90ad9b">Stats</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../db/df7/classStats.html">Stats</a> * <a class="code" href="../../db/df7/classStats.html#ac83a810311eb4f337b08492a8cc8ed30">getInstance</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../db/df7/classStats.html#ab42e57cee94ce1751b7d80175c0b5e08">updateManagedPatientsAmount</a>();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../db/df7/classStats.html#ae2a53364783ffe04524492503ca70f41">updateTotalInterventions</a>();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../db/df7/classStats.html#a4385ac5b1b615a88cc76567c2b8ada92">updateDecreasedRiskEvents</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../db/df7/classStats.html#a2bdc7d4591524f4d945eec8bc7c5cf86">updateIncreasedRiskEvents</a>();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../db/df7/classStats.html#a4407026fa221e3b42fc9032a4d1779a3">updateTotalMedicalHourReceived</a>();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../db/df7/classStats.html#abfe6b53f4a3d6ef9de2e3bd5088456b9">updateTotalTestHourReceived</a>();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../db/df7/classStats.html#afe55dc903c52ae296c101638a918348a">updateTotalSocialHourReceived</a>();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../db/df7/classStats.html#aacf5c3a644d266edf436a47dd85559c7">updateTotalPsychoHourReceived</a>();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../db/df7/classStats.html#a37381a220a4f46fed83ae3c5a87c1b0a">updateTotalMedicalHourAttended</a>();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../db/df7/classStats.html#a34b0f65d848f03ef2d412c4965ddca1d">updateTotalTestHourAttended</a>();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../db/df7/classStats.html#a8627ed9bc414ee51acb4aaa9da3168e9">updateTotalSocialHourAttended</a>();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../db/df7/classStats.html#aad3d583a5c31cb9f088f5d772145c12c">updateTotalPsychoHourAttended</a>();</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../db/df7/classStats.html#a72a9f6dc3e20f8ec17ff22e9adcee65b">writeOutput</a>(<span class="keywordtype">string</span> filepath, <span class="keywordtype">string</span> time);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;};</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">#endif // !STATS_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassStats_html_a72a9f6dc3e20f8ec17ff22e9adcee65b"><div class="ttname"><a href="../../db/df7/classStats.html#a72a9f6dc3e20f8ec17ff22e9adcee65b">Stats::writeOutput</a></div><div class="ttdeci">void writeOutput(string filepath, string time)</div><div class="ttdoc">Escribe el valor resultante de las variables.</div><div class="ttdef"><b>Definition:</b> Stats.cc:62</div></div>
+<div class="ttc" id="aclassStats_html_a4407026fa221e3b42fc9032a4d1779a3"><div class="ttname"><a href="../../db/df7/classStats.html#a4407026fa221e3b42fc9032a4d1779a3">Stats::updateTotalMedicalHourReceived</a></div><div class="ttdeci">void updateTotalMedicalHourReceived()</div><div class="ttdoc">Suma 1 al atributo total_medical_hours_received.</div><div class="ttdef"><b>Definition:</b> Stats.cc:30</div></div>
+<div class="ttc" id="aclassStats_html_aed79e2b7167040dada2cb2ba8b90ad9b"><div class="ttname"><a href="../../db/df7/classStats.html#aed79e2b7167040dada2cb2ba8b90ad9b">Stats::Stats</a></div><div class="ttdeci">Stats()</div><div class="ttdoc">Construct a new Stats object.</div><div class="ttdef"><b>Definition:</b> Stats.cc:3</div></div>
+<div class="ttc" id="aclassStats_html"><div class="ttname"><a href="../../db/df7/classStats.html">Stats</a></div><div class="ttdoc">Clase que contiene las variables globales de la simulación.</div><div class="ttdef"><b>Definition:</b> Stats.h:23</div></div>
+<div class="ttc" id="aclassStats_html_abfe6b53f4a3d6ef9de2e3bd5088456b9"><div class="ttname"><a href="../../db/df7/classStats.html#abfe6b53f4a3d6ef9de2e3bd5088456b9">Stats::updateTotalTestHourReceived</a></div><div class="ttdeci">void updateTotalTestHourReceived()</div><div class="ttdoc">Suma 1 al atributo total_test_hours_received.</div><div class="ttdef"><b>Definition:</b> Stats.cc:34</div></div>
+<div class="ttc" id="aclassStats_html_a8627ed9bc414ee51acb4aaa9da3168e9"><div class="ttname"><a href="../../db/df7/classStats.html#a8627ed9bc414ee51acb4aaa9da3168e9">Stats::updateTotalSocialHourAttended</a></div><div class="ttdeci">void updateTotalSocialHourAttended()</div><div class="ttdoc">Suma 1 al atributo total_social_hours_attended.</div><div class="ttdef"><b>Definition:</b> Stats.cc:54</div></div>
+<div class="ttc" id="aclassStats_html_a2bdc7d4591524f4d945eec8bc7c5cf86"><div class="ttname"><a href="../../db/df7/classStats.html#a2bdc7d4591524f4d945eec8bc7c5cf86">Stats::updateIncreasedRiskEvents</a></div><div class="ttdeci">void updateIncreasedRiskEvents()</div><div class="ttdoc">Suma 1 al atributo increased_risk_events.</div><div class="ttdef"><b>Definition:</b> Stats.cc:26</div></div>
+<div class="ttc" id="aclassStats_html_afe55dc903c52ae296c101638a918348a"><div class="ttname"><a href="../../db/df7/classStats.html#afe55dc903c52ae296c101638a918348a">Stats::updateTotalSocialHourReceived</a></div><div class="ttdeci">void updateTotalSocialHourReceived()</div><div class="ttdoc">Suma 1 al atributo total_social_hours_received.</div><div class="ttdef"><b>Definition:</b> Stats.cc:38</div></div>
+<div class="ttc" id="aclassStats_html_a37381a220a4f46fed83ae3c5a87c1b0a"><div class="ttname"><a href="../../db/df7/classStats.html#a37381a220a4f46fed83ae3c5a87c1b0a">Stats::updateTotalMedicalHourAttended</a></div><div class="ttdeci">void updateTotalMedicalHourAttended()</div><div class="ttdoc">Suma 1 al atributo total_medical_hours_attended.</div><div class="ttdef"><b>Definition:</b> Stats.cc:46</div></div>
+<div class="ttc" id="aclassStats_html_a4385ac5b1b615a88cc76567c2b8ada92"><div class="ttname"><a href="../../db/df7/classStats.html#a4385ac5b1b615a88cc76567c2b8ada92">Stats::updateDecreasedRiskEvents</a></div><div class="ttdeci">void updateDecreasedRiskEvents()</div><div class="ttdoc">Suma 1 al atributo decreased_risk_events.</div><div class="ttdef"><b>Definition:</b> Stats.cc:22</div></div>
+<div class="ttc" id="aclassStats_html_aad3d583a5c31cb9f088f5d772145c12c"><div class="ttname"><a href="../../db/df7/classStats.html#aad3d583a5c31cb9f088f5d772145c12c">Stats::updateTotalPsychoHourAttended</a></div><div class="ttdeci">void updateTotalPsychoHourAttended()</div><div class="ttdoc">Suma 1 al atributo total_psycho_hours_attended.</div><div class="ttdef"><b>Definition:</b> Stats.cc:58</div></div>
+<div class="ttc" id="aclassStats_html_ab42e57cee94ce1751b7d80175c0b5e08"><div class="ttname"><a href="../../db/df7/classStats.html#ab42e57cee94ce1751b7d80175c0b5e08">Stats::updateManagedPatientsAmount</a></div><div class="ttdeci">void updateManagedPatientsAmount()</div><div class="ttdoc">Suma 1 al atributo managed_patients_amount.</div><div class="ttdef"><b>Definition:</b> Stats.cc:14</div></div>
+<div class="ttc" id="aclassStats_html_ae2a53364783ffe04524492503ca70f41"><div class="ttname"><a href="../../db/df7/classStats.html#ae2a53364783ffe04524492503ca70f41">Stats::updateTotalInterventions</a></div><div class="ttdeci">void updateTotalInterventions()</div><div class="ttdoc">Suma 1 al atributo total_interventions.</div><div class="ttdef"><b>Definition:</b> Stats.cc:18</div></div>
+<div class="ttc" id="aclassStats_html_aacf5c3a644d266edf436a47dd85559c7"><div class="ttname"><a href="../../db/df7/classStats.html#aacf5c3a644d266edf436a47dd85559c7">Stats::updateTotalPsychoHourReceived</a></div><div class="ttdeci">void updateTotalPsychoHourReceived()</div><div class="ttdoc">Suma 1 al atributo total_psycho_hours_received.</div><div class="ttdef"><b>Definition:</b> Stats.cc:42</div></div>
+<div class="ttc" id="aSimConfig_8h_html"><div class="ttname"><a href="../../d4/dee/SimConfig_8h.html">SimConfig.h</a></div></div>
+<div class="ttc" id="aclassStats_html_ac83a810311eb4f337b08492a8cc8ed30"><div class="ttname"><a href="../../db/df7/classStats.html#ac83a810311eb4f337b08492a8cc8ed30">Stats::getInstance</a></div><div class="ttdeci">static Stats * getInstance()</div><div class="ttdoc">Obtiene el puntero a la instancia Stats si no es nula, sino la crea.</div><div class="ttdef"><b>Definition:</b> Stats.cc:7</div></div>
+<div class="ttc" id="aclassStats_html_a34b0f65d848f03ef2d412c4965ddca1d"><div class="ttname"><a href="../../db/df7/classStats.html#a34b0f65d848f03ef2d412c4965ddca1d">Stats::updateTotalTestHourAttended</a></div><div class="ttdeci">void updateTotalTestHourAttended()</div><div class="ttdoc">Suma 1 al atributo total_test_hours_attended.</div><div class="ttdef"><b>Definition:</b> Stats.cc:50</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="../../doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

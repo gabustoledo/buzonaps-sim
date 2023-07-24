@@ -69,46 +69,76 @@ $(function() {
 <div class="title">System.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef SYSTEM_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define SYSTEM_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;glob.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;Patient.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;Manager.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;Cesfam.h&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;EventList.h&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="../../dd/d2d/classSystem.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../dd/d2d/classSystem.html">System</a> {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="../../d2/de0/classEventList.html">EventList</a> * event_list;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    map&lt;int, Patient *&gt; patients;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    vector&lt;Patient *&gt; patients_vector;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    map&lt;int, Manager *&gt; managers;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    map&lt;int, Cesfam *&gt; cesfams;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> initializeCesfams();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> initializePatients(<span class="keywordtype">int</span> amount);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> initializeManagers();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="../../dd/d2d/classSystem.html">System</a>(<a class="code" href="../../d2/de0/classEventList.html">EventList</a> * _event_list);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> initializeSystem(<span class="keywordtype">int</span> patients_amount);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> processEvent(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    ~<a class="code" href="../../dd/d2d/classSystem.html">System</a>();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif // !SYSTEM_H</span></div>
+<a href="../../db/d39/System_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef SYSTEM_H</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define SYSTEM_H</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;glob.h&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d5b/Patient_8h.html">Patient.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/da0/Manager_8h.html">Manager.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../da/d36/Cesfam_8h.html">Cesfam.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d39/EventList_8h.html">EventList.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d5/d7f/Monitor_8h.html">Monitor.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">class </span><a class="code" href="../../d2/de8/classPatient.html">Patient</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">class </span><a class="code" href="../../dd/dcd/classManager.html">Manager</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="../../dd/d2d/classSystem.html">   29</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../dd/d2d/classSystem.html">System</a> {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="../../d2/de0/classEventList.html">EventList</a> * event_list; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    map&lt;int, Patient *&gt; patients; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    vector&lt;Patient *&gt; patients_vector; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    map&lt;int, Manager *&gt; managers; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    map&lt;int, Cesfam *&gt; cesfams; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="../../d3/d63/classMonitor.html">Monitor</a> * monitor; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    map&lt;int, Cesfam *&gt; locations_cesfam; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    map&lt;int, vector&lt;Patient *&gt;&gt; locations_patients; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    map&lt;int, vector&lt;Manager *&gt;&gt; locations_managers; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> initializeCesfams(<span class="keywordtype">int</span> amount);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> initializePatients(<span class="keywordtype">int</span> amount, <span class="keywordtype">int</span> cesfam_amount);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> initializeManagers(<span class="keywordtype">int</span> amount, <span class="keywordtype">int</span> cesfam_amount);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> addLocaltionsCesfam(<span class="keywordtype">int</span> location, <a class="code" href="../../da/d40/classCesfam.html">Cesfam</a> * cesfam);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> addLocationsPatients(<span class="keywordtype">int</span> location, <a class="code" href="../../d2/de8/classPatient.html">Patient</a> * patient);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> addLocationsManagers(<span class="keywordtype">int</span> location, <a class="code" href="../../dd/dcd/classManager.html">Manager</a> * manager);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="../../dd/d2d/classSystem.html#acdd32b91da2fd84830d89346c220656c">System</a>(<a class="code" href="../../d2/de0/classEventList.html">EventList</a> * _event_list);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dd/d2d/classSystem.html#a333c0ac852d9cb10bf42275af3316e5f">log</a>(json obj);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dd/d2d/classSystem.html#af3551f0224992c54731036eded4c07d1">initializeSystem</a>(<span class="keywordtype">int</span> cesfam_amount, <span class="keywordtype">int</span> manager_amount, <span class="keywordtype">int</span> patients_amount, <span class="keywordtype">string</span> out_filename, <span class="keywordtype">string</span> time);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dd/d2d/classSystem.html#a2cc008bd233f8ab514f1075efe82471c">processEvent</a>(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <a class="code" href="../../dd/d2d/classSystem.html#a3be70bb338e3f062f821173fd15680d0">~System</a>();</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;};</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor">#endif // !SYSTEM_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassEventList_html"><div class="ttname"><a href="../../d2/de0/classEventList.html">EventList</a></div><div class="ttdef"><b>Definition:</b> EventList.h:9</div></div>
-<div class="ttc" id="aclassEvent_html"><div class="ttname"><a href="../../d5/da5/classEvent.html">Event</a></div><div class="ttdef"><b>Definition:</b> Event.h:14</div></div>
-<div class="ttc" id="aclassSystem_html"><div class="ttname"><a href="../../dd/d2d/classSystem.html">System</a></div><div class="ttdef"><b>Definition:</b> System.h:10</div></div>
+<div class="ttc" id="aclassSystem_html_a333c0ac852d9cb10bf42275af3316e5f"><div class="ttname"><a href="../../dd/d2d/classSystem.html#a333c0ac852d9cb10bf42275af3316e5f">System::log</a></div><div class="ttdeci">void log(json obj)</div><div class="ttdoc">Agrega un log (datos de un evento resuelto) al archivo de trazas detalladas de la simulación.</div><div class="ttdef"><b>Definition:</b> System.cc:7</div></div>
+<div class="ttc" id="aclassPatient_html"><div class="ttname"><a href="../../d2/de8/classPatient.html">Patient</a></div><div class="ttdoc">Clase que representa al agente de tipo paciente en la simulación.</div><div class="ttdef"><b>Definition:</b> Patient.h:69</div></div>
+<div class="ttc" id="aclassSystem_html_a2cc008bd233f8ab514f1075efe82471c"><div class="ttname"><a href="../../dd/d2d/classSystem.html#a2cc008bd233f8ab514f1075efe82471c">System::processEvent</a></div><div class="ttdeci">void processEvent(Event *e)</div><div class="ttdoc">Procesa un evento.</div><div class="ttdef"><b>Definition:</b> System.cc:151</div></div>
+<div class="ttc" id="aEventList_8h_html"><div class="ttname"><a href="../../d2/d39/EventList_8h.html">EventList.h</a></div></div>
+<div class="ttc" id="aManager_8h_html"><div class="ttname"><a href="../../d1/da0/Manager_8h.html">Manager.h</a></div></div>
+<div class="ttc" id="aCesfam_8h_html"><div class="ttname"><a href="../../da/d36/Cesfam_8h.html">Cesfam.h</a></div></div>
+<div class="ttc" id="aPatient_8h_html"><div class="ttname"><a href="../../d1/d5b/Patient_8h.html">Patient.h</a></div></div>
+<div class="ttc" id="aclassSystem_html_acdd32b91da2fd84830d89346c220656c"><div class="ttname"><a href="../../dd/d2d/classSystem.html#acdd32b91da2fd84830d89346c220656c">System::System</a></div><div class="ttdeci">System(EventList *_event_list)</div><div class="ttdoc">Construct a new System object.</div><div class="ttdef"><b>Definition:</b> System.cc:3</div></div>
+<div class="ttc" id="aclassEventList_html"><div class="ttname"><a href="../../d2/de0/classEventList.html">EventList</a></div><div class="ttdoc">Clase que representa la lista de eventos de la simulación.</div><div class="ttdef"><b>Definition:</b> EventList.h:24</div></div>
+<div class="ttc" id="aclassEvent_html"><div class="ttname"><a href="../../d5/da5/classEvent.html">Event</a></div><div class="ttdoc">Clase que representa un evento en la simulación.</div><div class="ttdef"><b>Definition:</b> Event.h:45</div></div>
+<div class="ttc" id="aclassSystem_html"><div class="ttname"><a href="../../dd/d2d/classSystem.html">System</a></div><div class="ttdoc">Clase que representa al sistema de la simulación.</div><div class="ttdef"><b>Definition:</b> System.h:29</div></div>
+<div class="ttc" id="aclassSystem_html_a3be70bb338e3f062f821173fd15680d0"><div class="ttname"><a href="../../dd/d2d/classSystem.html#a3be70bb338e3f062f821173fd15680d0">System::~System</a></div><div class="ttdeci">~System()</div><div class="ttdoc">Destroy the System object.</div><div class="ttdef"><b>Definition:</b> System.cc:155</div></div>
+<div class="ttc" id="aclassCesfam_html"><div class="ttname"><a href="../../da/d40/classCesfam.html">Cesfam</a></div><div class="ttdoc">Clase que representa a un CESFAM en la simulación.</div><div class="ttdef"><b>Definition:</b> Cesfam.h:21</div></div>
+<div class="ttc" id="aclassSystem_html_af3551f0224992c54731036eded4c07d1"><div class="ttname"><a href="../../dd/d2d/classSystem.html#af3551f0224992c54731036eded4c07d1">System::initializeSystem</a></div><div class="ttdeci">void initializeSystem(int cesfam_amount, int manager_amount, int patients_amount, string out_filename, string time)</div><div class="ttdoc">Inicializa el sistema completo.</div><div class="ttdef"><b>Definition:</b> System.cc:122</div></div>
+<div class="ttc" id="aclassManager_html"><div class="ttname"><a href="../../dd/dcd/classManager.html">Manager</a></div><div class="ttdoc">Clase que representa al agente de tipo gestor de casos.</div><div class="ttdef"><b>Definition:</b> Manager.h:45</div></div>
+<div class="ttc" id="aclassMonitor_html"><div class="ttname"><a href="../../d3/d63/classMonitor.html">Monitor</a></div><div class="ttdef"><b>Definition:</b> Monitor.h:17</div></div>
+<div class="ttc" id="aMonitor_8h_html"><div class="ttname"><a href="../../d5/d7f/Monitor_8h.html">Monitor.h</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generado por &#160;<a href="http://www.doxygen.org/index.html">

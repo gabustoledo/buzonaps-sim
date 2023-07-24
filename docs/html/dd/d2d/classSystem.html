@@ -68,19 +68,189 @@ $(function() {
 <div class="title">Referencia de la Clase System</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Clase que representa al sistema de la simulación.  
+ <a href="../../dd/d2d/classSystem.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../db/d39/System_8h_source.html">System.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:acdd32b91da2fd84830d89346c220656c"><td class="memItemLeft" align="right" valign="top"><a id="acdd32b91da2fd84830d89346c220656c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>System</b> (<a class="el" href="../../d2/de0/classEventList.html">EventList</a> *_event_list)</td></tr>
+<tr class="memitem:acdd32b91da2fd84830d89346c220656c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d2d/classSystem.html#acdd32b91da2fd84830d89346c220656c">System</a> (<a class="el" href="../../d2/de0/classEventList.html">EventList</a> *_event_list)</td></tr>
+<tr class="memdesc:acdd32b91da2fd84830d89346c220656c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="../../dd/d2d/classSystem.html" title="Clase que representa al sistema de la simulación.">System</a> object.  <a href="../../dd/d2d/classSystem.html#acdd32b91da2fd84830d89346c220656c">Más...</a><br /></td></tr>
 <tr class="separator:acdd32b91da2fd84830d89346c220656c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cb069a688573c7098e46e6b2a6ff0aa"><td class="memItemLeft" align="right" valign="top"><a id="a9cb069a688573c7098e46e6b2a6ff0aa"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>initializeSystem</b> (int patients_amount)</td></tr>
-<tr class="separator:a9cb069a688573c7098e46e6b2a6ff0aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cc008bd233f8ab514f1075efe82471c"><td class="memItemLeft" align="right" valign="top"><a id="a2cc008bd233f8ab514f1075efe82471c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>processEvent</b> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memitem:a333c0ac852d9cb10bf42275af3316e5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d2d/classSystem.html#a333c0ac852d9cb10bf42275af3316e5f">log</a> (json obj)</td></tr>
+<tr class="memdesc:a333c0ac852d9cb10bf42275af3316e5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega un log (datos de un evento resuelto) al archivo de trazas detalladas de la simulación.  <a href="../../dd/d2d/classSystem.html#a333c0ac852d9cb10bf42275af3316e5f">Más...</a><br /></td></tr>
+<tr class="separator:a333c0ac852d9cb10bf42275af3316e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3551f0224992c54731036eded4c07d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d2d/classSystem.html#af3551f0224992c54731036eded4c07d1">initializeSystem</a> (int cesfam_amount, int manager_amount, int patients_amount, string out_filename, string time)</td></tr>
+<tr class="memdesc:af3551f0224992c54731036eded4c07d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa el sistema completo.  <a href="../../dd/d2d/classSystem.html#af3551f0224992c54731036eded4c07d1">Más...</a><br /></td></tr>
+<tr class="separator:af3551f0224992c54731036eded4c07d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cc008bd233f8ab514f1075efe82471c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d2d/classSystem.html#a2cc008bd233f8ab514f1075efe82471c">processEvent</a> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memdesc:a2cc008bd233f8ab514f1075efe82471c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procesa un evento.  <a href="../../dd/d2d/classSystem.html#a2cc008bd233f8ab514f1075efe82471c">Más...</a><br /></td></tr>
 <tr class="separator:a2cc008bd233f8ab514f1075efe82471c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3be70bb338e3f062f821173fd15680d0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d2d/classSystem.html#a3be70bb338e3f062f821173fd15680d0">~System</a> ()</td></tr>
+<tr class="memdesc:a3be70bb338e3f062f821173fd15680d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="../../dd/d2d/classSystem.html" title="Clase que representa al sistema de la simulación.">System</a> object.  <a href="../../dd/d2d/classSystem.html#a3be70bb338e3f062f821173fd15680d0">Más...</a><br /></td></tr>
+<tr class="separator:a3be70bb338e3f062f821173fd15680d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Clase que representa al sistema de la simulación. </p>
+</div><h2 class="groupheader">Documentación del constructor y destructor</h2>
+<a id="acdd32b91da2fd84830d89346c220656c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdd32b91da2fd84830d89346c220656c">&#9670;&nbsp;</a></span>System()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">System::System </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d2/de0/classEventList.html">EventList</a> *&#160;</td>
+          <td class="paramname"><em>_event_list</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="../../dd/d2d/classSystem.html" title="Clase que representa al sistema de la simulación.">System</a> object. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_event_list</td><td>Puntero a la lista de eventos de la simulación </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3be70bb338e3f062f821173fd15680d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3be70bb338e3f062f821173fd15680d0">&#9670;&nbsp;</a></span>~System()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">System::~System </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destroy the <a class="el" href="../../dd/d2d/classSystem.html" title="Clase que representa al sistema de la simulación.">System</a> object. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="af3551f0224992c54731036eded4c07d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3551f0224992c54731036eded4c07d1">&#9670;&nbsp;</a></span>initializeSystem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void System::initializeSystem </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cesfam_amount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>manager_amount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>patients_amount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>out_filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>time</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inicializa el sistema completo. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cesfam_amount</td><td>Cantidad de CESFAM en la simulacion </td></tr>
+    <tr><td class="paramname">manager_amount</td><td>Cantidad de gestores por CESFAM en la simulación </td></tr>
+    <tr><td class="paramname">patients_amount</td><td>Cantidad de pacientes en la simulación </td></tr>
+    <tr><td class="paramname">out_filename</td><td>Indentificador extra (aparte del timestamp) para nombre del archivo de salida con las trazas detalladas </td></tr>
+    <tr><td class="paramname">time</td><td>Timestamp de inicio de la simulación en string </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a333c0ac852d9cb10bf42275af3316e5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a333c0ac852d9cb10bf42275af3316e5f">&#9670;&nbsp;</a></span>log()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void System::log </td>
+          <td>(</td>
+          <td class="paramtype">json&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega un log (datos de un evento resuelto) al archivo de trazas detalladas de la simulación. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>El objeto json que describe a un evento resuelto </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2cc008bd233f8ab514f1075efe82471c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cc008bd233f8ab514f1075efe82471c">&#9670;&nbsp;</a></span>processEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void System::processEvent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d5/da5/classEvent.html">Event</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Procesa un evento. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Puntero al evento a procesar </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>includes/<a class="el" href="../../db/d39/System_8h_source.html">System.h</a></li>
 <li>src/System.cc</li>

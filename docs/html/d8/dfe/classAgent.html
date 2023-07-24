@@ -69,29 +69,134 @@ $(function() {
 <div class="title">Referencia de la Clase Agent</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Clase que representa a un agente en la simulación.  
+ <a href="../../d8/dfe/classAgent.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../da/da5/Agent_8h_source.html">Agent.h</a>&gt;</code></p>
 <div class="dynheader">
 Diagrama de herencias de Agent</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/dbf/classAgent__inherit__graph.png" border="0" usemap="#Agent_inherit__map" alt="Inheritance graph"/></div>
+<!-- MAP 0 -->
 <center><span class="legend">[<a href="../../graph_legend.html">significado de colores y flechas</a>]</span></center></div>
 <div class="dynheader">
 Diagrama de colaboración para Agent:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d4/d69/classAgent__coll__graph.png" border="0" usemap="#Agent_coll__map" alt="Collaboration graph"/></div>
+<!-- MAP 1 -->
 <center><span class="legend">[<a href="../../graph_legend.html">significado de colores y flechas</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:a93d1897fbaff53a2387e03307e8db44f"><td class="memItemLeft" align="right" valign="top"><a id="a93d1897fbaff53a2387e03307e8db44f"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>processEvent</b> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memitem:a93d1897fbaff53a2387e03307e8db44f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dfe/classAgent.html#a93d1897fbaff53a2387e03307e8db44f">processEvent</a> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memdesc:a93d1897fbaff53a2387e03307e8db44f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método que procesa un evento.  <a href="../../d8/dfe/classAgent.html#a93d1897fbaff53a2387e03307e8db44f">Más...</a><br /></td></tr>
 <tr class="separator:a93d1897fbaff53a2387e03307e8db44f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01515fade59b2bdefde8221b44b87106"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dfe/classAgent.html#a01515fade59b2bdefde8221b44b87106">outOfTime</a> ()</td></tr>
+<tr class="memdesc:a01515fade59b2bdefde8221b44b87106"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método que indica la cantidad de horas que faltan para el inicio de la jornada de un agente, retorna 0 si el agente se encuentra dentro del horario de su jornada.  <a href="../../d8/dfe/classAgent.html#a01515fade59b2bdefde8221b44b87106">Más...</a><br /></td></tr>
+<tr class="separator:a01515fade59b2bdefde8221b44b87106"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Atributos protegidos</h2></td></tr>
 <tr class="memitem:a615cf476ca31329b0722f692b3169e5b"><td class="memItemLeft" align="right" valign="top"><a id="a615cf476ca31329b0722f692b3169e5b"></a>
 <a class="el" href="../../d2/de0/classEventList.html">EventList</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>event_list</b></td></tr>
 <tr class="separator:a615cf476ca31329b0722f692b3169e5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9143d19be77c7d33db6eeb7583ec1095"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d2d/classSystem.html">System</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dfe/classAgent.html#a9143d19be77c7d33db6eeb7583ec1095">system</a></td></tr>
+<tr class="separator:a9143d19be77c7d33db6eeb7583ec1095"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Clase que representa a un agente en la simulación. </p>
+</div><h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="a01515fade59b2bdefde8221b44b87106"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01515fade59b2bdefde8221b44b87106">&#9670;&nbsp;</a></span>outOfTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Agent::outOfTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Método que indica la cantidad de horas que faltan para el inicio de la jornada de un agente, retorna 0 si el agente se encuentra dentro del horario de su jornada. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>double </dd></dl>
+
+<p>Reimplementado en <a class="el" href="../../dd/dcd/classManager.html#aa2f68d3efdf941ce5f104c5591de72b4">Manager</a>.</p>
+
+</div>
+</div>
+<a id="a93d1897fbaff53a2387e03307e8db44f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93d1897fbaff53a2387e03307e8db44f">&#9670;&nbsp;</a></span>processEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Agent::processEvent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d5/da5/classEvent.html">Event</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Método que procesa un evento. </p>
+<p>Puntero al sistema de la simulación </p><dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>El puntero al evento a procesar. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplementado en <a class="el" href="../../d2/de8/classPatient.html#ab647d0fd03df818d23c9a87fd54d0a12">Patient</a> y <a class="el" href="../../dd/dcd/classManager.html#af22766a12dab3517c29ee06d2145f846">Manager</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de los datos miembro</h2>
+<a id="a9143d19be77c7d33db6eeb7583ec1095"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9143d19be77c7d33db6eeb7583ec1095">&#9670;&nbsp;</a></span>system</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/d2d/classSystem.html">System</a>* Agent::system</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Puntero a la lista de eventos de la simulación </p>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>includes/<a class="el" href="../../da/da5/Agent_8h_source.html">Agent.h</a></li>
 <li>src/Agent.cc</li>

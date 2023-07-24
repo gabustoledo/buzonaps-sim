@@ -2,4 +2,92 @@
 \label{classAgent}\index{Agent@{Agent}}
 
 
+Clase que representa a un agente en la simulación.  
+
+
+
+
+{\ttfamily \#include $<$Agent.\+h$>$}
+
+
+
 Diagrama de herencias de Agent
+% FIG 0
+
+
+Diagrama de colaboración para Agent\+:
+% FIG 1
+\doxysubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classAgent_a93d1897fbaff53a2387e03307e8db44f}{process\+Event}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Método que procesa un evento. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classAgent_a01515fade59b2bdefde8221b44b87106}{out\+Of\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Método que indica la cantidad de horas que faltan para el inicio de la jornada de un agente, retorna 0 si el agente se encuentra dentro del horario de su jornada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Atributos protegidos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAgent_a615cf476ca31329b0722f692b3169e5b}\label{classAgent_a615cf476ca31329b0722f692b3169e5b}} 
+\mbox{\hyperlink{classEventList}{Event\+List}} $\ast$ {\bfseries event\+\_\+list}
+\item 
+\mbox{\hyperlink{classSystem}{System}} $\ast$ \mbox{\hyperlink{classAgent_a9143d19be77c7d33db6eeb7583ec1095}{system}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase que representa a un agente en la simulación. 
+
+
+
+\doxysubsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{classAgent_a01515fade59b2bdefde8221b44b87106}\label{classAgent_a01515fade59b2bdefde8221b44b87106}} 
+\index{Agent@{Agent}!outOfTime@{outOfTime}}
+\index{outOfTime@{outOfTime}!Agent@{Agent}}
+\doxysubsubsection{\texorpdfstring{outOfTime()}{outOfTime()}}
+{\footnotesize\ttfamily double Agent\+::out\+Of\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Método que indica la cantidad de horas que faltan para el inicio de la jornada de un agente, retorna 0 si el agente se encuentra dentro del horario de su jornada. 
+
+\begin{DoxyReturn}{Devuelve}
+double 
+\end{DoxyReturn}
+
+
+Reimplementado en \mbox{\hyperlink{classManager_aa2f68d3efdf941ce5f104c5591de72b4}{Manager}}.
+
+\mbox{\Hypertarget{classAgent_a93d1897fbaff53a2387e03307e8db44f}\label{classAgent_a93d1897fbaff53a2387e03307e8db44f}} 
+\index{Agent@{Agent}!processEvent@{processEvent}}
+\index{processEvent@{processEvent}!Agent@{Agent}}
+\doxysubsubsection{\texorpdfstring{processEvent()}{processEvent()}}
+{\footnotesize\ttfamily void Agent\+::process\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Método que procesa un evento. 
+
+Puntero al sistema de la simulación 
+\begin{DoxyParams}{Parámetros}
+{\em e} & El puntero al evento a procesar. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplementado en \mbox{\hyperlink{classPatient_ab647d0fd03df818d23c9a87fd54d0a12}{Patient}} y \mbox{\hyperlink{classManager_af22766a12dab3517c29ee06d2145f846}{Manager}}.
+
+
+
+\doxysubsection{Documentación de los datos miembro}
+\mbox{\Hypertarget{classAgent_a9143d19be77c7d33db6eeb7583ec1095}\label{classAgent_a9143d19be77c7d33db6eeb7583ec1095}} 
+\index{Agent@{Agent}!system@{system}}
+\index{system@{system}!Agent@{Agent}}
+\doxysubsubsection{\texorpdfstring{system}{system}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSystem}{System}}$\ast$ Agent\+::system\hspace{0.3cm}{\ttfamily [protected]}}
+
+Puntero a la lista de eventos de la simulación 
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+includes/\mbox{\hyperlink{Agent_8h}{Agent.\+h}}\item 
+src/Agent.\+cc\end{DoxyCompactItemize}

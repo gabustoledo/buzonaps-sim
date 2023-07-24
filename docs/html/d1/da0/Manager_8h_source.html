@@ -69,98 +69,118 @@ $(function() {
 <div class="title">Manager.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef MANAGER_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define MANAGER_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;glob.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;Agent.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;Cesfam.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;Patient.h&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define ASK_CONSENT_TIME 1 // por paciente</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define PRE_CLASSIFY_CLINICAL_RISK_TIME 1 // por paciente</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define PRE_CLASSIFY_SOCIAL_RISK_TIME 1</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define MANAGE_PATIENT_TIME 1</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define RE_EVALUATE_LOW_RISK_TIME 1</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define RE_EVALUATE_MANAGED_TIME 1</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define MANAGE_MEDICAL_HOUR_TIME 1</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define MANAGE_TEST_HOUR_TIME 1</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define MANAGE_SOCIAL_HOUR_TIME 1</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define MANAGE_PSYCHO_HOUR_TIME 1</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define LOW_CLINICAL_RISK_PROB 0.1</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define MEDIUM_CLINICAL_RISK_PROB 0.5</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define HIGH_CLINICAL_RISK_PROB 0.4</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define LOW_SOCIAL_RISK_PROB 0.1</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#define MEDIUM_SOCIAL_RISK_PROB 0.5</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#define HIGH_SOCIAL_RISK_PROB 0.4</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define MEDICAL_HOUR_PROB 0.2</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define TEST_HOUR_PROB 0.2</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define SOCIAL_HOUR_PROB 0.2</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define PSYCHO_HOUR_PROB 0.2</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">enum</span> ManagerEvents {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    ASK_CONSENT,</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    PRE_CLASSIFY_CLINICAL_RISK,</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    PRE_CLASSIFY_SOCIAL_RISK,</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    MANAGE_PATIENT,</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    MANAGE_MEDICAL_HOUR,</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    MANAGE_TEST_HOUR,</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    MANAGE_SOCIAL_HOUR, </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    MANAGE_PSYCHO_HOUR,</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    RE_EVALUATE_LOW_RISK, </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    RE_EVALUATE_MANAGED</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">class </span><a class="code" href="../../d2/de8/classPatient.html">Patient</a>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="../../dd/dcd/classManager.html">   52</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../dd/dcd/classManager.html">Manager</a> : <span class="keyword">public</span> <a class="code" href="../../d8/dfe/classAgent.html">Agent</a> {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> _curr_id;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">int</span> id;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="../../da/d40/classCesfam.html">Cesfam</a> * cesfam;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    map&lt;Patient *, bool&gt; patients; <span class="comment">// false --&gt; no intervenido; true --&gt; intervenido</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="../../dd/dcd/classManager.html#a463a4d434ef93d3ad47aa166d4c31ba6">Manager</a>(<a class="code" href="../../da/d40/classCesfam.html">Cesfam</a> * _cesfam, vector&lt;Patient *&gt; _patients, <a class="code" href="../../d2/de0/classEventList.html">EventList</a> * _event_list);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">int</span> getId();</div>
+<a href="../../d1/da0/Manager_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef MANAGER_H</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define MANAGER_H</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;glob.h&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../da/da5/Agent_8h.html">Agent.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../da/d36/Cesfam_8h.html">Cesfam.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d5b/Patient_8h.html">Patient.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/dee/SimConfig_8h.html">SimConfig.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dc/d09/Stats_8h.html">Stats.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6">   26</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6">ManagerEvents</a> {</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6aeeb467206b4b2583dc22262886f17f6b">   27</a></span>&#160;    <a class="code" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6aeeb467206b4b2583dc22262886f17f6b">ASK_CONSENT</a>, </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6af5adb1e88402d3941d4eb9c214e85445">   28</a></span>&#160;    <a class="code" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6af5adb1e88402d3941d4eb9c214e85445">PRE_CLASSIFY_CLINICAL_RISK</a>, </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6a4cbb168acfdbb842e2042305b89de355">   29</a></span>&#160;    <a class="code" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6a4cbb168acfdbb842e2042305b89de355">PRE_CLASSIFY_SOCIAL_RISK</a>, </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6a25f0fb1f0f585f726d0f0ff87277dd82">   30</a></span>&#160;    <a class="code" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6a25f0fb1f0f585f726d0f0ff87277dd82">MANAGE_PATIENT</a>, </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6ab021473ef4c6ffba7ef4940ec011b031">   31</a></span>&#160;    <a class="code" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6ab021473ef4c6ffba7ef4940ec011b031">MANAGE_MEDICAL_HOUR</a>, </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6a86de05c8c48f4505b1b28e2ef16012df">   32</a></span>&#160;    <a class="code" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6a86de05c8c48f4505b1b28e2ef16012df">MANAGE_TEST_HOUR</a>, </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6a34eb6137a16ef3d1a7ac995b40266c9b">   33</a></span>&#160;    <a class="code" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6a34eb6137a16ef3d1a7ac995b40266c9b">MANAGE_SOCIAL_HOUR</a>, </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6a192d20e7c85e055e84cd5de7107883eb">   34</a></span>&#160;    <a class="code" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6a192d20e7c85e055e84cd5de7107883eb">MANAGE_PSYCHO_HOUR</a>, </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6aa074f393cff0bb4af5f001036e3c8073">   35</a></span>&#160;    <a class="code" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6aa074f393cff0bb4af5f001036e3c8073">RE_EVALUATE_LOW_RISK</a>, </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6a436d66856b540884bd8a28b2630d2a85">   36</a></span>&#160;    <a class="code" href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6a436d66856b540884bd8a28b2630d2a85">RE_EVALUATE_MANAGED</a> </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">class </span><a class="code" href="../../d2/de8/classPatient.html">Patient</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../dd/dcd/classManager.html">   45</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../dd/dcd/classManager.html">Manager</a> : <span class="keyword">public</span> <a class="code" href="../../d8/dfe/classAgent.html">Agent</a> {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> _curr_id; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> id; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="../../da/d40/classCesfam.html">Cesfam</a> * cesfam; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    map&lt;Patient *, bool&gt; patients; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">int</span> location; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="../../dd/dcd/classManager.html#abdad8f4b9cd67bef278a048276461739">Manager</a>(<a class="code" href="../../da/d40/classCesfam.html">Cesfam</a> * _cesfam, <a class="code" href="../../d2/de0/classEventList.html">EventList</a> * _event_list, <a class="code" href="../../dd/d2d/classSystem.html">System</a> * _system, <span class="keywordtype">int</span> _location);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../dd/dcd/classManager.html#a2dce1723f8fbac362c0890779fc9324d">getId</a>();</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> processEvent(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> processAskConsent(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> processPreClassifyClinicalRisk(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> processPreClassifySocialRisk(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> processReEvaluateLowRisk(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> processReEvaluateManaged(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span> processManagePatient(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> processMedicalHour(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span> processTestHour(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span> processSocialHour(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../dd/dcd/classManager.html#a3cb33ac7be5c4ed4ad012c05d2bc56b1">getLocation</a>();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dd/dcd/classManager.html#afed01e6fc4fbdd4412b2671fc213bcbd">addPatient</a>(<a class="code" href="../../d2/de8/classPatient.html">Patient</a> *);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    map&lt;Patient *, bool&gt; <a class="code" href="../../dd/dcd/classManager.html#a392c226238e03116bb03459fc4c84875">getPatients</a>();</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">void</span> processPsychoHour(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;};</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif // !MANAGER_H</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dd/dcd/classManager.html#af22766a12dab3517c29ee06d2145f846">processEvent</a>(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dd/dcd/classManager.html#a8a7272bbc053f036b63c15798e381bca">processAskConsent</a>(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dd/dcd/classManager.html#a2efa342b5888b568756e647b6519e44c">processPreClassifyClinicalRisk</a>(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dd/dcd/classManager.html#a527052c76386a16c4faa7ef2fd658a18">processPreClassifySocialRisk</a>(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dd/dcd/classManager.html#acc07368fdbc96e6db7b250a9a6a7cade">processReEvaluateLowRisk</a>(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dd/dcd/classManager.html#abd46a00dd2d7b44bdc4949a4877aa438">processReEvaluateManaged</a>(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dd/dcd/classManager.html#a7973ff215a2fb4f65e1eeb01ecbaa56c">processManagePatient</a>(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dd/dcd/classManager.html#a61bbfba83a2e3079099fa81cf2a8ae7e">processMedicalHour</a>(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dd/dcd/classManager.html#a0bc74b6b4d1af63e20e18b3f6d94dfca">processTestHour</a>(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dd/dcd/classManager.html#a340e3be2aab7c01eb00e6e93c7d594fc">processSocialHour</a>(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../dd/dcd/classManager.html#ac01b19a7cd7d2ca87539b8d56bc96077">processPsychoHour</a>(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="../../dd/dcd/classManager.html#aa2f68d3efdf941ce5f104c5591de72b4">outOfTime</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;};</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="preprocessor">#endif // !MANAGER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassPatient_html"><div class="ttname"><a href="../../d2/de8/classPatient.html">Patient</a></div><div class="ttdef"><b>Definition:</b> Patient.h:45</div></div>
-<div class="ttc" id="aclassEventList_html"><div class="ttname"><a href="../../d2/de0/classEventList.html">EventList</a></div><div class="ttdef"><b>Definition:</b> EventList.h:9</div></div>
-<div class="ttc" id="aclassEvent_html"><div class="ttname"><a href="../../d5/da5/classEvent.html">Event</a></div><div class="ttdef"><b>Definition:</b> Event.h:14</div></div>
-<div class="ttc" id="aclassCesfam_html"><div class="ttname"><a href="../../da/d40/classCesfam.html">Cesfam</a></div><div class="ttdef"><b>Definition:</b> Cesfam.h:6</div></div>
-<div class="ttc" id="aclassManager_html"><div class="ttname"><a href="../../dd/dcd/classManager.html">Manager</a></div><div class="ttdef"><b>Definition:</b> Manager.h:52</div></div>
-<div class="ttc" id="aclassManager_html_a463a4d434ef93d3ad47aa166d4c31ba6"><div class="ttname"><a href="../../dd/dcd/classManager.html#a463a4d434ef93d3ad47aa166d4c31ba6">Manager::Manager</a></div><div class="ttdeci">Manager(Cesfam *_cesfam, vector&lt; Patient * &gt; _patients, EventList *_event_list)</div><div class="ttdoc">Construct a new Manager object.</div><div class="ttdef"><b>Definition:</b> Manager.cc:5</div></div>
-<div class="ttc" id="aclassAgent_html"><div class="ttname"><a href="../../d8/dfe/classAgent.html">Agent</a></div><div class="ttdef"><b>Definition:</b> Agent.h:10</div></div>
+<div class="ttc" id="aclassManager_html_afed01e6fc4fbdd4412b2671fc213bcbd"><div class="ttname"><a href="../../dd/dcd/classManager.html#afed01e6fc4fbdd4412b2671fc213bcbd">Manager::addPatient</a></div><div class="ttdeci">void addPatient(Patient *)</div><div class="ttdoc">Agrega un paciente al mapa de pacientes.</div><div class="ttdef"><b>Definition:</b> Manager.cc:20</div></div>
+<div class="ttc" id="aclassManager_html_a392c226238e03116bb03459fc4c84875"><div class="ttname"><a href="../../dd/dcd/classManager.html#a392c226238e03116bb03459fc4c84875">Manager::getPatients</a></div><div class="ttdeci">map&lt; Patient *, bool &gt; getPatients()</div><div class="ttdoc">Obtiene el mapa de pacientes.</div><div class="ttdef"><b>Definition:</b> Manager.cc:24</div></div>
+<div class="ttc" id="aManager_8h_html_aecd4c8a527e20f3e596bd7f304b84fe6a86de05c8c48f4505b1b28e2ef16012df"><div class="ttname"><a href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6a86de05c8c48f4505b1b28e2ef16012df">MANAGE_TEST_HOUR</a></div><div class="ttdeci">@ MANAGE_TEST_HOUR</div><div class="ttdef"><b>Definition:</b> Manager.h:32</div></div>
+<div class="ttc" id="aManager_8h_html_aecd4c8a527e20f3e596bd7f304b84fe6a34eb6137a16ef3d1a7ac995b40266c9b"><div class="ttname"><a href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6a34eb6137a16ef3d1a7ac995b40266c9b">MANAGE_SOCIAL_HOUR</a></div><div class="ttdeci">@ MANAGE_SOCIAL_HOUR</div><div class="ttdef"><b>Definition:</b> Manager.h:33</div></div>
+<div class="ttc" id="aManager_8h_html_aecd4c8a527e20f3e596bd7f304b84fe6ab021473ef4c6ffba7ef4940ec011b031"><div class="ttname"><a href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6ab021473ef4c6ffba7ef4940ec011b031">MANAGE_MEDICAL_HOUR</a></div><div class="ttdeci">@ MANAGE_MEDICAL_HOUR</div><div class="ttdef"><b>Definition:</b> Manager.h:31</div></div>
+<div class="ttc" id="aManager_8h_html_aecd4c8a527e20f3e596bd7f304b84fe6a436d66856b540884bd8a28b2630d2a85"><div class="ttname"><a href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6a436d66856b540884bd8a28b2630d2a85">RE_EVALUATE_MANAGED</a></div><div class="ttdeci">@ RE_EVALUATE_MANAGED</div><div class="ttdef"><b>Definition:</b> Manager.h:36</div></div>
+<div class="ttc" id="aclassPatient_html"><div class="ttname"><a href="../../d2/de8/classPatient.html">Patient</a></div><div class="ttdoc">Clase que representa al agente de tipo paciente en la simulación.</div><div class="ttdef"><b>Definition:</b> Patient.h:69</div></div>
+<div class="ttc" id="aclassManager_html_ac01b19a7cd7d2ca87539b8d56bc96077"><div class="ttname"><a href="../../dd/dcd/classManager.html#ac01b19a7cd7d2ca87539b8d56bc96077">Manager::processPsychoHour</a></div><div class="ttdeci">void processPsychoHour(Event *e)</div><div class="ttdoc">Procesa un evento tipo MANAGE_PSYCHO_HOUR.</div><div class="ttdef"><b>Definition:</b> Manager.cc:417</div></div>
+<div class="ttc" id="aManager_8h_html_aecd4c8a527e20f3e596bd7f304b84fe6"><div class="ttname"><a href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6">ManagerEvents</a></div><div class="ttdeci">ManagerEvents</div><div class="ttdoc">Enum que define los tipos de eventos asociados al tipo de agente gestor.</div><div class="ttdef"><b>Definition:</b> Manager.h:26</div></div>
+<div class="ttc" id="aclassManager_html_a0bc74b6b4d1af63e20e18b3f6d94dfca"><div class="ttname"><a href="../../dd/dcd/classManager.html#a0bc74b6b4d1af63e20e18b3f6d94dfca">Manager::processTestHour</a></div><div class="ttdeci">void processTestHour(Event *e)</div><div class="ttdoc">Procesa un evento tipo MANAGE_TEST_HOUR.</div><div class="ttdef"><b>Definition:</b> Manager.cc:373</div></div>
+<div class="ttc" id="aclassManager_html_a527052c76386a16c4faa7ef2fd658a18"><div class="ttname"><a href="../../dd/dcd/classManager.html#a527052c76386a16c4faa7ef2fd658a18">Manager::processPreClassifySocialRisk</a></div><div class="ttdeci">void processPreClassifySocialRisk(Event *e)</div><div class="ttdoc">Procesa un evento tipo PRE_CLASSIFY_SOCIAL_RISK.</div><div class="ttdef"><b>Definition:</b> Manager.cc:170</div></div>
+<div class="ttc" id="aclassManager_html_a8a7272bbc053f036b63c15798e381bca"><div class="ttname"><a href="../../dd/dcd/classManager.html#a8a7272bbc053f036b63c15798e381bca">Manager::processAskConsent</a></div><div class="ttdeci">void processAskConsent(Event *e)</div><div class="ttdoc">Procesa un evento tipo ASK_CONSENT.</div><div class="ttdef"><b>Definition:</b> Manager.cc:101</div></div>
+<div class="ttc" id="aclassManager_html_abdad8f4b9cd67bef278a048276461739"><div class="ttname"><a href="../../dd/dcd/classManager.html#abdad8f4b9cd67bef278a048276461739">Manager::Manager</a></div><div class="ttdeci">Manager(Cesfam *_cesfam, EventList *_event_list, System *_system, int _location)</div><div class="ttdoc">Construye un nuevo objeto Manager.</div><div class="ttdef"><b>Definition:</b> Manager.cc:5</div></div>
+<div class="ttc" id="aCesfam_8h_html"><div class="ttname"><a href="../../da/d36/Cesfam_8h.html">Cesfam.h</a></div></div>
+<div class="ttc" id="aPatient_8h_html"><div class="ttname"><a href="../../d1/d5b/Patient_8h.html">Patient.h</a></div></div>
+<div class="ttc" id="aclassManager_html_aa2f68d3efdf941ce5f104c5591de72b4"><div class="ttname"><a href="../../dd/dcd/classManager.html#aa2f68d3efdf941ce5f104c5591de72b4">Manager::outOfTime</a></div><div class="ttdeci">double outOfTime() override</div><div class="ttdoc">Método que indica la cantidad de horas que faltan para el inicio de la jornada de un agente,...</div><div class="ttdef"><b>Definition:</b> Manager.cc:439</div></div>
+<div class="ttc" id="aStats_8h_html"><div class="ttname"><a href="../../dc/d09/Stats_8h.html">Stats.h</a></div></div>
+<div class="ttc" id="aclassEventList_html"><div class="ttname"><a href="../../d2/de0/classEventList.html">EventList</a></div><div class="ttdoc">Clase que representa la lista de eventos de la simulación.</div><div class="ttdef"><b>Definition:</b> EventList.h:24</div></div>
+<div class="ttc" id="aclassEvent_html"><div class="ttname"><a href="../../d5/da5/classEvent.html">Event</a></div><div class="ttdoc">Clase que representa un evento en la simulación.</div><div class="ttdef"><b>Definition:</b> Event.h:45</div></div>
+<div class="ttc" id="aManager_8h_html_aecd4c8a527e20f3e596bd7f304b84fe6a192d20e7c85e055e84cd5de7107883eb"><div class="ttname"><a href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6a192d20e7c85e055e84cd5de7107883eb">MANAGE_PSYCHO_HOUR</a></div><div class="ttdeci">@ MANAGE_PSYCHO_HOUR</div><div class="ttdef"><b>Definition:</b> Manager.h:34</div></div>
+<div class="ttc" id="aclassSystem_html"><div class="ttname"><a href="../../dd/d2d/classSystem.html">System</a></div><div class="ttdoc">Clase que representa al sistema de la simulación.</div><div class="ttdef"><b>Definition:</b> System.h:29</div></div>
+<div class="ttc" id="aclassManager_html_a2dce1723f8fbac362c0890779fc9324d"><div class="ttname"><a href="../../dd/dcd/classManager.html#a2dce1723f8fbac362c0890779fc9324d">Manager::getId</a></div><div class="ttdeci">int getId()</div><div class="ttdoc">Obtiene el identificador del gestor en la simulación.</div><div class="ttdef"><b>Definition:</b> Manager.cc:12</div></div>
+<div class="ttc" id="aclassManager_html_acc07368fdbc96e6db7b250a9a6a7cade"><div class="ttname"><a href="../../dd/dcd/classManager.html#acc07368fdbc96e6db7b250a9a6a7cade">Manager::processReEvaluateLowRisk</a></div><div class="ttdeci">void processReEvaluateLowRisk(Event *e)</div><div class="ttdoc">Procesa un evento tipo RE_EVALUATE_LOW_RISK.</div><div class="ttdef"><b>Definition:</b> Manager.cc:226</div></div>
+<div class="ttc" id="aclassManager_html_a61bbfba83a2e3079099fa81cf2a8ae7e"><div class="ttname"><a href="../../dd/dcd/classManager.html#a61bbfba83a2e3079099fa81cf2a8ae7e">Manager::processMedicalHour</a></div><div class="ttdeci">void processMedicalHour(Event *e)</div><div class="ttdoc">Procesa un evento tipo MANAGE_MEDICAL_HOUR.</div><div class="ttdef"><b>Definition:</b> Manager.cc:351</div></div>
+<div class="ttc" id="aclassManager_html_a340e3be2aab7c01eb00e6e93c7d594fc"><div class="ttname"><a href="../../dd/dcd/classManager.html#a340e3be2aab7c01eb00e6e93c7d594fc">Manager::processSocialHour</a></div><div class="ttdeci">void processSocialHour(Event *e)</div><div class="ttdoc">Procesa un evento tipo MANAGE_SOCIAL_HOUR.</div><div class="ttdef"><b>Definition:</b> Manager.cc:395</div></div>
+<div class="ttc" id="aclassCesfam_html"><div class="ttname"><a href="../../da/d40/classCesfam.html">Cesfam</a></div><div class="ttdoc">Clase que representa a un CESFAM en la simulación.</div><div class="ttdef"><b>Definition:</b> Cesfam.h:21</div></div>
+<div class="ttc" id="aAgent_8h_html"><div class="ttname"><a href="../../da/da5/Agent_8h.html">Agent.h</a></div></div>
+<div class="ttc" id="aclassManager_html"><div class="ttname"><a href="../../dd/dcd/classManager.html">Manager</a></div><div class="ttdoc">Clase que representa al agente de tipo gestor de casos.</div><div class="ttdef"><b>Definition:</b> Manager.h:45</div></div>
+<div class="ttc" id="aclassManager_html_abd46a00dd2d7b44bdc4949a4877aa438"><div class="ttname"><a href="../../dd/dcd/classManager.html#abd46a00dd2d7b44bdc4949a4877aa438">Manager::processReEvaluateManaged</a></div><div class="ttdeci">void processReEvaluateManaged(Event *e)</div><div class="ttdoc">Procesa un evento tipo RE_EVALUATE_MANAGED.</div><div class="ttdef"><b>Definition:</b> Manager.cc:248</div></div>
+<div class="ttc" id="aclassManager_html_a7973ff215a2fb4f65e1eeb01ecbaa56c"><div class="ttname"><a href="../../dd/dcd/classManager.html#a7973ff215a2fb4f65e1eeb01ecbaa56c">Manager::processManagePatient</a></div><div class="ttdeci">void processManagePatient(Event *e)</div><div class="ttdoc">Procesa un evento tipo MANAGE_PATIENT.</div><div class="ttdef"><b>Definition:</b> Manager.cc:270</div></div>
+<div class="ttc" id="aManager_8h_html_aecd4c8a527e20f3e596bd7f304b84fe6a25f0fb1f0f585f726d0f0ff87277dd82"><div class="ttname"><a href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6a25f0fb1f0f585f726d0f0ff87277dd82">MANAGE_PATIENT</a></div><div class="ttdeci">@ MANAGE_PATIENT</div><div class="ttdef"><b>Definition:</b> Manager.h:30</div></div>
+<div class="ttc" id="aSimConfig_8h_html"><div class="ttname"><a href="../../d4/dee/SimConfig_8h.html">SimConfig.h</a></div></div>
+<div class="ttc" id="aclassManager_html_a2efa342b5888b568756e647b6519e44c"><div class="ttname"><a href="../../dd/dcd/classManager.html#a2efa342b5888b568756e647b6519e44c">Manager::processPreClassifyClinicalRisk</a></div><div class="ttdeci">void processPreClassifyClinicalRisk(Event *e)</div><div class="ttdoc">Procesa un evento tipo PRE_CLASSIFY_CLINICAL_RISK.</div><div class="ttdef"><b>Definition:</b> Manager.cc:123</div></div>
+<div class="ttc" id="aclassManager_html_a3cb33ac7be5c4ed4ad012c05d2bc56b1"><div class="ttname"><a href="../../dd/dcd/classManager.html#a3cb33ac7be5c4ed4ad012c05d2bc56b1">Manager::getLocation</a></div><div class="ttdeci">int getLocation()</div><div class="ttdoc">Obtiene la ubicación del gestor.</div><div class="ttdef"><b>Definition:</b> Manager.cc:16</div></div>
+<div class="ttc" id="aManager_8h_html_aecd4c8a527e20f3e596bd7f304b84fe6aa074f393cff0bb4af5f001036e3c8073"><div class="ttname"><a href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6aa074f393cff0bb4af5f001036e3c8073">RE_EVALUATE_LOW_RISK</a></div><div class="ttdeci">@ RE_EVALUATE_LOW_RISK</div><div class="ttdef"><b>Definition:</b> Manager.h:35</div></div>
+<div class="ttc" id="aManager_8h_html_aecd4c8a527e20f3e596bd7f304b84fe6aeeb467206b4b2583dc22262886f17f6b"><div class="ttname"><a href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6aeeb467206b4b2583dc22262886f17f6b">ASK_CONSENT</a></div><div class="ttdeci">@ ASK_CONSENT</div><div class="ttdef"><b>Definition:</b> Manager.h:27</div></div>
+<div class="ttc" id="aclassAgent_html"><div class="ttname"><a href="../../d8/dfe/classAgent.html">Agent</a></div><div class="ttdoc">Clase que representa a un agente en la simulación.</div><div class="ttdef"><b>Definition:</b> Agent.h:26</div></div>
+<div class="ttc" id="aManager_8h_html_aecd4c8a527e20f3e596bd7f304b84fe6af5adb1e88402d3941d4eb9c214e85445"><div class="ttname"><a href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6af5adb1e88402d3941d4eb9c214e85445">PRE_CLASSIFY_CLINICAL_RISK</a></div><div class="ttdeci">@ PRE_CLASSIFY_CLINICAL_RISK</div><div class="ttdef"><b>Definition:</b> Manager.h:28</div></div>
+<div class="ttc" id="aclassManager_html_af22766a12dab3517c29ee06d2145f846"><div class="ttname"><a href="../../dd/dcd/classManager.html#af22766a12dab3517c29ee06d2145f846">Manager::processEvent</a></div><div class="ttdeci">void processEvent(Event *e) override</div><div class="ttdoc">Genera el procesamiento completo de un evento (contiene a los demás métodos que procesan eventos)</div><div class="ttdef"><b>Definition:</b> Manager.cc:28</div></div>
+<div class="ttc" id="aManager_8h_html_aecd4c8a527e20f3e596bd7f304b84fe6a4cbb168acfdbb842e2042305b89de355"><div class="ttname"><a href="../../d1/da0/Manager_8h.html#aecd4c8a527e20f3e596bd7f304b84fe6a4cbb168acfdbb842e2042305b89de355">PRE_CLASSIFY_SOCIAL_RISK</a></div><div class="ttdeci">@ PRE_CLASSIFY_SOCIAL_RISK</div><div class="ttdef"><b>Definition:</b> Manager.h:29</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generado por &#160;<a href="http://www.doxygen.org/index.html">

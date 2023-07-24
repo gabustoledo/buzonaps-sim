@@ -69,40 +69,50 @@ $(function() {
 <div class="title">EventList.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef EVENTLIST_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define EVENTLIST_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;glob.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;Event.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">class </span><a class="code" href="../../d5/da5/classEvent.html">Event</a>;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="../../d2/de0/classEventList.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d2/de0/classEventList.html">EventList</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="../../d5/da5/classEvent.html">Event</a> * first = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">double</span> clock = 0.0;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="../../d5/da5/classEvent.html">Event</a> * last = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="../../d2/de0/classEventList.html">EventList</a>(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * _first, <span class="keywordtype">double</span> _clock, <a class="code" href="../../d5/da5/classEvent.html">Event</a> * _last);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> insertEvent(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="../../d5/da5/classEvent.html">Event</a> * nextEvent();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">bool</span> isEmpty();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">double</span> getClock();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    ~<a class="code" href="../../d2/de0/classEventList.html">EventList</a>();</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif // !EVENTLIST_H</span></div>
+<a href="../../d2/d39/EventList_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef EVENTLIST_H</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define EVENTLIST_H</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;glob.h&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d6/d8d/Event_8h.html">Event.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">class </span><a class="code" href="../../d5/da5/classEvent.html">Event</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="../../d2/de0/classEventList.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d2/de0/classEventList.html">EventList</a> {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="../../d5/da5/classEvent.html">Event</a> * first = <span class="keyword">nullptr</span>; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">double</span> clock = 0.0; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="../../d5/da5/classEvent.html">Event</a> * last = <span class="keyword">nullptr</span>; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="../../d2/de0/classEventList.html#a723574d4cdd9bca890e715f003197103">EventList</a>(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * _first, <span class="keywordtype">double</span> _clock, <a class="code" href="../../d5/da5/classEvent.html">Event</a> * _last);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d2/de0/classEventList.html#abb74fc2a4458c026d04ab8b3648c697f">insertEvent</a>(<a class="code" href="../../d5/da5/classEvent.html">Event</a> * e);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="../../d5/da5/classEvent.html">Event</a> * <a class="code" href="../../d2/de0/classEventList.html#a8c041acea3564fa8aa95f07a8d36af91">nextEvent</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="../../d2/de0/classEventList.html#aab7673ada54622a60c649fd3128e10c5">isEmpty</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="../../d2/de0/classEventList.html#a7b8cb81e94ce1db6fe42f5154d851c21">getClock</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="../../d5/da5/classEvent.html">Event</a> * <a class="code" href="../../d2/de0/classEventList.html#adf6508009a4e1a9a94d98af6372e75e4">getLastEvent</a>();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="../../d2/de0/classEventList.html#a6c231f53c1960f2cbbee4268ac44ffa9">~EventList</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;};</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#endif // !EVENTLIST_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassEventList_html"><div class="ttname"><a href="../../d2/de0/classEventList.html">EventList</a></div><div class="ttdef"><b>Definition:</b> EventList.h:9</div></div>
-<div class="ttc" id="aclassEvent_html"><div class="ttname"><a href="../../d5/da5/classEvent.html">Event</a></div><div class="ttdef"><b>Definition:</b> Event.h:14</div></div>
+<div class="ttc" id="aclassEventList_html_aab7673ada54622a60c649fd3128e10c5"><div class="ttname"><a href="../../d2/de0/classEventList.html#aab7673ada54622a60c649fd3128e10c5">EventList::isEmpty</a></div><div class="ttdeci">bool isEmpty()</div><div class="ttdoc">Indica si la lista de eventos está vacía o no.</div><div class="ttdef"><b>Definition:</b> EventList.cc:54</div></div>
+<div class="ttc" id="aclassEventList_html_a8c041acea3564fa8aa95f07a8d36af91"><div class="ttname"><a href="../../d2/de0/classEventList.html#a8c041acea3564fa8aa95f07a8d36af91">EventList::nextEvent</a></div><div class="ttdeci">Event * nextEvent()</div><div class="ttdoc">Obtiene el puntero al siguiente evento a resolver de la lista de eventos.</div><div class="ttdef"><b>Definition:</b> EventList.cc:39</div></div>
+<div class="ttc" id="aclassEventList_html"><div class="ttname"><a href="../../d2/de0/classEventList.html">EventList</a></div><div class="ttdoc">Clase que representa la lista de eventos de la simulación.</div><div class="ttdef"><b>Definition:</b> EventList.h:24</div></div>
+<div class="ttc" id="aclassEvent_html"><div class="ttname"><a href="../../d5/da5/classEvent.html">Event</a></div><div class="ttdoc">Clase que representa un evento en la simulación.</div><div class="ttdef"><b>Definition:</b> Event.h:45</div></div>
+<div class="ttc" id="aclassEventList_html_adf6508009a4e1a9a94d98af6372e75e4"><div class="ttname"><a href="../../d2/de0/classEventList.html#adf6508009a4e1a9a94d98af6372e75e4">EventList::getLastEvent</a></div><div class="ttdeci">Event * getLastEvent()</div><div class="ttdoc">Obtiene el puntero al último evento de la lista de eventos.</div><div class="ttdef"><b>Definition:</b> EventList.cc:50</div></div>
+<div class="ttc" id="aEvent_8h_html"><div class="ttname"><a href="../../d6/d8d/Event_8h.html">Event.h</a></div></div>
+<div class="ttc" id="aclassEventList_html_a723574d4cdd9bca890e715f003197103"><div class="ttname"><a href="../../d2/de0/classEventList.html#a723574d4cdd9bca890e715f003197103">EventList::EventList</a></div><div class="ttdeci">EventList(Event *_first, double _clock, Event *_last)</div><div class="ttdoc">Construye un nuevo objeto EventList.</div><div class="ttdef"><b>Definition:</b> EventList.cc:3</div></div>
+<div class="ttc" id="aclassEventList_html_a7b8cb81e94ce1db6fe42f5154d851c21"><div class="ttname"><a href="../../d2/de0/classEventList.html#a7b8cb81e94ce1db6fe42f5154d851c21">EventList::getClock</a></div><div class="ttdeci">double getClock()</div><div class="ttdoc">Obtiene el valor actual del reloj de la simulación.</div><div class="ttdef"><b>Definition:</b> EventList.cc:46</div></div>
+<div class="ttc" id="aclassEventList_html_abb74fc2a4458c026d04ab8b3648c697f"><div class="ttname"><a href="../../d2/de0/classEventList.html#abb74fc2a4458c026d04ab8b3648c697f">EventList::insertEvent</a></div><div class="ttdeci">void insertEvent(Event *e)</div><div class="ttdoc">Inserta un evento en la lista de eventos.</div><div class="ttdef"><b>Definition:</b> EventList.cc:9</div></div>
+<div class="ttc" id="aclassEventList_html_a6c231f53c1960f2cbbee4268ac44ffa9"><div class="ttname"><a href="../../d2/de0/classEventList.html#a6c231f53c1960f2cbbee4268ac44ffa9">EventList::~EventList</a></div><div class="ttdeci">~EventList()</div><div class="ttdoc">Destruye el objeto EventList.</div><div class="ttdef"><b>Definition:</b> EventList.cc:58</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generado por &#160;<a href="http://www.doxygen.org/index.html">

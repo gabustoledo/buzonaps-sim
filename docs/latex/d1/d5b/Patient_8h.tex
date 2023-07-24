@@ -1,0 +1,169 @@
+\hypertarget{Patient_8h}{}\doxysection{Referencia del Archivo includes/\+Patient.h}
+\label{Patient_8h}\index{includes/Patient.h@{includes/Patient.h}}
+{\ttfamily \#include \char`\"{}glob.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Agent.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Cesfam.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Manager.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}System.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Sim\+Config.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Stats.\+h\char`\"{}}\newline
+Dependencia gráfica adjunta para Patient.\+h\+:
+% FIG 0
+Gráfico de los archivos que directa o indirectamente incluyen a este archivo\+:
+% FIG 1
+\doxysubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classPatient}{Patient}}
+\begin{DoxyCompactList}\small\item\em Clase que representa al agente de tipo paciente en la simulación. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumeraciones}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171}{Risk\+Categories}} \{ \mbox{\hyperlink{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171a0c3a1dacf94061154b3ee354359c5893}{H\+I\+GH}} = 30, 
+\mbox{\hyperlink{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171a5340ec7ecef6cc3886684a3bd3450d64}{M\+E\+D\+I\+UM}} = 20, 
+\mbox{\hyperlink{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171a6a226f4143ca3b18999551694cdb72a8}{L\+OW}} = 10, 
+\mbox{\hyperlink{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171a605159e8a4c32319fd69b5d151369d93}{U\+N\+D\+E\+F\+I\+N\+ED}} = 0
+ \}
+\begin{DoxyCompactList}\small\item\em Enum que define las categorías de riesgos y sus valores. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98f}{Patient\+Events}} \{ \newline
+\mbox{\hyperlink{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fa02a63f0c17a4297d231df205da79ee28}{A\+N\+S\+W\+E\+R\+\_\+\+C\+O\+N\+S\+E\+NT}}, 
+\mbox{\hyperlink{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98faf2f4ee1a45d37053f22feacf2681f7f2}{R\+E\+C\+E\+I\+V\+E\+\_\+\+M\+E\+D\+I\+C\+A\+L\+\_\+\+H\+O\+UR}}, 
+\mbox{\hyperlink{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fa71dabb7328f909fdef01c83e0669637e}{R\+E\+C\+E\+I\+V\+E\+\_\+\+T\+E\+S\+T\+\_\+\+H\+O\+UR}}, 
+\mbox{\hyperlink{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fae242c6db68660eeae9aacb5bf712a094}{R\+E\+C\+E\+I\+V\+E\+\_\+\+S\+O\+C\+I\+A\+L\+\_\+\+H\+O\+UR}}, 
+\newline
+\mbox{\hyperlink{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fa90b05fb1908f84f8cee2a78ca6285b1d}{R\+E\+C\+E\+I\+V\+E\+\_\+\+P\+S\+Y\+C\+H\+O\+\_\+\+H\+O\+UR}}, 
+\mbox{\hyperlink{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fa3f08f4f810efb0956db6443e6a9a168c}{A\+T\+T\+E\+N\+D\+\_\+\+M\+E\+D\+I\+C\+A\+L\+\_\+\+H\+O\+UR}}, 
+\mbox{\hyperlink{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fafdd98915368f19429d0f3fc0495f3080}{A\+T\+T\+E\+N\+D\+\_\+\+T\+E\+S\+T\+\_\+\+H\+O\+UR}}, 
+\mbox{\hyperlink{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fa034daf3bb44c16cce2ca8af436075fee}{A\+T\+T\+E\+N\+D\+\_\+\+S\+O\+C\+I\+A\+L\+\_\+\+H\+O\+UR}}, 
+\newline
+\mbox{\hyperlink{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fa3d0f80fb2b9048692030c544a923cf4b}{A\+T\+T\+E\+N\+D\+\_\+\+P\+S\+Y\+C\+H\+O\+\_\+\+H\+O\+UR}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum que define los tipos de eventos asociados al tipo de agente paciente. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{Patient_8h_a00f2c682368264602dfbe88b4b5e13f7}{Hours\+Types}} \{ \mbox{\hyperlink{Patient_8h_a00f2c682368264602dfbe88b4b5e13f7a7b86d9f30ad4e06d2075154eaf1b07fd}{M\+E\+D\+I\+C\+A\+L\+\_\+\+H\+O\+UR}}, 
+\mbox{\hyperlink{Patient_8h_a00f2c682368264602dfbe88b4b5e13f7a13fd225190c5c69474884775acec03aa}{T\+E\+S\+T\+\_\+\+H\+O\+UR}}, 
+\mbox{\hyperlink{Patient_8h_a00f2c682368264602dfbe88b4b5e13f7a1ccdb76887432e07caaede48228030a2}{S\+O\+C\+I\+A\+L\+\_\+\+H\+O\+UR}}, 
+\mbox{\hyperlink{Patient_8h_a00f2c682368264602dfbe88b4b5e13f7ad252820e080c5abad1b822b6ba8d01b3}{P\+S\+Y\+C\+H\+O\+\_\+\+H\+O\+UR}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum que define los tipos de horas que pueden ser agendadas por los gestores para los pacientes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+\begin{DoxyAuthor}{Autor}
+Florencia Corvalán Lillo (@\+Flo\+Corvalan -\/ \href{mailto:florencia.corvalan@usach.cl}{\texttt{ florencia.\+corvalan@usach.\+cl}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versión}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Fecha}
+2023-\/07-\/24
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Documentación de las enumeraciones}
+\mbox{\Hypertarget{Patient_8h_a00f2c682368264602dfbe88b4b5e13f7}\label{Patient_8h_a00f2c682368264602dfbe88b4b5e13f7}} 
+\index{Patient.h@{Patient.h}!HoursTypes@{HoursTypes}}
+\index{HoursTypes@{HoursTypes}!Patient.h@{Patient.h}}
+\doxysubsubsection{\texorpdfstring{HoursTypes}{HoursTypes}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{Patient_8h_a00f2c682368264602dfbe88b4b5e13f7}{Hours\+Types}}}
+
+
+
+Enum que define los tipos de horas que pueden ser agendadas por los gestores para los pacientes. 
+
+\begin{DoxyEnumFields}{Valores de enumeraciones}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MEDICAL\_HOUR@{MEDICAL\_HOUR}!Patient.h@{Patient.h}}\index{Patient.h@{Patient.h}!MEDICAL\_HOUR@{MEDICAL\_HOUR}}}\mbox{\Hypertarget{Patient_8h_a00f2c682368264602dfbe88b4b5e13f7a7b86d9f30ad4e06d2075154eaf1b07fd}\label{Patient_8h_a00f2c682368264602dfbe88b4b5e13f7a7b86d9f30ad4e06d2075154eaf1b07fd}} 
+M\+E\+D\+I\+C\+A\+L\+\_\+\+H\+O\+UR&Hora médica \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TEST\_HOUR@{TEST\_HOUR}!Patient.h@{Patient.h}}\index{Patient.h@{Patient.h}!TEST\_HOUR@{TEST\_HOUR}}}\mbox{\Hypertarget{Patient_8h_a00f2c682368264602dfbe88b4b5e13f7a13fd225190c5c69474884775acec03aa}\label{Patient_8h_a00f2c682368264602dfbe88b4b5e13f7a13fd225190c5c69474884775acec03aa}} 
+T\+E\+S\+T\+\_\+\+H\+O\+UR&Hora a exámenes \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOCIAL\_HOUR@{SOCIAL\_HOUR}!Patient.h@{Patient.h}}\index{Patient.h@{Patient.h}!SOCIAL\_HOUR@{SOCIAL\_HOUR}}}\mbox{\Hypertarget{Patient_8h_a00f2c682368264602dfbe88b4b5e13f7a1ccdb76887432e07caaede48228030a2}\label{Patient_8h_a00f2c682368264602dfbe88b4b5e13f7a1ccdb76887432e07caaede48228030a2}} 
+S\+O\+C\+I\+A\+L\+\_\+\+H\+O\+UR&Hora para servicio social \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PSYCHO\_HOUR@{PSYCHO\_HOUR}!Patient.h@{Patient.h}}\index{Patient.h@{Patient.h}!PSYCHO\_HOUR@{PSYCHO\_HOUR}}}\mbox{\Hypertarget{Patient_8h_a00f2c682368264602dfbe88b4b5e13f7ad252820e080c5abad1b822b6ba8d01b3}\label{Patient_8h_a00f2c682368264602dfbe88b4b5e13f7ad252820e080c5abad1b822b6ba8d01b3}} 
+P\+S\+Y\+C\+H\+O\+\_\+\+H\+O\+UR&Hora de atención psicológica \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98f}\label{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98f}} 
+\index{Patient.h@{Patient.h}!PatientEvents@{PatientEvents}}
+\index{PatientEvents@{PatientEvents}!Patient.h@{Patient.h}}
+\doxysubsubsection{\texorpdfstring{PatientEvents}{PatientEvents}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98f}{Patient\+Events}}}
+
+
+
+Enum que define los tipos de eventos asociados al tipo de agente paciente. 
+
+\begin{DoxyEnumFields}{Valores de enumeraciones}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANSWER\_CONSENT@{ANSWER\_CONSENT}!Patient.h@{Patient.h}}\index{Patient.h@{Patient.h}!ANSWER\_CONSENT@{ANSWER\_CONSENT}}}\mbox{\Hypertarget{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fa02a63f0c17a4297d231df205da79ee28}\label{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fa02a63f0c17a4297d231df205da79ee28}} 
+A\+N\+S\+W\+E\+R\+\_\+\+C\+O\+N\+S\+E\+NT&Tipo de evento en que el paciente responde sobre el consentimiento informado \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RECEIVE\_MEDICAL\_HOUR@{RECEIVE\_MEDICAL\_HOUR}!Patient.h@{Patient.h}}\index{Patient.h@{Patient.h}!RECEIVE\_MEDICAL\_HOUR@{RECEIVE\_MEDICAL\_HOUR}}}\mbox{\Hypertarget{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98faf2f4ee1a45d37053f22feacf2681f7f2}\label{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98faf2f4ee1a45d37053f22feacf2681f7f2}} 
+R\+E\+C\+E\+I\+V\+E\+\_\+\+M\+E\+D\+I\+C\+A\+L\+\_\+\+H\+O\+UR&Tipo de evento en que el paciente es informado sobre una hora médica agendada \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RECEIVE\_TEST\_HOUR@{RECEIVE\_TEST\_HOUR}!Patient.h@{Patient.h}}\index{Patient.h@{Patient.h}!RECEIVE\_TEST\_HOUR@{RECEIVE\_TEST\_HOUR}}}\mbox{\Hypertarget{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fa71dabb7328f909fdef01c83e0669637e}\label{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fa71dabb7328f909fdef01c83e0669637e}} 
+R\+E\+C\+E\+I\+V\+E\+\_\+\+T\+E\+S\+T\+\_\+\+H\+O\+UR&Tipo de evento en que el paciente es informado sobre una hora a exámenes agendada \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RECEIVE\_SOCIAL\_HOUR@{RECEIVE\_SOCIAL\_HOUR}!Patient.h@{Patient.h}}\index{Patient.h@{Patient.h}!RECEIVE\_SOCIAL\_HOUR@{RECEIVE\_SOCIAL\_HOUR}}}\mbox{\Hypertarget{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fae242c6db68660eeae9aacb5bf712a094}\label{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fae242c6db68660eeae9aacb5bf712a094}} 
+R\+E\+C\+E\+I\+V\+E\+\_\+\+S\+O\+C\+I\+A\+L\+\_\+\+H\+O\+UR&Tipo de evento en que el paciente es informado sobre una hora para servicio social agendada \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RECEIVE\_PSYCHO\_HOUR@{RECEIVE\_PSYCHO\_HOUR}!Patient.h@{Patient.h}}\index{Patient.h@{Patient.h}!RECEIVE\_PSYCHO\_HOUR@{RECEIVE\_PSYCHO\_HOUR}}}\mbox{\Hypertarget{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fa90b05fb1908f84f8cee2a78ca6285b1d}\label{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fa90b05fb1908f84f8cee2a78ca6285b1d}} 
+R\+E\+C\+E\+I\+V\+E\+\_\+\+P\+S\+Y\+C\+H\+O\+\_\+\+H\+O\+UR&Tipo de evento en que el paciente es informado sobre una hora de atención psicológica agendada \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ATTEND\_MEDICAL\_HOUR@{ATTEND\_MEDICAL\_HOUR}!Patient.h@{Patient.h}}\index{Patient.h@{Patient.h}!ATTEND\_MEDICAL\_HOUR@{ATTEND\_MEDICAL\_HOUR}}}\mbox{\Hypertarget{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fa3f08f4f810efb0956db6443e6a9a168c}\label{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fa3f08f4f810efb0956db6443e6a9a168c}} 
+A\+T\+T\+E\+N\+D\+\_\+\+M\+E\+D\+I\+C\+A\+L\+\_\+\+H\+O\+UR&Tipo de evento en que el paciente asiste a una hora médica agendada \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ATTEND\_TEST\_HOUR@{ATTEND\_TEST\_HOUR}!Patient.h@{Patient.h}}\index{Patient.h@{Patient.h}!ATTEND\_TEST\_HOUR@{ATTEND\_TEST\_HOUR}}}\mbox{\Hypertarget{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fafdd98915368f19429d0f3fc0495f3080}\label{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fafdd98915368f19429d0f3fc0495f3080}} 
+A\+T\+T\+E\+N\+D\+\_\+\+T\+E\+S\+T\+\_\+\+H\+O\+UR&Tipo de evento en que el paciente asiste a una hora a exámenes agendada \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ATTEND\_SOCIAL\_HOUR@{ATTEND\_SOCIAL\_HOUR}!Patient.h@{Patient.h}}\index{Patient.h@{Patient.h}!ATTEND\_SOCIAL\_HOUR@{ATTEND\_SOCIAL\_HOUR}}}\mbox{\Hypertarget{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fa034daf3bb44c16cce2ca8af436075fee}\label{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fa034daf3bb44c16cce2ca8af436075fee}} 
+A\+T\+T\+E\+N\+D\+\_\+\+S\+O\+C\+I\+A\+L\+\_\+\+H\+O\+UR&Tipo de evento en que el paciente asiste a una hora para servicio social agendada \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ATTEND\_PSYCHO\_HOUR@{ATTEND\_PSYCHO\_HOUR}!Patient.h@{Patient.h}}\index{Patient.h@{Patient.h}!ATTEND\_PSYCHO\_HOUR@{ATTEND\_PSYCHO\_HOUR}}}\mbox{\Hypertarget{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fa3d0f80fb2b9048692030c544a923cf4b}\label{Patient_8h_af70a8296b03c1b78ccbfecae3cf9a98fa3d0f80fb2b9048692030c544a923cf4b}} 
+A\+T\+T\+E\+N\+D\+\_\+\+P\+S\+Y\+C\+H\+O\+\_\+\+H\+O\+UR&Tipo de evento en que el paciente asiste a una hora de atención psicológica agendada \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171}\label{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171}} 
+\index{Patient.h@{Patient.h}!RiskCategories@{RiskCategories}}
+\index{RiskCategories@{RiskCategories}!Patient.h@{Patient.h}}
+\doxysubsubsection{\texorpdfstring{RiskCategories}{RiskCategories}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171}{Risk\+Categories}}}
+
+
+
+Enum que define las categorías de riesgos y sus valores. 
+
+\begin{DoxyEnumFields}{Valores de enumeraciones}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HIGH@{HIGH}!Patient.h@{Patient.h}}\index{Patient.h@{Patient.h}!HIGH@{HIGH}}}\mbox{\Hypertarget{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171a0c3a1dacf94061154b3ee354359c5893}\label{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171a0c3a1dacf94061154b3ee354359c5893}} 
+H\+I\+GH&Riesgo alto \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MEDIUM@{MEDIUM}!Patient.h@{Patient.h}}\index{Patient.h@{Patient.h}!MEDIUM@{MEDIUM}}}\mbox{\Hypertarget{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171a5340ec7ecef6cc3886684a3bd3450d64}\label{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171a5340ec7ecef6cc3886684a3bd3450d64}} 
+M\+E\+D\+I\+UM&Riesgo moderado \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOW@{LOW}!Patient.h@{Patient.h}}\index{Patient.h@{Patient.h}!LOW@{LOW}}}\mbox{\Hypertarget{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171a6a226f4143ca3b18999551694cdb72a8}\label{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171a6a226f4143ca3b18999551694cdb72a8}} 
+L\+OW&Riesgo bajo \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNDEFINED@{UNDEFINED}!Patient.h@{Patient.h}}\index{Patient.h@{Patient.h}!UNDEFINED@{UNDEFINED}}}\mbox{\Hypertarget{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171a605159e8a4c32319fd69b5d151369d93}\label{Patient_8h_aa32e06bd22eb6613ddf80b61f9f64171a605159e8a4c32319fd69b5d151369d93}} 
+U\+N\+D\+E\+F\+I\+N\+ED&No definido \\
+\hline
+
+\end{DoxyEnumFields}

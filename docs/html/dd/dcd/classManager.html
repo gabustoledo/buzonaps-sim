@@ -68,6 +68,11 @@ $(function() {
 <div class="title">Referencia de la Clase Manager</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Clase que representa al agente de tipo gestor de casos.  
+ <a href="../../dd/dcd/classManager.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d1/da0/Manager_8h_source.html">Manager.h</a>&gt;</code></p>
 <div class="dynheader">
 Diagrama de herencias de Manager</div>
 <div class="dyncontent">
@@ -83,45 +88,57 @@ Diagrama de colaboración para Manager:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:a463a4d434ef93d3ad47aa166d4c31ba6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dcd/classManager.html#a463a4d434ef93d3ad47aa166d4c31ba6">Manager</a> (<a class="el" href="../../da/d40/classCesfam.html">Cesfam</a> *_cesfam, vector&lt; <a class="el" href="../../d2/de8/classPatient.html">Patient</a> * &gt; _patients, <a class="el" href="../../d2/de0/classEventList.html">EventList</a> *_event_list)</td></tr>
-<tr class="memdesc:a463a4d434ef93d3ad47aa166d4c31ba6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="../../dd/dcd/classManager.html">Manager</a> object.  <a href="../../dd/dcd/classManager.html#a463a4d434ef93d3ad47aa166d4c31ba6">Más...</a><br /></td></tr>
-<tr class="separator:a463a4d434ef93d3ad47aa166d4c31ba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2dce1723f8fbac362c0890779fc9324d"><td class="memItemLeft" align="right" valign="top"><a id="a2dce1723f8fbac362c0890779fc9324d"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getId</b> ()</td></tr>
+<tr class="memitem:abdad8f4b9cd67bef278a048276461739"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dcd/classManager.html#abdad8f4b9cd67bef278a048276461739">Manager</a> (<a class="el" href="../../da/d40/classCesfam.html">Cesfam</a> *_cesfam, <a class="el" href="../../d2/de0/classEventList.html">EventList</a> *_event_list, <a class="el" href="../../dd/d2d/classSystem.html">System</a> *_system, int _location)</td></tr>
+<tr class="memdesc:abdad8f4b9cd67bef278a048276461739"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construye un nuevo objeto <a class="el" href="../../dd/dcd/classManager.html" title="Clase que representa al agente de tipo gestor de casos.">Manager</a>.  <a href="../../dd/dcd/classManager.html#abdad8f4b9cd67bef278a048276461739">Más...</a><br /></td></tr>
+<tr class="separator:abdad8f4b9cd67bef278a048276461739"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dce1723f8fbac362c0890779fc9324d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dcd/classManager.html#a2dce1723f8fbac362c0890779fc9324d">getId</a> ()</td></tr>
+<tr class="memdesc:a2dce1723f8fbac362c0890779fc9324d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el identificador del gestor en la simulación.  <a href="../../dd/dcd/classManager.html#a2dce1723f8fbac362c0890779fc9324d">Más...</a><br /></td></tr>
 <tr class="separator:a2dce1723f8fbac362c0890779fc9324d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af22766a12dab3517c29ee06d2145f846"><td class="memItemLeft" align="right" valign="top"><a id="af22766a12dab3517c29ee06d2145f846"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>processEvent</b> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e) override</td></tr>
+<tr class="memitem:a3cb33ac7be5c4ed4ad012c05d2bc56b1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dcd/classManager.html#a3cb33ac7be5c4ed4ad012c05d2bc56b1">getLocation</a> ()</td></tr>
+<tr class="memdesc:a3cb33ac7be5c4ed4ad012c05d2bc56b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la ubicación del gestor.  <a href="../../dd/dcd/classManager.html#a3cb33ac7be5c4ed4ad012c05d2bc56b1">Más...</a><br /></td></tr>
+<tr class="separator:a3cb33ac7be5c4ed4ad012c05d2bc56b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afed01e6fc4fbdd4412b2671fc213bcbd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dcd/classManager.html#afed01e6fc4fbdd4412b2671fc213bcbd">addPatient</a> (<a class="el" href="../../d2/de8/classPatient.html">Patient</a> *)</td></tr>
+<tr class="memdesc:afed01e6fc4fbdd4412b2671fc213bcbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega un paciente al mapa de pacientes.  <a href="../../dd/dcd/classManager.html#afed01e6fc4fbdd4412b2671fc213bcbd">Más...</a><br /></td></tr>
+<tr class="separator:afed01e6fc4fbdd4412b2671fc213bcbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a392c226238e03116bb03459fc4c84875"><td class="memItemLeft" align="right" valign="top">map&lt; <a class="el" href="../../d2/de8/classPatient.html">Patient</a> *, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dcd/classManager.html#a392c226238e03116bb03459fc4c84875">getPatients</a> ()</td></tr>
+<tr class="memdesc:a392c226238e03116bb03459fc4c84875"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el mapa de pacientes.  <a href="../../dd/dcd/classManager.html#a392c226238e03116bb03459fc4c84875">Más...</a><br /></td></tr>
+<tr class="separator:a392c226238e03116bb03459fc4c84875"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af22766a12dab3517c29ee06d2145f846"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dcd/classManager.html#af22766a12dab3517c29ee06d2145f846">processEvent</a> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e) override</td></tr>
+<tr class="memdesc:af22766a12dab3517c29ee06d2145f846"><td class="mdescLeft">&#160;</td><td class="mdescRight">Genera el procesamiento completo de un evento (contiene a los demás métodos que procesan eventos)  <a href="../../dd/dcd/classManager.html#af22766a12dab3517c29ee06d2145f846">Más...</a><br /></td></tr>
 <tr class="separator:af22766a12dab3517c29ee06d2145f846"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a7272bbc053f036b63c15798e381bca"><td class="memItemLeft" align="right" valign="top"><a id="a8a7272bbc053f036b63c15798e381bca"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>processAskConsent</b> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memitem:a8a7272bbc053f036b63c15798e381bca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dcd/classManager.html#a8a7272bbc053f036b63c15798e381bca">processAskConsent</a> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memdesc:a8a7272bbc053f036b63c15798e381bca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procesa un evento tipo ASK_CONSENT.  <a href="../../dd/dcd/classManager.html#a8a7272bbc053f036b63c15798e381bca">Más...</a><br /></td></tr>
 <tr class="separator:a8a7272bbc053f036b63c15798e381bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2efa342b5888b568756e647b6519e44c"><td class="memItemLeft" align="right" valign="top"><a id="a2efa342b5888b568756e647b6519e44c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>processPreClassifyClinicalRisk</b> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memitem:a2efa342b5888b568756e647b6519e44c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dcd/classManager.html#a2efa342b5888b568756e647b6519e44c">processPreClassifyClinicalRisk</a> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memdesc:a2efa342b5888b568756e647b6519e44c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procesa un evento tipo PRE_CLASSIFY_CLINICAL_RISK.  <a href="../../dd/dcd/classManager.html#a2efa342b5888b568756e647b6519e44c">Más...</a><br /></td></tr>
 <tr class="separator:a2efa342b5888b568756e647b6519e44c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a527052c76386a16c4faa7ef2fd658a18"><td class="memItemLeft" align="right" valign="top"><a id="a527052c76386a16c4faa7ef2fd658a18"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>processPreClassifySocialRisk</b> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memitem:a527052c76386a16c4faa7ef2fd658a18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dcd/classManager.html#a527052c76386a16c4faa7ef2fd658a18">processPreClassifySocialRisk</a> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memdesc:a527052c76386a16c4faa7ef2fd658a18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procesa un evento tipo PRE_CLASSIFY_SOCIAL_RISK.  <a href="../../dd/dcd/classManager.html#a527052c76386a16c4faa7ef2fd658a18">Más...</a><br /></td></tr>
 <tr class="separator:a527052c76386a16c4faa7ef2fd658a18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc07368fdbc96e6db7b250a9a6a7cade"><td class="memItemLeft" align="right" valign="top"><a id="acc07368fdbc96e6db7b250a9a6a7cade"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>processReEvaluateLowRisk</b> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memitem:acc07368fdbc96e6db7b250a9a6a7cade"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dcd/classManager.html#acc07368fdbc96e6db7b250a9a6a7cade">processReEvaluateLowRisk</a> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memdesc:acc07368fdbc96e6db7b250a9a6a7cade"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procesa un evento tipo RE_EVALUATE_LOW_RISK.  <a href="../../dd/dcd/classManager.html#acc07368fdbc96e6db7b250a9a6a7cade">Más...</a><br /></td></tr>
 <tr class="separator:acc07368fdbc96e6db7b250a9a6a7cade"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd46a00dd2d7b44bdc4949a4877aa438"><td class="memItemLeft" align="right" valign="top"><a id="abd46a00dd2d7b44bdc4949a4877aa438"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>processReEvaluateManaged</b> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memitem:abd46a00dd2d7b44bdc4949a4877aa438"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dcd/classManager.html#abd46a00dd2d7b44bdc4949a4877aa438">processReEvaluateManaged</a> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memdesc:abd46a00dd2d7b44bdc4949a4877aa438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procesa un evento tipo RE_EVALUATE_MANAGED.  <a href="../../dd/dcd/classManager.html#abd46a00dd2d7b44bdc4949a4877aa438">Más...</a><br /></td></tr>
 <tr class="separator:abd46a00dd2d7b44bdc4949a4877aa438"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7973ff215a2fb4f65e1eeb01ecbaa56c"><td class="memItemLeft" align="right" valign="top"><a id="a7973ff215a2fb4f65e1eeb01ecbaa56c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>processManagePatient</b> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memitem:a7973ff215a2fb4f65e1eeb01ecbaa56c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dcd/classManager.html#a7973ff215a2fb4f65e1eeb01ecbaa56c">processManagePatient</a> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memdesc:a7973ff215a2fb4f65e1eeb01ecbaa56c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procesa un evento tipo MANAGE_PATIENT.  <a href="../../dd/dcd/classManager.html#a7973ff215a2fb4f65e1eeb01ecbaa56c">Más...</a><br /></td></tr>
 <tr class="separator:a7973ff215a2fb4f65e1eeb01ecbaa56c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61bbfba83a2e3079099fa81cf2a8ae7e"><td class="memItemLeft" align="right" valign="top"><a id="a61bbfba83a2e3079099fa81cf2a8ae7e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>processMedicalHour</b> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memitem:a61bbfba83a2e3079099fa81cf2a8ae7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dcd/classManager.html#a61bbfba83a2e3079099fa81cf2a8ae7e">processMedicalHour</a> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memdesc:a61bbfba83a2e3079099fa81cf2a8ae7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procesa un evento tipo MANAGE_MEDICAL_HOUR.  <a href="../../dd/dcd/classManager.html#a61bbfba83a2e3079099fa81cf2a8ae7e">Más...</a><br /></td></tr>
 <tr class="separator:a61bbfba83a2e3079099fa81cf2a8ae7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bc74b6b4d1af63e20e18b3f6d94dfca"><td class="memItemLeft" align="right" valign="top"><a id="a0bc74b6b4d1af63e20e18b3f6d94dfca"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>processTestHour</b> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memitem:a0bc74b6b4d1af63e20e18b3f6d94dfca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dcd/classManager.html#a0bc74b6b4d1af63e20e18b3f6d94dfca">processTestHour</a> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memdesc:a0bc74b6b4d1af63e20e18b3f6d94dfca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procesa un evento tipo MANAGE_TEST_HOUR.  <a href="../../dd/dcd/classManager.html#a0bc74b6b4d1af63e20e18b3f6d94dfca">Más...</a><br /></td></tr>
 <tr class="separator:a0bc74b6b4d1af63e20e18b3f6d94dfca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a340e3be2aab7c01eb00e6e93c7d594fc"><td class="memItemLeft" align="right" valign="top"><a id="a340e3be2aab7c01eb00e6e93c7d594fc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>processSocialHour</b> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memitem:a340e3be2aab7c01eb00e6e93c7d594fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dcd/classManager.html#a340e3be2aab7c01eb00e6e93c7d594fc">processSocialHour</a> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memdesc:a340e3be2aab7c01eb00e6e93c7d594fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procesa un evento tipo MANAGE_SOCIAL_HOUR.  <a href="../../dd/dcd/classManager.html#a340e3be2aab7c01eb00e6e93c7d594fc">Más...</a><br /></td></tr>
 <tr class="separator:a340e3be2aab7c01eb00e6e93c7d594fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac01b19a7cd7d2ca87539b8d56bc96077"><td class="memItemLeft" align="right" valign="top"><a id="ac01b19a7cd7d2ca87539b8d56bc96077"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>processPsychoHour</b> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memitem:ac01b19a7cd7d2ca87539b8d56bc96077"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dcd/classManager.html#ac01b19a7cd7d2ca87539b8d56bc96077">processPsychoHour</a> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memdesc:ac01b19a7cd7d2ca87539b8d56bc96077"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procesa un evento tipo MANAGE_PSYCHO_HOUR.  <a href="../../dd/dcd/classManager.html#ac01b19a7cd7d2ca87539b8d56bc96077">Más...</a><br /></td></tr>
 <tr class="separator:ac01b19a7cd7d2ca87539b8d56bc96077"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2f68d3efdf941ce5f104c5591de72b4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dcd/classManager.html#aa2f68d3efdf941ce5f104c5591de72b4">outOfTime</a> () override</td></tr>
+<tr class="memdesc:aa2f68d3efdf941ce5f104c5591de72b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método que indica la cantidad de horas que faltan para el inicio de la jornada de un agente, retorna 0 si el agente se encuentra dentro del horario de su jornada.  <a href="../../dd/dcd/classManager.html#aa2f68d3efdf941ce5f104c5591de72b4">Más...</a><br /></td></tr>
+<tr class="separator:aa2f68d3efdf941ce5f104c5591de72b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Otros miembros heredados</h2></td></tr>
@@ -129,10 +146,14 @@ Otros miembros heredados</h2></td></tr>
 <tr class="memitem:a615cf476ca31329b0722f692b3169e5b inherit pro_attribs_classAgent"><td class="memItemLeft" align="right" valign="top"><a id="a615cf476ca31329b0722f692b3169e5b"></a>
 <a class="el" href="../../d2/de0/classEventList.html">EventList</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>event_list</b></td></tr>
 <tr class="separator:a615cf476ca31329b0722f692b3169e5b inherit pro_attribs_classAgent"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9143d19be77c7d33db6eeb7583ec1095 inherit pro_attribs_classAgent"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d2d/classSystem.html">System</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dfe/classAgent.html#a9143d19be77c7d33db6eeb7583ec1095">system</a></td></tr>
+<tr class="separator:a9143d19be77c7d33db6eeb7583ec1095 inherit pro_attribs_classAgent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentación del constructor y destructor</h2>
-<a id="a463a4d434ef93d3ad47aa166d4c31ba6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a463a4d434ef93d3ad47aa166d4c31ba6">&#9670;&nbsp;</a></span>Manager()</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Clase que representa al agente de tipo gestor de casos. </p>
+</div><h2 class="groupheader">Documentación del constructor y destructor</h2>
+<a id="abdad8f4b9cd67bef278a048276461739"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdad8f4b9cd67bef278a048276461739">&#9670;&nbsp;</a></span>Manager()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -146,14 +167,20 @@ Otros miembros heredados</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">vector&lt; <a class="el" href="../../d2/de8/classPatient.html">Patient</a> * &gt;&#160;</td>
-          <td class="paramname"><em>_patients</em>, </td>
+          <td class="paramtype"><a class="el" href="../../d2/de0/classEventList.html">EventList</a> *&#160;</td>
+          <td class="paramname"><em>_event_list</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d2/de0/classEventList.html">EventList</a> *&#160;</td>
-          <td class="paramname"><em>_event_list</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../dd/d2d/classSystem.html">System</a> *&#160;</td>
+          <td class="paramname"><em>_system</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_location</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -163,12 +190,420 @@ Otros miembros heredados</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="../../dd/dcd/classManager.html">Manager</a> object. </p>
+<p>Construye un nuevo objeto <a class="el" href="../../dd/dcd/classManager.html" title="Clase que representa al agente de tipo gestor de casos.">Manager</a>. </p>
+<p>Número que representa la ubicación del gestor </p><dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_cesfam</td><td>Puntero al <a class="el" href="../../da/d40/classCesfam.html" title="Clase que representa a un CESFAM en la simulación.">Cesfam</a> al que pertenece el gestor </td></tr>
+    <tr><td class="paramname">_event_list</td><td>Puntero a la lista de eventos de la simulación </td></tr>
+    <tr><td class="paramname">_system</td><td>Puntero al sistema de la simulación </td></tr>
+    <tr><td class="paramname">_location</td><td>Número que representa la ubicación del gestor </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="afed01e6fc4fbdd4412b2671fc213bcbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afed01e6fc4fbdd4412b2671fc213bcbd">&#9670;&nbsp;</a></span>addPatient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Manager::addPatient </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d2/de8/classPatient.html">Patient</a> *&#160;</td>
+          <td class="paramname"><em>patient</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Agrega un paciente al mapa de pacientes. </p>
+
+</div>
+</div>
+<a id="a2dce1723f8fbac362c0890779fc9324d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dce1723f8fbac362c0890779fc9324d">&#9670;&nbsp;</a></span>getId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Manager::getId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene el identificador del gestor en la simulación. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="a3cb33ac7be5c4ed4ad012c05d2bc56b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cb33ac7be5c4ed4ad012c05d2bc56b1">&#9670;&nbsp;</a></span>getLocation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Manager::getLocation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene la ubicación del gestor. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="a392c226238e03116bb03459fc4c84875"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a392c226238e03116bb03459fc4c84875">&#9670;&nbsp;</a></span>getPatients()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">map&lt; <a class="el" href="../../d2/de8/classPatient.html">Patient</a> *, bool &gt; Manager::getPatients </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene el mapa de pacientes. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>map&lt;Patient *, bool&gt; </dd></dl>
+
+</div>
+</div>
+<a id="aa2f68d3efdf941ce5f104c5591de72b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2f68d3efdf941ce5f104c5591de72b4">&#9670;&nbsp;</a></span>outOfTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Manager::outOfTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Método que indica la cantidad de horas que faltan para el inicio de la jornada de un agente, retorna 0 si el agente se encuentra dentro del horario de su jornada. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>double </dd></dl>
+
+<p>Reimplementado de <a class="el" href="../../d8/dfe/classAgent.html#a01515fade59b2bdefde8221b44b87106">Agent</a>.</p>
+
+</div>
+</div>
+<a id="a8a7272bbc053f036b63c15798e381bca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a7272bbc053f036b63c15798e381bca">&#9670;&nbsp;</a></span>processAskConsent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Manager::processAskConsent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d5/da5/classEvent.html">Event</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Procesa un evento tipo ASK_CONSENT. </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_cesfam</td><td></td></tr>
-    <tr><td class="paramname">_patients</td><td></td></tr>
-    <tr><td class="paramname">_event_list</td><td></td></tr>
+    <tr><td class="paramname">e</td><td>El puntero al evento a procesar </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af22766a12dab3517c29ee06d2145f846"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af22766a12dab3517c29ee06d2145f846">&#9670;&nbsp;</a></span>processEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Manager::processEvent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d5/da5/classEvent.html">Event</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Genera el procesamiento completo de un evento (contiene a los demás métodos que procesan eventos) </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>El puntero al evento a procesar </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplementado de <a class="el" href="../../d8/dfe/classAgent.html#a93d1897fbaff53a2387e03307e8db44f">Agent</a>.</p>
+
+</div>
+</div>
+<a id="a7973ff215a2fb4f65e1eeb01ecbaa56c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7973ff215a2fb4f65e1eeb01ecbaa56c">&#9670;&nbsp;</a></span>processManagePatient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Manager::processManagePatient </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d5/da5/classEvent.html">Event</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Procesa un evento tipo MANAGE_PATIENT. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>El puntero al evento a procesar </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a61bbfba83a2e3079099fa81cf2a8ae7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61bbfba83a2e3079099fa81cf2a8ae7e">&#9670;&nbsp;</a></span>processMedicalHour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Manager::processMedicalHour </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d5/da5/classEvent.html">Event</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Procesa un evento tipo MANAGE_MEDICAL_HOUR. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>El puntero al evento a procesar </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2efa342b5888b568756e647b6519e44c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2efa342b5888b568756e647b6519e44c">&#9670;&nbsp;</a></span>processPreClassifyClinicalRisk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Manager::processPreClassifyClinicalRisk </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d5/da5/classEvent.html">Event</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Procesa un evento tipo PRE_CLASSIFY_CLINICAL_RISK. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>El puntero al evento a procesar </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a527052c76386a16c4faa7ef2fd658a18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a527052c76386a16c4faa7ef2fd658a18">&#9670;&nbsp;</a></span>processPreClassifySocialRisk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Manager::processPreClassifySocialRisk </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d5/da5/classEvent.html">Event</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Procesa un evento tipo PRE_CLASSIFY_SOCIAL_RISK. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>El puntero al evento a procesar </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac01b19a7cd7d2ca87539b8d56bc96077"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac01b19a7cd7d2ca87539b8d56bc96077">&#9670;&nbsp;</a></span>processPsychoHour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Manager::processPsychoHour </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d5/da5/classEvent.html">Event</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Procesa un evento tipo MANAGE_PSYCHO_HOUR. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>El puntero al evento a procesar </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acc07368fdbc96e6db7b250a9a6a7cade"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc07368fdbc96e6db7b250a9a6a7cade">&#9670;&nbsp;</a></span>processReEvaluateLowRisk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Manager::processReEvaluateLowRisk </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d5/da5/classEvent.html">Event</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Procesa un evento tipo RE_EVALUATE_LOW_RISK. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>El puntero al evento a procesar </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abd46a00dd2d7b44bdc4949a4877aa438"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd46a00dd2d7b44bdc4949a4877aa438">&#9670;&nbsp;</a></span>processReEvaluateManaged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Manager::processReEvaluateManaged </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d5/da5/classEvent.html">Event</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Procesa un evento tipo RE_EVALUATE_MANAGED. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>El puntero al evento a procesar </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a340e3be2aab7c01eb00e6e93c7d594fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a340e3be2aab7c01eb00e6e93c7d594fc">&#9670;&nbsp;</a></span>processSocialHour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Manager::processSocialHour </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d5/da5/classEvent.html">Event</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Procesa un evento tipo MANAGE_SOCIAL_HOUR. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>El puntero al evento a procesar </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0bc74b6b4d1af63e20e18b3f6d94dfca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bc74b6b4d1af63e20e18b3f6d94dfca">&#9670;&nbsp;</a></span>processTestHour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Manager::processTestHour </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d5/da5/classEvent.html">Event</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Procesa un evento tipo MANAGE_TEST_HOUR. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>El puntero al evento a procesar </td></tr>
   </table>
   </dd>
 </dl>

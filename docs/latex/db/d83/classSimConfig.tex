@@ -1,0 +1,86 @@
+\hypertarget{classSimConfig}{}\doxysection{Referencia de la Clase Sim\+Config}
+\label{classSimConfig}\index{SimConfig@{SimConfig}}
+
+
+Clase que contiene los parámetros de configuración de la simulación.  
+
+
+
+
+{\ttfamily \#include $<$Sim\+Config.\+h$>$}
+
+\doxysubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSimConfig_a359dbbd3312713673fbb10ec6752e3f9}{Sim\+Config}} (string filepath)
+\begin{DoxyCompactList}\small\item\em Construct a new Sim Config object. \end{DoxyCompactList}\item 
+json \mbox{\hyperlink{classSimConfig_ab63207902d4c0deb86da71cddfd4467d}{get\+Params}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el json con los parámetros de configuración de la simulación. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos estáticos}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classSimConfig}{Sim\+Config}} $\ast$ \mbox{\hyperlink{classSimConfig_a472aef760a1a7206b1dd370292184991}{get\+Instance}} (string filepath)
+\begin{DoxyCompactList}\small\item\em Obtiene la instancia \mbox{\hyperlink{classSimConfig}{Sim\+Config}} si no es nula, sino la crea. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase que contiene los parámetros de configuración de la simulación. 
+
+
+
+\doxysubsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{classSimConfig_a359dbbd3312713673fbb10ec6752e3f9}\label{classSimConfig_a359dbbd3312713673fbb10ec6752e3f9}} 
+\index{SimConfig@{SimConfig}!SimConfig@{SimConfig}}
+\index{SimConfig@{SimConfig}!SimConfig@{SimConfig}}
+\doxysubsubsection{\texorpdfstring{SimConfig()}{SimConfig()}}
+{\footnotesize\ttfamily Sim\+Config\+::\+Sim\+Config (\begin{DoxyParamCaption}\item[{string}]{filepath }\end{DoxyParamCaption})}
+
+
+
+Construct a new Sim Config object. 
+
+json con los parámetros de configuración de la simulación 
+\begin{DoxyParams}{Parámetros}
+{\em filepath} & La ruta del archivo de configuración desde donde se cargarán los parámetros \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{classSimConfig_a472aef760a1a7206b1dd370292184991}\label{classSimConfig_a472aef760a1a7206b1dd370292184991}} 
+\index{SimConfig@{SimConfig}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!SimConfig@{SimConfig}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSimConfig}{Sim\+Config}} $\ast$ Sim\+Config\+::get\+Instance (\begin{DoxyParamCaption}\item[{string}]{filepath }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Obtiene la instancia \mbox{\hyperlink{classSimConfig}{Sim\+Config}} si no es nula, sino la crea. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em filepath} & La ruta del archivo de configuración desde donde se cargarán los parámetros \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Sim\+Config$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSimConfig_ab63207902d4c0deb86da71cddfd4467d}\label{classSimConfig_ab63207902d4c0deb86da71cddfd4467d}} 
+\index{SimConfig@{SimConfig}!getParams@{getParams}}
+\index{getParams@{getParams}!SimConfig@{SimConfig}}
+\doxysubsubsection{\texorpdfstring{getParams()}{getParams()}}
+{\footnotesize\ttfamily json Sim\+Config\+::get\+Params (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el json con los parámetros de configuración de la simulación. 
+
+\begin{DoxyReturn}{Devuelve}
+json 
+\end{DoxyReturn}
+
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+includes/\mbox{\hyperlink{SimConfig_8h}{Sim\+Config.\+h}}\item 
+src/Sim\+Config.\+cc\end{DoxyCompactItemize}

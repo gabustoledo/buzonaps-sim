@@ -1,20 +1,119 @@
 \hypertarget{classSystem}{}\doxysection{Referencia de la Clase System}
 \label{classSystem}\index{System@{System}}
+
+
+Clase que representa al sistema de la simulación.  
+
+
+
+
+{\ttfamily \#include $<$System.\+h$>$}
+
 \doxysubsection*{Métodos públicos}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classSystem_acdd32b91da2fd84830d89346c220656c}{System}} (\mbox{\hyperlink{classEventList}{Event\+List}} $\ast$\+\_\+event\+\_\+list)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classSystem}{System}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_a333c0ac852d9cb10bf42275af3316e5f}{log}} (json obj)
+\begin{DoxyCompactList}\small\item\em Agrega un log (datos de un evento resuelto) al archivo de trazas detalladas de la simulación. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_af3551f0224992c54731036eded4c07d1}{initialize\+System}} (int cesfam\+\_\+amount, int manager\+\_\+amount, int patients\+\_\+amount, string out\+\_\+filename, string time)
+\begin{DoxyCompactList}\small\item\em Inicializa el sistema completo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_a2cc008bd233f8ab514f1075efe82471c}{process\+Event}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classSystem_a3be70bb338e3f062f821173fd15680d0}{$\sim$\+System}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classSystem}{System}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase que representa al sistema de la simulación. 
+
+
+
+\doxysubsection{Documentación del constructor y destructor}
 \mbox{\Hypertarget{classSystem_acdd32b91da2fd84830d89346c220656c}\label{classSystem_acdd32b91da2fd84830d89346c220656c}} 
-{\bfseries System} (\mbox{\hyperlink{classEventList}{Event\+List}} $\ast$\+\_\+event\+\_\+list)
-\item 
-\mbox{\Hypertarget{classSystem_a9cb069a688573c7098e46e6b2a6ff0aa}\label{classSystem_a9cb069a688573c7098e46e6b2a6ff0aa}} 
-void {\bfseries initialize\+System} (int patients\+\_\+amount)
-\item 
+\index{System@{System}!System@{System}}
+\index{System@{System}!System@{System}}
+\doxysubsubsection{\texorpdfstring{System()}{System()}}
+{\footnotesize\ttfamily System\+::\+System (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventList}{Event\+List}} $\ast$}]{\+\_\+event\+\_\+list }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classSystem}{System}} object. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em \+\_\+event\+\_\+list} & Puntero a la lista de eventos de la simulación \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSystem_a3be70bb338e3f062f821173fd15680d0}\label{classSystem_a3be70bb338e3f062f821173fd15680d0}} 
+\index{System@{System}!````~System@{$\sim$System}}
+\index{````~System@{$\sim$System}!System@{System}}
+\doxysubsubsection{\texorpdfstring{$\sim$System()}{~System()}}
+{\footnotesize\ttfamily System\+::$\sim$\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroy the \mbox{\hyperlink{classSystem}{System}} object. 
+
+
+
+\doxysubsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{classSystem_af3551f0224992c54731036eded4c07d1}\label{classSystem_af3551f0224992c54731036eded4c07d1}} 
+\index{System@{System}!initializeSystem@{initializeSystem}}
+\index{initializeSystem@{initializeSystem}!System@{System}}
+\doxysubsubsection{\texorpdfstring{initializeSystem()}{initializeSystem()}}
+{\footnotesize\ttfamily void System\+::initialize\+System (\begin{DoxyParamCaption}\item[{int}]{cesfam\+\_\+amount,  }\item[{int}]{manager\+\_\+amount,  }\item[{int}]{patients\+\_\+amount,  }\item[{string}]{out\+\_\+filename,  }\item[{string}]{time }\end{DoxyParamCaption})}
+
+
+
+Inicializa el sistema completo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em cesfam\+\_\+amount} & Cantidad de C\+E\+S\+F\+AM en la simulacion \\
+\hline
+{\em manager\+\_\+amount} & Cantidad de gestores por C\+E\+S\+F\+AM en la simulación \\
+\hline
+{\em patients\+\_\+amount} & Cantidad de pacientes en la simulación \\
+\hline
+{\em out\+\_\+filename} & Indentificador extra (aparte del timestamp) para nombre del archivo de salida con las trazas detalladas \\
+\hline
+{\em time} & Timestamp de inicio de la simulación en string \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSystem_a333c0ac852d9cb10bf42275af3316e5f}\label{classSystem_a333c0ac852d9cb10bf42275af3316e5f}} 
+\index{System@{System}!log@{log}}
+\index{log@{log}!System@{System}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}}
+{\footnotesize\ttfamily void System\+::log (\begin{DoxyParamCaption}\item[{json}]{obj }\end{DoxyParamCaption})}
+
+
+
+Agrega un log (datos de un evento resuelto) al archivo de trazas detalladas de la simulación. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em obj} & El objeto json que describe a un evento resuelto \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classSystem_a2cc008bd233f8ab514f1075efe82471c}\label{classSystem_a2cc008bd233f8ab514f1075efe82471c}} 
-void {\bfseries process\+Event} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\end{DoxyCompactItemize}
+\index{System@{System}!processEvent@{processEvent}}
+\index{processEvent@{processEvent}!System@{System}}
+\doxysubsubsection{\texorpdfstring{processEvent()}{processEvent()}}
+{\footnotesize\ttfamily void System\+::process\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & Puntero al evento a procesar \\
+\hline
+\end{DoxyParams}
 
 
 La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
 \item 
-includes/System.\+h\item 
+includes/\mbox{\hyperlink{System_8h}{System.\+h}}\item 
 src/System.\+cc\end{DoxyCompactItemize}

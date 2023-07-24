@@ -68,43 +68,359 @@ $(function() {
 <div class="title">Referencia de la Clase Event</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Clase que representa un evento en la simulación.  
+ <a href="../../d5/da5/classEvent.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d6/d8d/Event_8h_source.html">Event.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:a93d8af1d50b34e98d4f98dff9623f09b"><td class="memItemLeft" align="right" valign="top"><a id="a93d8af1d50b34e98d4f98dff9623f09b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Event</b> (short _caller_type, int _caller_id, double _start_time, double _exec_time, short _event_type, <a class="el" href="../../d8/dfe/classAgent.html">Agent</a> *_caller_ptr, <a class="el" href="../../d8/dfe/classAgent.html">Agent</a> *_objective_ptr, <a class="el" href="../../d5/da5/classEvent.html">Event</a> *_next_event)</td></tr>
+<tr class="memitem:a93d8af1d50b34e98d4f98dff9623f09b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da5/classEvent.html#a93d8af1d50b34e98d4f98dff9623f09b">Event</a> (short _caller_type, int _caller_id, double _start_time, double _exec_time, short _event_type, <a class="el" href="../../d8/dfe/classAgent.html">Agent</a> *_caller_ptr, <a class="el" href="../../d8/dfe/classAgent.html">Agent</a> *_objective_ptr, <a class="el" href="../../d5/da5/classEvent.html">Event</a> *_next_event)</td></tr>
+<tr class="memdesc:a93d8af1d50b34e98d4f98dff9623f09b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construye un nuevo objeto <a class="el" href="../../d5/da5/classEvent.html" title="Clase que representa un evento en la simulación.">Event</a>.  <a href="../../d5/da5/classEvent.html#a93d8af1d50b34e98d4f98dff9623f09b">Más...</a><br /></td></tr>
 <tr class="separator:a93d8af1d50b34e98d4f98dff9623f09b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe39cd9cd7d74245923f7431f23ea7bd"><td class="memItemLeft" align="right" valign="top"><a id="abe39cd9cd7d74245923f7431f23ea7bd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setNextEvent</b> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memitem:a5a40dd4708297f7031e29b39e039ae10"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da5/classEvent.html#a5a40dd4708297f7031e29b39e039ae10">Event</a> ()</td></tr>
+<tr class="memdesc:a5a40dd4708297f7031e29b39e039ae10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="../../d5/da5/classEvent.html" title="Clase que representa un evento en la simulación.">Event</a> object.  <a href="../../d5/da5/classEvent.html#a5a40dd4708297f7031e29b39e039ae10">Más...</a><br /></td></tr>
+<tr class="separator:a5a40dd4708297f7031e29b39e039ae10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe39cd9cd7d74245923f7431f23ea7bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da5/classEvent.html#abe39cd9cd7d74245923f7431f23ea7bd">setNextEvent</a> (<a class="el" href="../../d5/da5/classEvent.html">Event</a> *e)</td></tr>
+<tr class="memdesc:abe39cd9cd7d74245923f7431f23ea7bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifica el puntero al siguiente evento.  <a href="../../d5/da5/classEvent.html#abe39cd9cd7d74245923f7431f23ea7bd">Más...</a><br /></td></tr>
 <tr class="separator:abe39cd9cd7d74245923f7431f23ea7bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb4ad939d954262401c967b29e76fb70"><td class="memItemLeft" align="right" valign="top"><a id="aeb4ad939d954262401c967b29e76fb70"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>getStartTime</b> ()</td></tr>
+<tr class="memitem:aeb4ad939d954262401c967b29e76fb70"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da5/classEvent.html#aeb4ad939d954262401c967b29e76fb70">getStartTime</a> ()</td></tr>
+<tr class="memdesc:aeb4ad939d954262401c967b29e76fb70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el valor del reloj de la simulación en que comienza el evento.  <a href="../../d5/da5/classEvent.html#aeb4ad939d954262401c967b29e76fb70">Más...</a><br /></td></tr>
 <tr class="separator:aeb4ad939d954262401c967b29e76fb70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57e19f50ddf2752b5a4508480f31573d"><td class="memItemLeft" align="right" valign="top"><a id="a57e19f50ddf2752b5a4508480f31573d"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>getExecTime</b> ()</td></tr>
+<tr class="memitem:a57e19f50ddf2752b5a4508480f31573d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da5/classEvent.html#a57e19f50ddf2752b5a4508480f31573d">getExecTime</a> ()</td></tr>
+<tr class="memdesc:a57e19f50ddf2752b5a4508480f31573d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la cantidad de tiempo que demora en efectuarse el evento.  <a href="../../d5/da5/classEvent.html#a57e19f50ddf2752b5a4508480f31573d">Más...</a><br /></td></tr>
 <tr class="separator:a57e19f50ddf2752b5a4508480f31573d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72121dab5e403605b1f0e0f82ca375f9"><td class="memItemLeft" align="right" valign="top"><a id="a72121dab5e403605b1f0e0f82ca375f9"></a>
-<a class="el" href="../../d5/da5/classEvent.html">Event</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getNextEvent</b> ()</td></tr>
+<tr class="memitem:a72121dab5e403605b1f0e0f82ca375f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/da5/classEvent.html">Event</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da5/classEvent.html#a72121dab5e403605b1f0e0f82ca375f9">getNextEvent</a> ()</td></tr>
+<tr class="memdesc:a72121dab5e403605b1f0e0f82ca375f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el puntero al siguiente evento.  <a href="../../d5/da5/classEvent.html#a72121dab5e403605b1f0e0f82ca375f9">Más...</a><br /></td></tr>
 <tr class="separator:a72121dab5e403605b1f0e0f82ca375f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9778dcd3c6f05268b44dc90996a6591"><td class="memItemLeft" align="right" valign="top"><a id="ad9778dcd3c6f05268b44dc90996a6591"></a>
-<a class="el" href="../../d8/dfe/classAgent.html">Agent</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getCallerPtr</b> ()</td></tr>
+<tr class="memitem:ad9778dcd3c6f05268b44dc90996a6591"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/dfe/classAgent.html">Agent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da5/classEvent.html#ad9778dcd3c6f05268b44dc90996a6591">getCallerPtr</a> ()</td></tr>
+<tr class="memdesc:ad9778dcd3c6f05268b44dc90996a6591"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el puntero al agente que generó el evento.  <a href="../../d5/da5/classEvent.html#ad9778dcd3c6f05268b44dc90996a6591">Más...</a><br /></td></tr>
 <tr class="separator:ad9778dcd3c6f05268b44dc90996a6591"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae831e4958d8f1dc74fbde9a987658485"><td class="memItemLeft" align="right" valign="top"><a id="ae831e4958d8f1dc74fbde9a987658485"></a>
-<a class="el" href="../../d8/dfe/classAgent.html">Agent</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getObjectivePtr</b> ()</td></tr>
+<tr class="memitem:ae831e4958d8f1dc74fbde9a987658485"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/dfe/classAgent.html">Agent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da5/classEvent.html#ae831e4958d8f1dc74fbde9a987658485">getObjectivePtr</a> ()</td></tr>
+<tr class="memdesc:ae831e4958d8f1dc74fbde9a987658485"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el puntero al agente que debe resolver el evento.  <a href="../../d5/da5/classEvent.html#ae831e4958d8f1dc74fbde9a987658485">Más...</a><br /></td></tr>
 <tr class="separator:ae831e4958d8f1dc74fbde9a987658485"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8ebef54680fab6442409adf7603303e"><td class="memItemLeft" align="right" valign="top"><a id="ae8ebef54680fab6442409adf7603303e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getCallerId</b> ()</td></tr>
+<tr class="memitem:ae8ebef54680fab6442409adf7603303e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da5/classEvent.html#ae8ebef54680fab6442409adf7603303e">getCallerId</a> ()</td></tr>
+<tr class="memdesc:ae8ebef54680fab6442409adf7603303e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el identificador del agente que generó el evento.  <a href="../../d5/da5/classEvent.html#ae8ebef54680fab6442409adf7603303e">Más...</a><br /></td></tr>
 <tr class="separator:ae8ebef54680fab6442409adf7603303e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96b97e367389e6ddc3da4768e2011c2f"><td class="memItemLeft" align="right" valign="top"><a id="a96b97e367389e6ddc3da4768e2011c2f"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getId</b> ()</td></tr>
+<tr class="memitem:a96b97e367389e6ddc3da4768e2011c2f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da5/classEvent.html#a96b97e367389e6ddc3da4768e2011c2f">getId</a> ()</td></tr>
+<tr class="memdesc:a96b97e367389e6ddc3da4768e2011c2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el identificador del evento.  <a href="../../d5/da5/classEvent.html#a96b97e367389e6ddc3da4768e2011c2f">Más...</a><br /></td></tr>
 <tr class="separator:a96b97e367389e6ddc3da4768e2011c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace2e66a43ab82b6907bdb36677e9b3b8"><td class="memItemLeft" align="right" valign="top"><a id="ace2e66a43ab82b6907bdb36677e9b3b8"></a>
-short&#160;</td><td class="memItemRight" valign="bottom"><b>getCallerType</b> ()</td></tr>
+<tr class="memitem:ace2e66a43ab82b6907bdb36677e9b3b8"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da5/classEvent.html#ace2e66a43ab82b6907bdb36677e9b3b8">getCallerType</a> ()</td></tr>
+<tr class="memdesc:ace2e66a43ab82b6907bdb36677e9b3b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el tipo de entidad que generó el evento.  <a href="../../d5/da5/classEvent.html#ace2e66a43ab82b6907bdb36677e9b3b8">Más...</a><br /></td></tr>
 <tr class="separator:ace2e66a43ab82b6907bdb36677e9b3b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a730bbfd042ebe29b7f04114d8ddb8f49"><td class="memItemLeft" align="right" valign="top"><a id="a730bbfd042ebe29b7f04114d8ddb8f49"></a>
-short&#160;</td><td class="memItemRight" valign="bottom"><b>getEventType</b> ()</td></tr>
+<tr class="memitem:a730bbfd042ebe29b7f04114d8ddb8f49"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/da5/classEvent.html#a730bbfd042ebe29b7f04114d8ddb8f49">getEventType</a> ()</td></tr>
+<tr class="memdesc:a730bbfd042ebe29b7f04114d8ddb8f49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el tipo de evento.  <a href="../../d5/da5/classEvent.html#a730bbfd042ebe29b7f04114d8ddb8f49">Más...</a><br /></td></tr>
 <tr class="separator:a730bbfd042ebe29b7f04114d8ddb8f49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Clase que representa un evento en la simulación. </p>
+</div><h2 class="groupheader">Documentación del constructor y destructor</h2>
+<a id="a93d8af1d50b34e98d4f98dff9623f09b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93d8af1d50b34e98d4f98dff9623f09b">&#9670;&nbsp;</a></span>Event() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Event::Event </td>
+          <td>(</td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>_caller_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_caller_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>_start_time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>_exec_time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>_event_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d8/dfe/classAgent.html">Agent</a> *&#160;</td>
+          <td class="paramname"><em>_caller_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d8/dfe/classAgent.html">Agent</a> *&#160;</td>
+          <td class="paramname"><em>_objective_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d5/da5/classEvent.html">Event</a> *&#160;</td>
+          <td class="paramname"><em>_next_event</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construye un nuevo objeto <a class="el" href="../../d5/da5/classEvent.html" title="Clase que representa un evento en la simulación.">Event</a>. </p>
+<p>Puntero al siguiente evento </p><dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_caller_type</td><td>Tipo de entidad que genera el evento </td></tr>
+    <tr><td class="paramname">_caller_id</td><td>Identificador de la entidad que genera el evento (actualmente para agentes) </td></tr>
+    <tr><td class="paramname">_start_time</td><td>Valor del reloj de la simulación cuando debe iniciar el evento </td></tr>
+    <tr><td class="paramname">_exec_time</td><td>Cantidad de tiempo que demora en efectuarse el evento </td></tr>
+    <tr><td class="paramname">_event_type</td><td>El tipo de evento </td></tr>
+    <tr><td class="paramname">_caller_ptr</td><td>Puntero al agente que genera el evento </td></tr>
+    <tr><td class="paramname">_objective_ptr</td><td>Puntero al agente que debe resolver el evento </td></tr>
+    <tr><td class="paramname">_next_event</td><td>Puntero al siguiente evento </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5a40dd4708297f7031e29b39e039ae10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a40dd4708297f7031e29b39e039ae10">&#9670;&nbsp;</a></span>Event() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Event::Event </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="../../d5/da5/classEvent.html" title="Clase que representa un evento en la simulación.">Event</a> object. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="ae8ebef54680fab6442409adf7603303e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8ebef54680fab6442409adf7603303e">&#9670;&nbsp;</a></span>getCallerId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Event::getCallerId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene el identificador del agente que generó el evento. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="ad9778dcd3c6f05268b44dc90996a6591"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9778dcd3c6f05268b44dc90996a6591">&#9670;&nbsp;</a></span>getCallerPtr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/dfe/classAgent.html">Agent</a> * Event::getCallerPtr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene el puntero al agente que generó el evento. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Agent* </dd></dl>
+
+</div>
+</div>
+<a id="ace2e66a43ab82b6907bdb36677e9b3b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace2e66a43ab82b6907bdb36677e9b3b8">&#9670;&nbsp;</a></span>getCallerType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short Event::getCallerType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene el tipo de entidad que generó el evento. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>short </dd></dl>
+
+</div>
+</div>
+<a id="a730bbfd042ebe29b7f04114d8ddb8f49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a730bbfd042ebe29b7f04114d8ddb8f49">&#9670;&nbsp;</a></span>getEventType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short Event::getEventType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene el tipo de evento. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>short </dd></dl>
+
+</div>
+</div>
+<a id="a57e19f50ddf2752b5a4508480f31573d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57e19f50ddf2752b5a4508480f31573d">&#9670;&nbsp;</a></span>getExecTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Event::getExecTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene la cantidad de tiempo que demora en efectuarse el evento. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>double </dd></dl>
+
+</div>
+</div>
+<a id="a96b97e367389e6ddc3da4768e2011c2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96b97e367389e6ddc3da4768e2011c2f">&#9670;&nbsp;</a></span>getId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Event::getId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene el identificador del evento. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="a72121dab5e403605b1f0e0f82ca375f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72121dab5e403605b1f0e0f82ca375f9">&#9670;&nbsp;</a></span>getNextEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/da5/classEvent.html">Event</a> * Event::getNextEvent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene el puntero al siguiente evento. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Event* </dd></dl>
+
+</div>
+</div>
+<a id="ae831e4958d8f1dc74fbde9a987658485"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae831e4958d8f1dc74fbde9a987658485">&#9670;&nbsp;</a></span>getObjectivePtr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/dfe/classAgent.html">Agent</a> * Event::getObjectivePtr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene el puntero al agente que debe resolver el evento. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Agent* </dd></dl>
+
+</div>
+</div>
+<a id="aeb4ad939d954262401c967b29e76fb70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb4ad939d954262401c967b29e76fb70">&#9670;&nbsp;</a></span>getStartTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Event::getStartTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene el valor del reloj de la simulación en que comienza el evento. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>double </dd></dl>
+
+</div>
+</div>
+<a id="abe39cd9cd7d74245923f7431f23ea7bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe39cd9cd7d74245923f7431f23ea7bd">&#9670;&nbsp;</a></span>setNextEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Event::setNextEvent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d5/da5/classEvent.html">Event</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Modifica el puntero al siguiente evento. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Puntero al siguiente evento </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>includes/<a class="el" href="../../d6/d8d/Event_8h_source.html">Event.h</a></li>
 <li>src/Event.cc</li>

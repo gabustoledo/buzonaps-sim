@@ -2,6 +2,15 @@
 \label{classManager}\index{Manager@{Manager}}
 
 
+Clase que representa al agente de tipo gestor de casos.  
+
+
+
+
+{\ttfamily \#include $<$Manager.\+h$>$}
+
+
+
 Diagrama de herencias de Manager
 % FIG 0
 
@@ -11,70 +20,311 @@ Diagrama de colaboración para Manager\+:
 \doxysubsection*{Métodos públicos}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classManager_a463a4d434ef93d3ad47aa166d4c31ba6}{Manager}} (\mbox{\hyperlink{classCesfam}{Cesfam}} $\ast$\+\_\+cesfam, vector$<$ \mbox{\hyperlink{classPatient}{Patient}} $\ast$ $>$ \+\_\+patients, \mbox{\hyperlink{classEventList}{Event\+List}} $\ast$\+\_\+event\+\_\+list)
-\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classManager}{Manager}} object. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classManager_a2dce1723f8fbac362c0890779fc9324d}\label{classManager_a2dce1723f8fbac362c0890779fc9324d}} 
-int {\bfseries get\+Id} ()
-\item 
-\mbox{\Hypertarget{classManager_af22766a12dab3517c29ee06d2145f846}\label{classManager_af22766a12dab3517c29ee06d2145f846}} 
-void {\bfseries process\+Event} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e) override
-\item 
-\mbox{\Hypertarget{classManager_a8a7272bbc053f036b63c15798e381bca}\label{classManager_a8a7272bbc053f036b63c15798e381bca}} 
-void {\bfseries process\+Ask\+Consent} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\item 
-\mbox{\Hypertarget{classManager_a2efa342b5888b568756e647b6519e44c}\label{classManager_a2efa342b5888b568756e647b6519e44c}} 
-void {\bfseries process\+Pre\+Classify\+Clinical\+Risk} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\item 
-\mbox{\Hypertarget{classManager_a527052c76386a16c4faa7ef2fd658a18}\label{classManager_a527052c76386a16c4faa7ef2fd658a18}} 
-void {\bfseries process\+Pre\+Classify\+Social\+Risk} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\item 
-\mbox{\Hypertarget{classManager_acc07368fdbc96e6db7b250a9a6a7cade}\label{classManager_acc07368fdbc96e6db7b250a9a6a7cade}} 
-void {\bfseries process\+Re\+Evaluate\+Low\+Risk} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\item 
-\mbox{\Hypertarget{classManager_abd46a00dd2d7b44bdc4949a4877aa438}\label{classManager_abd46a00dd2d7b44bdc4949a4877aa438}} 
-void {\bfseries process\+Re\+Evaluate\+Managed} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\item 
-\mbox{\Hypertarget{classManager_a7973ff215a2fb4f65e1eeb01ecbaa56c}\label{classManager_a7973ff215a2fb4f65e1eeb01ecbaa56c}} 
-void {\bfseries process\+Manage\+Patient} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\item 
-\mbox{\Hypertarget{classManager_a61bbfba83a2e3079099fa81cf2a8ae7e}\label{classManager_a61bbfba83a2e3079099fa81cf2a8ae7e}} 
-void {\bfseries process\+Medical\+Hour} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\item 
-\mbox{\Hypertarget{classManager_a0bc74b6b4d1af63e20e18b3f6d94dfca}\label{classManager_a0bc74b6b4d1af63e20e18b3f6d94dfca}} 
-void {\bfseries process\+Test\+Hour} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\item 
-\mbox{\Hypertarget{classManager_a340e3be2aab7c01eb00e6e93c7d594fc}\label{classManager_a340e3be2aab7c01eb00e6e93c7d594fc}} 
-void {\bfseries process\+Social\+Hour} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\item 
-\mbox{\Hypertarget{classManager_ac01b19a7cd7d2ca87539b8d56bc96077}\label{classManager_ac01b19a7cd7d2ca87539b8d56bc96077}} 
-void {\bfseries process\+Psycho\+Hour} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{classManager_abdad8f4b9cd67bef278a048276461739}{Manager}} (\mbox{\hyperlink{classCesfam}{Cesfam}} $\ast$\+\_\+cesfam, \mbox{\hyperlink{classEventList}{Event\+List}} $\ast$\+\_\+event\+\_\+list, \mbox{\hyperlink{classSystem}{System}} $\ast$\+\_\+system, int \+\_\+location)
+\begin{DoxyCompactList}\small\item\em Construye un nuevo objeto \mbox{\hyperlink{classManager}{Manager}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classManager_a2dce1723f8fbac362c0890779fc9324d}{get\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el identificador del gestor en la simulación. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classManager_a3cb33ac7be5c4ed4ad012c05d2bc56b1}{get\+Location}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene la ubicación del gestor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_afed01e6fc4fbdd4412b2671fc213bcbd}{add\+Patient}} (\mbox{\hyperlink{classPatient}{Patient}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Agrega un paciente al mapa de pacientes. \end{DoxyCompactList}\item 
+map$<$ \mbox{\hyperlink{classPatient}{Patient}} $\ast$, bool $>$ \mbox{\hyperlink{classManager_a392c226238e03116bb03459fc4c84875}{get\+Patients}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el mapa de pacientes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_af22766a12dab3517c29ee06d2145f846}{process\+Event}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e) override
+\begin{DoxyCompactList}\small\item\em Genera el procesamiento completo de un evento (contiene a los demás métodos que procesan eventos) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a8a7272bbc053f036b63c15798e381bca}{process\+Ask\+Consent}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento tipo A\+S\+K\+\_\+\+C\+O\+N\+S\+E\+NT. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a2efa342b5888b568756e647b6519e44c}{process\+Pre\+Classify\+Clinical\+Risk}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento tipo P\+R\+E\+\_\+\+C\+L\+A\+S\+S\+I\+F\+Y\+\_\+\+C\+L\+I\+N\+I\+C\+A\+L\+\_\+\+R\+I\+SK. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a527052c76386a16c4faa7ef2fd658a18}{process\+Pre\+Classify\+Social\+Risk}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento tipo P\+R\+E\+\_\+\+C\+L\+A\+S\+S\+I\+F\+Y\+\_\+\+S\+O\+C\+I\+A\+L\+\_\+\+R\+I\+SK. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_acc07368fdbc96e6db7b250a9a6a7cade}{process\+Re\+Evaluate\+Low\+Risk}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento tipo R\+E\+\_\+\+E\+V\+A\+L\+U\+A\+T\+E\+\_\+\+L\+O\+W\+\_\+\+R\+I\+SK. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_abd46a00dd2d7b44bdc4949a4877aa438}{process\+Re\+Evaluate\+Managed}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento tipo R\+E\+\_\+\+E\+V\+A\+L\+U\+A\+T\+E\+\_\+\+M\+A\+N\+A\+G\+ED. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a7973ff215a2fb4f65e1eeb01ecbaa56c}{process\+Manage\+Patient}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento tipo M\+A\+N\+A\+G\+E\+\_\+\+P\+A\+T\+I\+E\+NT. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a61bbfba83a2e3079099fa81cf2a8ae7e}{process\+Medical\+Hour}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento tipo M\+A\+N\+A\+G\+E\+\_\+\+M\+E\+D\+I\+C\+A\+L\+\_\+\+H\+O\+UR. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a0bc74b6b4d1af63e20e18b3f6d94dfca}{process\+Test\+Hour}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento tipo M\+A\+N\+A\+G\+E\+\_\+\+T\+E\+S\+T\+\_\+\+H\+O\+UR. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a340e3be2aab7c01eb00e6e93c7d594fc}{process\+Social\+Hour}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento tipo M\+A\+N\+A\+G\+E\+\_\+\+S\+O\+C\+I\+A\+L\+\_\+\+H\+O\+UR. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_ac01b19a7cd7d2ca87539b8d56bc96077}{process\+Psycho\+Hour}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Procesa un evento tipo M\+A\+N\+A\+G\+E\+\_\+\+P\+S\+Y\+C\+H\+O\+\_\+\+H\+O\+UR. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classManager_aa2f68d3efdf941ce5f104c5591de72b4}{out\+Of\+Time}} () override
+\begin{DoxyCompactList}\small\item\em Método que indica la cantidad de horas que faltan para el inicio de la jornada de un agente, retorna 0 si el agente se encuentra dentro del horario de su jornada. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Otros miembros heredados}
 
 
+\doxysubsection{Descripción detallada}
+Clase que representa al agente de tipo gestor de casos. 
+
+
+
 \doxysubsection{Documentación del constructor y destructor}
-\mbox{\Hypertarget{classManager_a463a4d434ef93d3ad47aa166d4c31ba6}\label{classManager_a463a4d434ef93d3ad47aa166d4c31ba6}} 
+\mbox{\Hypertarget{classManager_abdad8f4b9cd67bef278a048276461739}\label{classManager_abdad8f4b9cd67bef278a048276461739}} 
 \index{Manager@{Manager}!Manager@{Manager}}
 \index{Manager@{Manager}!Manager@{Manager}}
 \doxysubsubsection{\texorpdfstring{Manager()}{Manager()}}
-{\footnotesize\ttfamily Manager\+::\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCesfam}{Cesfam}} $\ast$}]{\+\_\+cesfam,  }\item[{vector$<$ \mbox{\hyperlink{classPatient}{Patient}} $\ast$ $>$}]{\+\_\+patients,  }\item[{\mbox{\hyperlink{classEventList}{Event\+List}} $\ast$}]{\+\_\+event\+\_\+list }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Manager\+::\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCesfam}{Cesfam}} $\ast$}]{\+\_\+cesfam,  }\item[{\mbox{\hyperlink{classEventList}{Event\+List}} $\ast$}]{\+\_\+event\+\_\+list,  }\item[{\mbox{\hyperlink{classSystem}{System}} $\ast$}]{\+\_\+system,  }\item[{int}]{\+\_\+location }\end{DoxyParamCaption})}
 
 
 
-Construct a new \mbox{\hyperlink{classManager}{Manager}} object. 
+Construye un nuevo objeto \mbox{\hyperlink{classManager}{Manager}}. 
+
+Número que representa la ubicación del gestor 
+\begin{DoxyParams}{Parámetros}
+{\em \+\_\+cesfam} & Puntero al \mbox{\hyperlink{classCesfam}{Cesfam}} al que pertenece el gestor \\
+\hline
+{\em \+\_\+event\+\_\+list} & Puntero a la lista de eventos de la simulación \\
+\hline
+{\em \+\_\+system} & Puntero al sistema de la simulación \\
+\hline
+{\em \+\_\+location} & Número que representa la ubicación del gestor \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{classManager_afed01e6fc4fbdd4412b2671fc213bcbd}\label{classManager_afed01e6fc4fbdd4412b2671fc213bcbd}} 
+\index{Manager@{Manager}!addPatient@{addPatient}}
+\index{addPatient@{addPatient}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{addPatient()}{addPatient()}}
+{\footnotesize\ttfamily void Manager\+::add\+Patient (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPatient}{Patient}} $\ast$}]{patient }\end{DoxyParamCaption})}
+
+
+
+Agrega un paciente al mapa de pacientes. 
+
+\mbox{\Hypertarget{classManager_a2dce1723f8fbac362c0890779fc9324d}\label{classManager_a2dce1723f8fbac362c0890779fc9324d}} 
+\index{Manager@{Manager}!getId@{getId}}
+\index{getId@{getId}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily int Manager\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el identificador del gestor en la simulación. 
+
+\begin{DoxyReturn}{Devuelve}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_a3cb33ac7be5c4ed4ad012c05d2bc56b1}\label{classManager_a3cb33ac7be5c4ed4ad012c05d2bc56b1}} 
+\index{Manager@{Manager}!getLocation@{getLocation}}
+\index{getLocation@{getLocation}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getLocation()}{getLocation()}}
+{\footnotesize\ttfamily int Manager\+::get\+Location (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene la ubicación del gestor. 
+
+\begin{DoxyReturn}{Devuelve}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_a392c226238e03116bb03459fc4c84875}\label{classManager_a392c226238e03116bb03459fc4c84875}} 
+\index{Manager@{Manager}!getPatients@{getPatients}}
+\index{getPatients@{getPatients}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getPatients()}{getPatients()}}
+{\footnotesize\ttfamily map$<$ \mbox{\hyperlink{classPatient}{Patient}} $\ast$, bool $>$ Manager\+::get\+Patients (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el mapa de pacientes. 
+
+\begin{DoxyReturn}{Devuelve}
+map$<$\+Patient $\ast$, bool$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_aa2f68d3efdf941ce5f104c5591de72b4}\label{classManager_aa2f68d3efdf941ce5f104c5591de72b4}} 
+\index{Manager@{Manager}!outOfTime@{outOfTime}}
+\index{outOfTime@{outOfTime}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{outOfTime()}{outOfTime()}}
+{\footnotesize\ttfamily double Manager\+::out\+Of\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Método que indica la cantidad de horas que faltan para el inicio de la jornada de un agente, retorna 0 si el agente se encuentra dentro del horario de su jornada. 
+
+\begin{DoxyReturn}{Devuelve}
+double 
+\end{DoxyReturn}
+
+
+Reimplementado de \mbox{\hyperlink{classAgent_a01515fade59b2bdefde8221b44b87106}{Agent}}.
+
+\mbox{\Hypertarget{classManager_a8a7272bbc053f036b63c15798e381bca}\label{classManager_a8a7272bbc053f036b63c15798e381bca}} 
+\index{Manager@{Manager}!processAskConsent@{processAskConsent}}
+\index{processAskConsent@{processAskConsent}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{processAskConsent()}{processAskConsent()}}
+{\footnotesize\ttfamily void Manager\+::process\+Ask\+Consent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento tipo A\+S\+K\+\_\+\+C\+O\+N\+S\+E\+NT. 
 
 
 \begin{DoxyParams}{Parámetros}
-{\em \+\_\+cesfam} & \\
+{\em e} & El puntero al evento a procesar \\
 \hline
-{\em \+\_\+patients} & \\
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_af22766a12dab3517c29ee06d2145f846}\label{classManager_af22766a12dab3517c29ee06d2145f846}} 
+\index{Manager@{Manager}!processEvent@{processEvent}}
+\index{processEvent@{processEvent}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{processEvent()}{processEvent()}}
+{\footnotesize\ttfamily void Manager\+::process\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Genera el procesamiento completo de un evento (contiene a los demás métodos que procesan eventos) 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El puntero al evento a procesar \\
 \hline
-{\em \+\_\+event\+\_\+list} & \\
+\end{DoxyParams}
+
+
+Reimplementado de \mbox{\hyperlink{classAgent_a93d1897fbaff53a2387e03307e8db44f}{Agent}}.
+
+\mbox{\Hypertarget{classManager_a7973ff215a2fb4f65e1eeb01ecbaa56c}\label{classManager_a7973ff215a2fb4f65e1eeb01ecbaa56c}} 
+\index{Manager@{Manager}!processManagePatient@{processManagePatient}}
+\index{processManagePatient@{processManagePatient}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{processManagePatient()}{processManagePatient()}}
+{\footnotesize\ttfamily void Manager\+::process\+Manage\+Patient (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento tipo M\+A\+N\+A\+G\+E\+\_\+\+P\+A\+T\+I\+E\+NT. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El puntero al evento a procesar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a61bbfba83a2e3079099fa81cf2a8ae7e}\label{classManager_a61bbfba83a2e3079099fa81cf2a8ae7e}} 
+\index{Manager@{Manager}!processMedicalHour@{processMedicalHour}}
+\index{processMedicalHour@{processMedicalHour}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{processMedicalHour()}{processMedicalHour()}}
+{\footnotesize\ttfamily void Manager\+::process\+Medical\+Hour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento tipo M\+A\+N\+A\+G\+E\+\_\+\+M\+E\+D\+I\+C\+A\+L\+\_\+\+H\+O\+UR. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El puntero al evento a procesar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a2efa342b5888b568756e647b6519e44c}\label{classManager_a2efa342b5888b568756e647b6519e44c}} 
+\index{Manager@{Manager}!processPreClassifyClinicalRisk@{processPreClassifyClinicalRisk}}
+\index{processPreClassifyClinicalRisk@{processPreClassifyClinicalRisk}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{processPreClassifyClinicalRisk()}{processPreClassifyClinicalRisk()}}
+{\footnotesize\ttfamily void Manager\+::process\+Pre\+Classify\+Clinical\+Risk (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento tipo P\+R\+E\+\_\+\+C\+L\+A\+S\+S\+I\+F\+Y\+\_\+\+C\+L\+I\+N\+I\+C\+A\+L\+\_\+\+R\+I\+SK. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El puntero al evento a procesar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a527052c76386a16c4faa7ef2fd658a18}\label{classManager_a527052c76386a16c4faa7ef2fd658a18}} 
+\index{Manager@{Manager}!processPreClassifySocialRisk@{processPreClassifySocialRisk}}
+\index{processPreClassifySocialRisk@{processPreClassifySocialRisk}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{processPreClassifySocialRisk()}{processPreClassifySocialRisk()}}
+{\footnotesize\ttfamily void Manager\+::process\+Pre\+Classify\+Social\+Risk (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento tipo P\+R\+E\+\_\+\+C\+L\+A\+S\+S\+I\+F\+Y\+\_\+\+S\+O\+C\+I\+A\+L\+\_\+\+R\+I\+SK. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El puntero al evento a procesar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_ac01b19a7cd7d2ca87539b8d56bc96077}\label{classManager_ac01b19a7cd7d2ca87539b8d56bc96077}} 
+\index{Manager@{Manager}!processPsychoHour@{processPsychoHour}}
+\index{processPsychoHour@{processPsychoHour}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{processPsychoHour()}{processPsychoHour()}}
+{\footnotesize\ttfamily void Manager\+::process\+Psycho\+Hour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento tipo M\+A\+N\+A\+G\+E\+\_\+\+P\+S\+Y\+C\+H\+O\+\_\+\+H\+O\+UR. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El puntero al evento a procesar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_acc07368fdbc96e6db7b250a9a6a7cade}\label{classManager_acc07368fdbc96e6db7b250a9a6a7cade}} 
+\index{Manager@{Manager}!processReEvaluateLowRisk@{processReEvaluateLowRisk}}
+\index{processReEvaluateLowRisk@{processReEvaluateLowRisk}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{processReEvaluateLowRisk()}{processReEvaluateLowRisk()}}
+{\footnotesize\ttfamily void Manager\+::process\+Re\+Evaluate\+Low\+Risk (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento tipo R\+E\+\_\+\+E\+V\+A\+L\+U\+A\+T\+E\+\_\+\+L\+O\+W\+\_\+\+R\+I\+SK. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El puntero al evento a procesar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_abd46a00dd2d7b44bdc4949a4877aa438}\label{classManager_abd46a00dd2d7b44bdc4949a4877aa438}} 
+\index{Manager@{Manager}!processReEvaluateManaged@{processReEvaluateManaged}}
+\index{processReEvaluateManaged@{processReEvaluateManaged}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{processReEvaluateManaged()}{processReEvaluateManaged()}}
+{\footnotesize\ttfamily void Manager\+::process\+Re\+Evaluate\+Managed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento tipo R\+E\+\_\+\+E\+V\+A\+L\+U\+A\+T\+E\+\_\+\+M\+A\+N\+A\+G\+ED. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El puntero al evento a procesar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a340e3be2aab7c01eb00e6e93c7d594fc}\label{classManager_a340e3be2aab7c01eb00e6e93c7d594fc}} 
+\index{Manager@{Manager}!processSocialHour@{processSocialHour}}
+\index{processSocialHour@{processSocialHour}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{processSocialHour()}{processSocialHour()}}
+{\footnotesize\ttfamily void Manager\+::process\+Social\+Hour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento tipo M\+A\+N\+A\+G\+E\+\_\+\+S\+O\+C\+I\+A\+L\+\_\+\+H\+O\+UR. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El puntero al evento a procesar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a0bc74b6b4d1af63e20e18b3f6d94dfca}\label{classManager_a0bc74b6b4d1af63e20e18b3f6d94dfca}} 
+\index{Manager@{Manager}!processTestHour@{processTestHour}}
+\index{processTestHour@{processTestHour}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{processTestHour()}{processTestHour()}}
+{\footnotesize\ttfamily void Manager\+::process\+Test\+Hour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Procesa un evento tipo M\+A\+N\+A\+G\+E\+\_\+\+T\+E\+S\+T\+\_\+\+H\+O\+UR. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & El puntero al evento a procesar \\
 \hline
 \end{DoxyParams}
 
 
 La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
 \item 
-includes/Manager.\+h\item 
+includes/\mbox{\hyperlink{Manager_8h}{Manager.\+h}}\item 
 src/Manager.\+cc\end{DoxyCompactItemize}

@@ -1,44 +1,226 @@
 \hypertarget{classEvent}{}\doxysection{Referencia de la Clase Event}
 \label{classEvent}\index{Event@{Event}}
+
+
+Clase que representa un evento en la simulación.  
+
+
+
+
+{\ttfamily \#include $<$Event.\+h$>$}
+
 \doxysubsection*{Métodos públicos}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classEvent_a93d8af1d50b34e98d4f98dff9623f09b}{Event}} (short \+\_\+caller\+\_\+type, int \+\_\+caller\+\_\+id, double \+\_\+start\+\_\+time, double \+\_\+exec\+\_\+time, short \+\_\+event\+\_\+type, \mbox{\hyperlink{classAgent}{Agent}} $\ast$\+\_\+caller\+\_\+ptr, \mbox{\hyperlink{classAgent}{Agent}} $\ast$\+\_\+objective\+\_\+ptr, \mbox{\hyperlink{classEvent}{Event}} $\ast$\+\_\+next\+\_\+event)
+\begin{DoxyCompactList}\small\item\em Construye un nuevo objeto \mbox{\hyperlink{classEvent}{Event}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEvent_a5a40dd4708297f7031e29b39e039ae10}{Event}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classEvent}{Event}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEvent_abe39cd9cd7d74245923f7431f23ea7bd}{set\+Next\+Event}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Modifica el puntero al siguiente evento. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classEvent_aeb4ad939d954262401c967b29e76fb70}{get\+Start\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el valor del reloj de la simulación en que comienza el evento. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classEvent_a57e19f50ddf2752b5a4508480f31573d}{get\+Exec\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene la cantidad de tiempo que demora en efectuarse el evento. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEvent}{Event}} $\ast$ \mbox{\hyperlink{classEvent_a72121dab5e403605b1f0e0f82ca375f9}{get\+Next\+Event}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el puntero al siguiente evento. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classAgent}{Agent}} $\ast$ \mbox{\hyperlink{classEvent_ad9778dcd3c6f05268b44dc90996a6591}{get\+Caller\+Ptr}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el puntero al agente que generó el evento. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classAgent}{Agent}} $\ast$ \mbox{\hyperlink{classEvent_ae831e4958d8f1dc74fbde9a987658485}{get\+Objective\+Ptr}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el puntero al agente que debe resolver el evento. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classEvent_ae8ebef54680fab6442409adf7603303e}{get\+Caller\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el identificador del agente que generó el evento. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classEvent_a96b97e367389e6ddc3da4768e2011c2f}{get\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el identificador del evento. \end{DoxyCompactList}\item 
+short \mbox{\hyperlink{classEvent_ace2e66a43ab82b6907bdb36677e9b3b8}{get\+Caller\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el tipo de entidad que generó el evento. \end{DoxyCompactList}\item 
+short \mbox{\hyperlink{classEvent_a730bbfd042ebe29b7f04114d8ddb8f49}{get\+Event\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el tipo de evento. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase que representa un evento en la simulación. 
+
+
+
+\doxysubsection{Documentación del constructor y destructor}
 \mbox{\Hypertarget{classEvent_a93d8af1d50b34e98d4f98dff9623f09b}\label{classEvent_a93d8af1d50b34e98d4f98dff9623f09b}} 
-{\bfseries Event} (short \+\_\+caller\+\_\+type, int \+\_\+caller\+\_\+id, double \+\_\+start\+\_\+time, double \+\_\+exec\+\_\+time, short \+\_\+event\+\_\+type, \mbox{\hyperlink{classAgent}{Agent}} $\ast$\+\_\+caller\+\_\+ptr, \mbox{\hyperlink{classAgent}{Agent}} $\ast$\+\_\+objective\+\_\+ptr, \mbox{\hyperlink{classEvent}{Event}} $\ast$\+\_\+next\+\_\+event)
-\item 
-\mbox{\Hypertarget{classEvent_abe39cd9cd7d74245923f7431f23ea7bd}\label{classEvent_abe39cd9cd7d74245923f7431f23ea7bd}} 
-void {\bfseries set\+Next\+Event} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\item 
-\mbox{\Hypertarget{classEvent_aeb4ad939d954262401c967b29e76fb70}\label{classEvent_aeb4ad939d954262401c967b29e76fb70}} 
-double {\bfseries get\+Start\+Time} ()
-\item 
-\mbox{\Hypertarget{classEvent_a57e19f50ddf2752b5a4508480f31573d}\label{classEvent_a57e19f50ddf2752b5a4508480f31573d}} 
-double {\bfseries get\+Exec\+Time} ()
-\item 
-\mbox{\Hypertarget{classEvent_a72121dab5e403605b1f0e0f82ca375f9}\label{classEvent_a72121dab5e403605b1f0e0f82ca375f9}} 
-\mbox{\hyperlink{classEvent}{Event}} $\ast$ {\bfseries get\+Next\+Event} ()
-\item 
-\mbox{\Hypertarget{classEvent_ad9778dcd3c6f05268b44dc90996a6591}\label{classEvent_ad9778dcd3c6f05268b44dc90996a6591}} 
-\mbox{\hyperlink{classAgent}{Agent}} $\ast$ {\bfseries get\+Caller\+Ptr} ()
-\item 
-\mbox{\Hypertarget{classEvent_ae831e4958d8f1dc74fbde9a987658485}\label{classEvent_ae831e4958d8f1dc74fbde9a987658485}} 
-\mbox{\hyperlink{classAgent}{Agent}} $\ast$ {\bfseries get\+Objective\+Ptr} ()
-\item 
+\index{Event@{Event}!Event@{Event}}
+\index{Event@{Event}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{Event()}{Event()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Event\+::\+Event (\begin{DoxyParamCaption}\item[{short}]{\+\_\+caller\+\_\+type,  }\item[{int}]{\+\_\+caller\+\_\+id,  }\item[{double}]{\+\_\+start\+\_\+time,  }\item[{double}]{\+\_\+exec\+\_\+time,  }\item[{short}]{\+\_\+event\+\_\+type,  }\item[{\mbox{\hyperlink{classAgent}{Agent}} $\ast$}]{\+\_\+caller\+\_\+ptr,  }\item[{\mbox{\hyperlink{classAgent}{Agent}} $\ast$}]{\+\_\+objective\+\_\+ptr,  }\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{\+\_\+next\+\_\+event }\end{DoxyParamCaption})}
+
+
+
+Construye un nuevo objeto \mbox{\hyperlink{classEvent}{Event}}. 
+
+Puntero al siguiente evento 
+\begin{DoxyParams}{Parámetros}
+{\em \+\_\+caller\+\_\+type} & Tipo de entidad que genera el evento \\
+\hline
+{\em \+\_\+caller\+\_\+id} & Identificador de la entidad que genera el evento (actualmente para agentes) \\
+\hline
+{\em \+\_\+start\+\_\+time} & Valor del reloj de la simulación cuando debe iniciar el evento \\
+\hline
+{\em \+\_\+exec\+\_\+time} & Cantidad de tiempo que demora en efectuarse el evento \\
+\hline
+{\em \+\_\+event\+\_\+type} & El tipo de evento \\
+\hline
+{\em \+\_\+caller\+\_\+ptr} & Puntero al agente que genera el evento \\
+\hline
+{\em \+\_\+objective\+\_\+ptr} & Puntero al agente que debe resolver el evento \\
+\hline
+{\em \+\_\+next\+\_\+event} & Puntero al siguiente evento \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEvent_a5a40dd4708297f7031e29b39e039ae10}\label{classEvent_a5a40dd4708297f7031e29b39e039ae10}} 
+\index{Event@{Event}!Event@{Event}}
+\index{Event@{Event}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{Event()}{Event()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Event\+::\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classEvent}{Event}} object. 
+
+
+
+\doxysubsection{Documentación de las funciones miembro}
 \mbox{\Hypertarget{classEvent_ae8ebef54680fab6442409adf7603303e}\label{classEvent_ae8ebef54680fab6442409adf7603303e}} 
-int {\bfseries get\+Caller\+Id} ()
-\item 
-\mbox{\Hypertarget{classEvent_a96b97e367389e6ddc3da4768e2011c2f}\label{classEvent_a96b97e367389e6ddc3da4768e2011c2f}} 
-int {\bfseries get\+Id} ()
-\item 
+\index{Event@{Event}!getCallerId@{getCallerId}}
+\index{getCallerId@{getCallerId}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getCallerId()}{getCallerId()}}
+{\footnotesize\ttfamily int Event\+::get\+Caller\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el identificador del agente que generó el evento. 
+
+\begin{DoxyReturn}{Devuelve}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEvent_ad9778dcd3c6f05268b44dc90996a6591}\label{classEvent_ad9778dcd3c6f05268b44dc90996a6591}} 
+\index{Event@{Event}!getCallerPtr@{getCallerPtr}}
+\index{getCallerPtr@{getCallerPtr}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getCallerPtr()}{getCallerPtr()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classAgent}{Agent}} $\ast$ Event\+::get\+Caller\+Ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el puntero al agente que generó el evento. 
+
+\begin{DoxyReturn}{Devuelve}
+Agent$\ast$ 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classEvent_ace2e66a43ab82b6907bdb36677e9b3b8}\label{classEvent_ace2e66a43ab82b6907bdb36677e9b3b8}} 
-short {\bfseries get\+Caller\+Type} ()
-\item 
+\index{Event@{Event}!getCallerType@{getCallerType}}
+\index{getCallerType@{getCallerType}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getCallerType()}{getCallerType()}}
+{\footnotesize\ttfamily short Event\+::get\+Caller\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el tipo de entidad que generó el evento. 
+
+\begin{DoxyReturn}{Devuelve}
+short 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classEvent_a730bbfd042ebe29b7f04114d8ddb8f49}\label{classEvent_a730bbfd042ebe29b7f04114d8ddb8f49}} 
-short {\bfseries get\+Event\+Type} ()
-\end{DoxyCompactItemize}
+\index{Event@{Event}!getEventType@{getEventType}}
+\index{getEventType@{getEventType}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getEventType()}{getEventType()}}
+{\footnotesize\ttfamily short Event\+::get\+Event\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el tipo de evento. 
+
+\begin{DoxyReturn}{Devuelve}
+short 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEvent_a57e19f50ddf2752b5a4508480f31573d}\label{classEvent_a57e19f50ddf2752b5a4508480f31573d}} 
+\index{Event@{Event}!getExecTime@{getExecTime}}
+\index{getExecTime@{getExecTime}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getExecTime()}{getExecTime()}}
+{\footnotesize\ttfamily double Event\+::get\+Exec\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene la cantidad de tiempo que demora en efectuarse el evento. 
+
+\begin{DoxyReturn}{Devuelve}
+double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEvent_a96b97e367389e6ddc3da4768e2011c2f}\label{classEvent_a96b97e367389e6ddc3da4768e2011c2f}} 
+\index{Event@{Event}!getId@{getId}}
+\index{getId@{getId}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily int Event\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el identificador del evento. 
+
+\begin{DoxyReturn}{Devuelve}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEvent_a72121dab5e403605b1f0e0f82ca375f9}\label{classEvent_a72121dab5e403605b1f0e0f82ca375f9}} 
+\index{Event@{Event}!getNextEvent@{getNextEvent}}
+\index{getNextEvent@{getNextEvent}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getNextEvent()}{getNextEvent()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEvent}{Event}} $\ast$ Event\+::get\+Next\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el puntero al siguiente evento. 
+
+\begin{DoxyReturn}{Devuelve}
+Event$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEvent_ae831e4958d8f1dc74fbde9a987658485}\label{classEvent_ae831e4958d8f1dc74fbde9a987658485}} 
+\index{Event@{Event}!getObjectivePtr@{getObjectivePtr}}
+\index{getObjectivePtr@{getObjectivePtr}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getObjectivePtr()}{getObjectivePtr()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classAgent}{Agent}} $\ast$ Event\+::get\+Objective\+Ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el puntero al agente que debe resolver el evento. 
+
+\begin{DoxyReturn}{Devuelve}
+Agent$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEvent_aeb4ad939d954262401c967b29e76fb70}\label{classEvent_aeb4ad939d954262401c967b29e76fb70}} 
+\index{Event@{Event}!getStartTime@{getStartTime}}
+\index{getStartTime@{getStartTime}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getStartTime()}{getStartTime()}}
+{\footnotesize\ttfamily double Event\+::get\+Start\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el valor del reloj de la simulación en que comienza el evento. 
+
+\begin{DoxyReturn}{Devuelve}
+double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEvent_abe39cd9cd7d74245923f7431f23ea7bd}\label{classEvent_abe39cd9cd7d74245923f7431f23ea7bd}} 
+\index{Event@{Event}!setNextEvent@{setNextEvent}}
+\index{setNextEvent@{setNextEvent}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{setNextEvent()}{setNextEvent()}}
+{\footnotesize\ttfamily void Event\+::set\+Next\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Modifica el puntero al siguiente evento. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & Puntero al siguiente evento \\
+\hline
+\end{DoxyParams}
 
 
 La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
 \item 
-includes/Event.\+h\item 
+includes/\mbox{\hyperlink{Event_8h}{Event.\+h}}\item 
 src/Event.\+cc\end{DoxyCompactItemize}

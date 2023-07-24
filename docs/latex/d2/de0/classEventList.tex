@@ -1,26 +1,143 @@
 \hypertarget{classEventList}{}\doxysection{Referencia de la Clase Event\+List}
 \label{classEventList}\index{EventList@{EventList}}
+
+
+Clase que representa la lista de eventos de la simulación.  
+
+
+
+
+{\ttfamily \#include $<$Event\+List.\+h$>$}
+
 \doxysubsection*{Métodos públicos}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classEventList_a723574d4cdd9bca890e715f003197103}{Event\+List}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$\+\_\+first, double \+\_\+clock, \mbox{\hyperlink{classEvent}{Event}} $\ast$\+\_\+last)
+\begin{DoxyCompactList}\small\item\em Construye un nuevo objeto \mbox{\hyperlink{classEventList}{Event\+List}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEventList_abb74fc2a4458c026d04ab8b3648c697f}{insert\+Event}} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Inserta un evento en la lista de eventos. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEvent}{Event}} $\ast$ \mbox{\hyperlink{classEventList_a8c041acea3564fa8aa95f07a8d36af91}{next\+Event}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el puntero al siguiente evento a resolver de la lista de eventos. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classEventList_aab7673ada54622a60c649fd3128e10c5}{is\+Empty}} ()
+\begin{DoxyCompactList}\small\item\em Indica si la lista de eventos está vacía o no. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classEventList_a7b8cb81e94ce1db6fe42f5154d851c21}{get\+Clock}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el valor actual del reloj de la simulación. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEvent}{Event}} $\ast$ \mbox{\hyperlink{classEventList_adf6508009a4e1a9a94d98af6372e75e4}{get\+Last\+Event}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el puntero al último evento de la lista de eventos. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEventList_a6c231f53c1960f2cbbee4268ac44ffa9}{$\sim$\+Event\+List}} ()
+\begin{DoxyCompactList}\small\item\em Destruye el objeto \mbox{\hyperlink{classEventList}{Event\+List}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase que representa la lista de eventos de la simulación. 
+
+
+
+\doxysubsection{Documentación del constructor y destructor}
 \mbox{\Hypertarget{classEventList_a723574d4cdd9bca890e715f003197103}\label{classEventList_a723574d4cdd9bca890e715f003197103}} 
-{\bfseries Event\+List} (\mbox{\hyperlink{classEvent}{Event}} $\ast$\+\_\+first, double \+\_\+clock, \mbox{\hyperlink{classEvent}{Event}} $\ast$\+\_\+last)
-\item 
-\mbox{\Hypertarget{classEventList_abb74fc2a4458c026d04ab8b3648c697f}\label{classEventList_abb74fc2a4458c026d04ab8b3648c697f}} 
-void {\bfseries insert\+Event} (\mbox{\hyperlink{classEvent}{Event}} $\ast$e)
-\item 
-\mbox{\Hypertarget{classEventList_a8c041acea3564fa8aa95f07a8d36af91}\label{classEventList_a8c041acea3564fa8aa95f07a8d36af91}} 
-\mbox{\hyperlink{classEvent}{Event}} $\ast$ {\bfseries next\+Event} ()
-\item 
-\mbox{\Hypertarget{classEventList_aab7673ada54622a60c649fd3128e10c5}\label{classEventList_aab7673ada54622a60c649fd3128e10c5}} 
-bool {\bfseries is\+Empty} ()
-\item 
+\index{EventList@{EventList}!EventList@{EventList}}
+\index{EventList@{EventList}!EventList@{EventList}}
+\doxysubsubsection{\texorpdfstring{EventList()}{EventList()}}
+{\footnotesize\ttfamily Event\+List\+::\+Event\+List (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{\+\_\+first,  }\item[{double}]{\+\_\+clock,  }\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{\+\_\+last }\end{DoxyParamCaption})}
+
+
+
+Construye un nuevo objeto \mbox{\hyperlink{classEventList}{Event\+List}}. 
+
+Puntero al último evento de la lista 
+\begin{DoxyParams}{Parámetros}
+{\em \+\_\+first} & Puntero al primer evento de la lista \\
+\hline
+{\em \+\_\+clock} & Valor actual del reloj de la simulación \\
+\hline
+{\em \+\_\+last} & Puntero al último evento de la lista \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEventList_a6c231f53c1960f2cbbee4268ac44ffa9}\label{classEventList_a6c231f53c1960f2cbbee4268ac44ffa9}} 
+\index{EventList@{EventList}!````~EventList@{$\sim$EventList}}
+\index{````~EventList@{$\sim$EventList}!EventList@{EventList}}
+\doxysubsubsection{\texorpdfstring{$\sim$EventList()}{~EventList()}}
+{\footnotesize\ttfamily Event\+List\+::$\sim$\+Event\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destruye el objeto \mbox{\hyperlink{classEventList}{Event\+List}}. 
+
+
+
+\doxysubsection{Documentación de las funciones miembro}
 \mbox{\Hypertarget{classEventList_a7b8cb81e94ce1db6fe42f5154d851c21}\label{classEventList_a7b8cb81e94ce1db6fe42f5154d851c21}} 
-double {\bfseries get\+Clock} ()
-\end{DoxyCompactItemize}
+\index{EventList@{EventList}!getClock@{getClock}}
+\index{getClock@{getClock}!EventList@{EventList}}
+\doxysubsubsection{\texorpdfstring{getClock()}{getClock()}}
+{\footnotesize\ttfamily double Event\+List\+::get\+Clock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el valor actual del reloj de la simulación. 
+
+\begin{DoxyReturn}{Devuelve}
+double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEventList_adf6508009a4e1a9a94d98af6372e75e4}\label{classEventList_adf6508009a4e1a9a94d98af6372e75e4}} 
+\index{EventList@{EventList}!getLastEvent@{getLastEvent}}
+\index{getLastEvent@{getLastEvent}!EventList@{EventList}}
+\doxysubsubsection{\texorpdfstring{getLastEvent()}{getLastEvent()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEvent}{Event}} $\ast$ Event\+List\+::get\+Last\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el puntero al último evento de la lista de eventos. 
+
+\begin{DoxyReturn}{Devuelve}
+Event$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEventList_abb74fc2a4458c026d04ab8b3648c697f}\label{classEventList_abb74fc2a4458c026d04ab8b3648c697f}} 
+\index{EventList@{EventList}!insertEvent@{insertEvent}}
+\index{insertEvent@{insertEvent}!EventList@{EventList}}
+\doxysubsubsection{\texorpdfstring{insertEvent()}{insertEvent()}}
+{\footnotesize\ttfamily void Event\+List\+::insert\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEvent}{Event}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Inserta un evento en la lista de eventos. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em e} & Puntero al evento a insertar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEventList_aab7673ada54622a60c649fd3128e10c5}\label{classEventList_aab7673ada54622a60c649fd3128e10c5}} 
+\index{EventList@{EventList}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!EventList@{EventList}}
+\doxysubsubsection{\texorpdfstring{isEmpty()}{isEmpty()}}
+{\footnotesize\ttfamily bool Event\+List\+::is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Indica si la lista de eventos está vacía o no. 
+
+\begin{DoxyReturn}{Devuelve}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEventList_a8c041acea3564fa8aa95f07a8d36af91}\label{classEventList_a8c041acea3564fa8aa95f07a8d36af91}} 
+\index{EventList@{EventList}!nextEvent@{nextEvent}}
+\index{nextEvent@{nextEvent}!EventList@{EventList}}
+\doxysubsubsection{\texorpdfstring{nextEvent()}{nextEvent()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEvent}{Event}} $\ast$ Event\+List\+::next\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtiene el puntero al siguiente evento a resolver de la lista de eventos. 
+
+\begin{DoxyReturn}{Devuelve}
+Event$\ast$ 
+\end{DoxyReturn}
 
 
 La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
 \item 
-includes/Event\+List.\+h\item 
+includes/\mbox{\hyperlink{EventList_8h}{Event\+List.\+h}}\item 
 src/Event\+List.\+cc\end{DoxyCompactItemize}
