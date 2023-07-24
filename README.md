@@ -5,4 +5,4 @@ Implementación de un simulador básico para el protocolo asociado a Buzón APS,
 
 Para ejecutar pruebas, ejecutar el comando ``make`` en la carpeta raíz y posteriormente ejecutar el script run.sh mediante el comando ``bash run.sh``. Los archivos resultantes con los logs quedarán en la carpeta ``/out``.
 
-La documentación asociada se encuentra el el archivo .pdf /docs/informe_buzon_sim_FlorenciaCorvalan.pdf y en la documentación generada mediante Doxygen se encuentra en la ruta ``/buzon-sim/docs/html/index.html``.
+La documentación asociada se encuentra el el archivo .pdf /docs/informe_buzon_sim_FlorenciaCorvalan.pdf y la documentación generada mediante Doxygen se encuentra en la ruta ``/buzon-sim/docs/html/index.html``.
