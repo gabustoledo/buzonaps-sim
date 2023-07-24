@@ -3,7 +3,7 @@
  * @author Manuel Ignacio Manriquez (@ManachoM - manuel.manriquez.b@usach.cl)
  * @brief 
  * @version 0.1
- * @date 2023-08-21
+ * @date 2022-08-21
  * 
  * @copyright Copyright (c) 2023
  * 
