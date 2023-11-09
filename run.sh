@@ -1,8 +1,8 @@
 #!/bin/bash
-max=5
-declare -a arr=("config_a" 
-                "config_b"
-                "config_c")
+max=1
+declare -a arr=("config_a") 
+#                "config_b"
+#                "config_c")
 
 for i in "${arr[@]}"
 do

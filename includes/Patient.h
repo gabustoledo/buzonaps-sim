@@ -47,6 +47,16 @@ enum PatientEvents {
     ATTEND_PSYCHO_HOUR /*!< Tipo de evento en que el paciente asiste a una hora de atención psicológica agendada */
 };
 
+// ANSWER_CONSENT
+// RECEIVE_MEDICAL_HOUR
+// RECEIVE_TEST_HOUR
+// RECEIVE_SOCIAL_HOUR
+// RECEIVE_PSYCHO_HOUR
+// ATTEND_MEDICAL_HOUR
+// ATTEND_TEST_HOUR
+// ATTEND_SOCIAL_HOUR
+// ATTEND_PSYCHO_HOUR
+
 /**
  * @brief Enum que define los tipos de horas que pueden ser agendadas por los gestores para los pacientes.
  * 

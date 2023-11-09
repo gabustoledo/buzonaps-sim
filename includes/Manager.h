@@ -36,6 +36,17 @@ enum ManagerEvents {
     RE_EVALUATE_MANAGED /*!< Tipo de evento en que el gestor inicia la reevaluación de un paciente que obtuvo riesgo alto o moderado y que, por lo tanto, fue gestionado */
 };
 
+// ASK_CONSENT
+// PRE_CLASSIFY_CLINICAL_RISK
+// PRE_CLASSIFY_SOCIAL_RISK
+// MANAGE_PATIENT
+// MANAGE_MEDICAL_HOUR
+// MANAGE_TEST_HOUR
+// MANAGE_SOCIAL_HOUR
+// MANAGE_PSYCHO_HOUR
+// RE_EVALUATE_LOW_RISK
+// RE_EVALUATE_MANAGED
+
 class Patient;
 
 /**
