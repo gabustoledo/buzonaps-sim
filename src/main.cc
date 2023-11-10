@@ -107,6 +107,8 @@ int main(int argc, char *argv[]) {
                 if (archivoVacio){
                     state_day = "{\"vacio\":\"vaciosimulador\"}\n";
                 }
+                std::string clockStr = std::to_string(last_clock);
+                state_day += "{\"clock\":\"" + clockStr + "\"}\n";
 
                 // realiza json y conexion post---------------------
 
