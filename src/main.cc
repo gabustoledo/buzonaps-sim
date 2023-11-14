@@ -99,9 +99,10 @@ int main(int argc, char *argv[]) {
     int current_day = 0;
     CURL* curl = curl_easy_init();
     std::string url = "http://localhost:3000/api/sim/state";
+    double last_clock;
 
     while(!event_list->isEmpty() && event_list->getClock() <= END_SIM) {
-        double last_clock = event_list->getClock();
+        last_clock = event_list->getClock();
 
         // Se comprueba cuando termina el dia
         int day = last_clock/24;
@@ -247,6 +248,52 @@ int main(int argc, char *argv[]) {
     fileLocalSateWrite << "vacio";
 
     printf("TOTAL EVENTS = %d \n", event_list->getLastEvent()->getId());
+
+    // std::cout << last_clock << std::endl;
+    std::string clockFinal = std::to_string(last_clock);
+    std::string stateFinal = "{\"clock\":\"final\"}\n";
+    stateFinal += "{\"clock\":\"" + clockFinal + "\"}\n";
+    stateFinal += "{\"clock\":\"" + clockFinal + "\"}\n";
+
+    std::vector<std::string> jsonStrings;
+    size_t startPos = 0;
+    size_t endPos;
+
+    while ((endPos = stateFinal.find('\n', startPos)) != std::string::npos) {
+        std::string jsonString = stateFinal.substr(startPos, endPos - startPos);
+        jsonStrings.push_back(jsonString);
+        startPos = endPos + 1;
+    }
+
+    json jsonArray = json::array();
+
+    for (const std::string& jsonString : jsonStrings) {
+        json jsonObj = json::parse(jsonString);
+        jsonArray.push_back(jsonObj);
+    }
+    std::string jsonStr = jsonArray.dump();
+
+    // std::cout << jsonStr << std::endl;
+
+    url = "http://localhost:3000/api/sim/state";
+    curl = curl_easy_init();
+    if (curl) {
+        // Establece la URL de destino
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+
+        // Establece el método de solicitud como POST
+        curl_easy_setopt(curl, CURLOPT_POST, 1L);
+
+        // Establece los datos JSON en el cuerpo de la solicitud
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, jsonStr.c_str());
+
+        // Realiza la solicitud POST
+        curl_easy_perform(curl);
+
+        // Limpia y libera los recursos de cURL
+        curl_easy_cleanup(curl);
+    }
+
     delete event_list;
     delete sys;
 
