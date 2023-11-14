@@ -19,6 +19,9 @@ size_t writeFunction(void* ptr, size_t size, size_t count, std::string* data) {
 
 int main(int argc, char *argv[]) {
 
+    CURL* curl_config = curl_easy_init();
+    std::string url_config = "http://localhost:3000/api/sim/config";
+
     int opt;
     string config_filepath = "";
     string out_filename = "";
@@ -27,7 +30,7 @@ int main(int argc, char *argv[]) {
         switch(opt) {
             case 'f':
                 config_filepath = optarg;
-                sim_config = SimConfig::getInstance(config_filepath);
+                // sim_config = SimConfig::getInstance(config_filepath);
                 break;
             case 'o':
                 out_filename = optarg;
@@ -41,10 +44,31 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    // Aqui leer configuracion indicada por servidor, para hacerlo dinamico
-    if (config_filepath == "") { 
-        config_filepath = "./config/config.json";
-        sim_config = SimConfig::getInstance(config_filepath);
+    // realizar get y actualizar config
+    url_config = "http://localhost:3000/api/sim/config";
+    curl_config = curl_easy_init();
+    std::string responseBuffer_config;
+    CURLcode res_config;
+
+    if (curl_config) {
+        // Realiza la solicitud GET
+        curl_easy_setopt(curl_config, CURLOPT_URL, url_config.c_str());
+
+        curl_easy_setopt(curl_config, CURLOPT_WRITEFUNCTION, writeFunction);
+        curl_easy_setopt(curl_config, CURLOPT_WRITEDATA, &responseBuffer_config);
+
+        res_config = curl_easy_perform(curl_config);
+
+        // Verifica si hubo errores
+        if (res_config != CURLE_OK) {
+            fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res_config));
+        } else {
+            sim_config = SimConfig::getInstanceNew(responseBuffer_config);
+        }
+        
+
+        // Limpia y libera los recursos de cURL
+        curl_easy_cleanup(curl_config);
     }
 
     Stats * stats = Stats::getInstance();
@@ -184,12 +208,12 @@ int main(int argc, char *argv[]) {
                                     responseBuffer.replace(found, 2, "\"");
                                     found = responseBuffer.find("\\\"", found + 1);
                                 }
-                                std::cout << "Respuesta no vacía:\n" << std::endl; 
+                                // std::cout << "Respuesta no vacía:\n" << std::endl; 
                                 emptyResponse = false;
 
                                 json jsonObjTask = json::parse(responseBuffer);
                                 std::string jsonStrTask = jsonObjTask.dump();
-                                std::cout << jsonStrTask << std::endl;
+                                // std::cout << jsonStrTask << std::endl;
 
                             }
                         }

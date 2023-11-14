@@ -13,6 +13,14 @@ SimConfig * SimConfig::getInstance(string filepath) {
     return instance;
 }
 
+SimConfig * SimConfig::getInstanceNew(string filepath) {
+    if (instance == nullptr) {
+        instance = new SimConfig("nada");
+        instance->params = json::parse(filepath);
+    }
+    return instance;
+}
+
 json SimConfig::getParams() {
     return this->instance->params;
 }

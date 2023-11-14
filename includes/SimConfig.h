@@ -40,6 +40,8 @@ public:
      */
     static SimConfig * getInstance(string filepath);
 
+    static SimConfig * getInstanceNew(string filepath);
+
     /**
      * @brief Obtiene el json con los parámetros de configuración de la simulación
      * 
