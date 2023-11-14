@@ -1,6 +1,7 @@
 #include "../includes/main.h"
 #include <json.hpp>
 #include <curl/curl.h>
+#include <unistd.h>
 
 bool isJsonEmpty(const std::string& jsonStr) {
     try {
@@ -286,6 +287,36 @@ int main(int argc, char *argv[]) {
 
         // Establece los datos JSON en el cuerpo de la solicitud
         curl_easy_setopt(curl, CURLOPT_POSTFIELDS, jsonStr.c_str());
+
+        // Realiza la solicitud POST
+        curl_easy_perform(curl);
+
+        // Limpia y libera los recursos de cURL
+        curl_easy_cleanup(curl);
+    }
+
+    sleep(5);
+
+    // Lectura del archivo final
+    std::ifstream file(archivo_salida_general);
+    if (!file) {
+        std::cerr << "No se pudo abrir el archivo: " << archivo_salida_general << std::endl;
+    }
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+    std::string jsonData = buffer.str();
+
+    url = "http://localhost:3000/api/sim/state";
+    curl = curl_easy_init();
+    if (curl) {
+        // Establece la URL de destino
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+
+        // Establece el método de solicitud como POST
+        curl_easy_setopt(curl, CURLOPT_POST, 1L);
+
+        // Establece los datos JSON en el cuerpo de la solicitud
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, jsonData.c_str());
 
         // Realiza la solicitud POST
         curl_easy_perform(curl);
