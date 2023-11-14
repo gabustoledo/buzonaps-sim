@@ -145,19 +145,10 @@ int main(int argc, char *argv[]) {
                     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, jsonStr.c_str());
 
                     // Realiza la solicitud POST
-                    CURLcode res = curl_easy_perform(curl);
-
-                    // Verifica el resultado de la solicitud
-                    if (res != CURLE_OK) {
-                        std::cerr << "Error al realizar la solicitud: " << curl_easy_strerror(res) << std::endl;
-                    } else {
-                        std::cout << "Solicitud POST exitosa" << std::endl;
-                    }
+                    curl_easy_perform(curl);
 
                     // Limpia y libera los recursos de cURL
                     curl_easy_cleanup(curl);
-                } else {
-                    std::cerr << "Error al inicializar cURL" << std::endl;
                 }
 
                 // -------------------------------------------------
@@ -200,18 +191,12 @@ int main(int argc, char *argv[]) {
                                 std::string jsonStrTask = jsonObjTask.dump();
                                 std::cout << jsonStrTask << std::endl;
 
-                            } else {
-                                std::cout << "Respuesta vacía, reintentando..." << std::endl;
                             }
-                        } else {
-                            std::cerr << "Error al realizar la solicitud: " << curl_easy_strerror(res) << std::endl;
                         }
                     }
 
                     // Limpia y libera los recursos de cURL
                     curl_easy_cleanup(curl);
-                } else {
-                    std::cerr << "Error al inicializar cURL" << std::endl;
                 }
 
                 // ------------------------------------------------------

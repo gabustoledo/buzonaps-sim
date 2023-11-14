@@ -1,4 +1,9 @@
 #include "../includes/System.h"
+#include <iostream>
+#include <vector>
+#include <tuple>
+#include <json.hpp>
+#include <curl/curl.h>
 
 System::System(EventList * _event_list) {
     this->event_list = _event_list;
@@ -51,6 +56,8 @@ void System::initializeManagers(int amount, int cesfam_amount) {
     int j;
     int k;
     int p;
+    using Tupla = std::tuple<int, int>;
+    std::vector<Tupla> tuplas;
     // Itero por las locaciones
     for (auto it = this->locations_managers.begin(); it != this->locations_managers.end(); it++) {
         int patients_vector_size = this->locations_patients.find(it->first)->second.size();
@@ -77,25 +84,48 @@ void System::initializeManagers(int amount, int cesfam_amount) {
                 this->locations_managers.find(it->first)->second[p]->addPatient(this->locations_patients.find(it->first)->second[j]);
                 // Se setea el manager del paciente al manager actual
                 this->locations_patients.find(it->first)->second[j]->setManager(this->locations_managers.find(it->first)->second[p]);
+
+                int manager_id = this->locations_managers.find(it->first)->second[p]->getId();
+                int patient_id = this->locations_patients.find(it->first)->second[j]->getId();
+                tuplas.push_back(std::make_tuple(manager_id, patient_id));
             }
             k = j;
         }
     }
 
-    // map<Patient *, bool> patients;
-    // for (auto o = this->managers.begin(); o != this->managers.end(); o++) {
-    //     printf("MANAGER ID: %d - location: %d \n", o->second->getId(), o->second->getLocation());
-    //     patients = o->second->getPatients();
-    //     for (auto h = patients.begin(); h != patients.end(); h++) {
-    //         printf("\t Patient ID: %d - location: %d - manager ptr: %p \n", h->first->getId(), h->first->getLocation(), h->first->getManager());
-    //     }
-    // }
+    // Crear un objeto JSON
+    nlohmann::json json_obj;
+    for (const auto& t : tuplas) {
+        json_obj.push_back({{"manager", std::get<0>(t)}, {"patient", std::get<1>(t)}});
+    }
 
-    // for (auto h = this->patients.begin(); h != this->patients.end(); h++) {
-    //     printf("\t Patient ID: %d - location: %d - manager ptr: %p \n", h->second->getId(), h->second->getLocation(), h->second->getManager());
-    // }
+    // Iniciar CURL
+    std::string jsonStr = json_obj.dump();
+    curl_global_init(CURL_GLOBAL_ALL);
+    std::string url = "http://localhost:3000/api/sim/managerPatients";
+    CURL *curl = curl_easy_init();
+    if(curl) {
 
-    // exit(EXIT_SUCCESS);
+        struct curl_slist *headers = NULL;
+        headers = curl_slist_append(headers, "Content-Type: application/json");
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+
+        // Configurar la petición POST
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+
+        // Establece el método de solicitud como POST
+        curl_easy_setopt(curl, CURLOPT_POST, 1L);
+
+        // Establece los datos JSON en el cuerpo de la solicitud
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, jsonStr.c_str());
+
+        curl_easy_perform(curl);
+
+        // Limpiar
+        curl_easy_cleanup(curl);
+    }
+    curl_global_cleanup();
+
     printf("Saliendo de initializeManagers\n");
 }
 
