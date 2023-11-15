@@ -182,4 +182,22 @@ void System::processEvent(Event * e) {
     delete e;
 }
 
+Patient *System::get_patient_by_id(int id){
+    auto it = patients.find(id);
+    if (it != patients.end()) {
+        return it->second; // Devuelve el puntero al Patient
+    } else {
+        return nullptr; // Devuelve nullptr si el id no se encuentra
+    }
+}
+
+Manager *System::get_manager_by_id(int id){
+    auto it = managers.find(id);
+    if (it != managers.end()) {
+        return it->second; // Devuelve el puntero al Patient
+    } else {
+        return nullptr; // Devuelve nullptr si el id no se encuentra
+    }
+}
+
 System::~System() {}

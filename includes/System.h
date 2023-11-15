@@ -119,6 +119,10 @@ public:
      */
     void processEvent(Event * e);
 
+    Patient *get_patient_by_id(int id);
+
+    Manager *get_manager_by_id(int id);
+
     /**
      * @brief Destroy the System object
      * 

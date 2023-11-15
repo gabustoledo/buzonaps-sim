@@ -186,6 +186,7 @@ int main(int argc, char *argv[]) {
 
                 url = "http://localhost:3000/api/rl/task";
                 curl = curl_easy_init();
+                json jsonObjTask;
 
                 if (curl) {
                     bool emptyResponse = true;
@@ -203,17 +204,17 @@ int main(int argc, char *argv[]) {
                         // Verifica el resultado de la solicitud
                         if (res == CURLE_OK) {
                             if (!isJsonEmpty(responseBuffer)) {
-                                responseBuffer = responseBuffer.substr(2, responseBuffer.length() - 7);
+                                // responseBuffer = responseBuffer.substr(2, responseBuffer.length() - 7);
 
-                                size_t found = responseBuffer.find("\\\"");
-                                while (found != std::string::npos) {
-                                    responseBuffer.replace(found, 2, "\"");
-                                    found = responseBuffer.find("\\\"", found + 1);
-                                }
-                                // std::cout << "Respuesta no vacía:\n" << std::endl; 
+                                // size_t found = responseBuffer.find("\\\"");
+                                // while (found != std::string::npos) {
+                                //     responseBuffer.replace(found, 2, "\"");
+                                //     found = responseBuffer.find("\\\"", found + 1);
+                                // }
+                                // // std::cout << "Respuesta no vacía:\n" << std::endl; 
                                 emptyResponse = false;
 
-                                json jsonObjTask = json::parse(responseBuffer);
+                                jsonObjTask = json::parse(responseBuffer);
                                 std::string jsonStrTask = jsonObjTask.dump();
                                 // std::cout << jsonStrTask << std::endl;
 
@@ -225,13 +226,80 @@ int main(int argc, char *argv[]) {
                     curl_easy_cleanup(curl);
                 }
 
+                // Aqui se deberian agregar las tareas a la lista de eventos
+                // Recorrer cada elemento del arreglo JSON
+                for (const auto& element : jsonObjTask) {
+                    // Obtener cada valor usando su clave
+                    double clock_init = element.at("clock_init").get<double>();
+                    int id_manager = element.at("id_manager").get<int>();
+                    int id_patient = element.at("id_patient").get<int>();
+                    string process = element.at("process").get<string>();
+                    double execute_time = element.at("execute_time").get<double>();
+
+                    Patient *patient_task = sys->get_patient_by_id(id_patient);
+                    Manager *manager_task = sys->get_manager_by_id(id_manager);
+
+                    Event * event_task;
+                    // Dependiendo de cual sea el process, se debe hacer diferente evento
+                    if (process == "ASK_CONSENT") {
+                        event_task = new Event(CallerType::AGENT_MANAGER, id_manager, clock_init, execute_time, 
+                                    ManagerEvents::ASK_CONSENT, patient_task, manager_task, nullptr);
+                    }
+                    
+                    else if (process == "PRE_CLASSIFY_CLINICAL_RISK") {
+                        event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
+                                    ManagerEvents::PRE_CLASSIFY_CLINICAL_RISK, patient_task, manager_task, nullptr);
+                    }
+                    
+                    else if (process == "PRE_CLASSIFY_SOCIAL_RISK") {
+                        event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
+                                    ManagerEvents::PRE_CLASSIFY_SOCIAL_RISK, patient_task, manager_task, nullptr);
+                    }
+                    
+                    else if (process == "MANAGE_PATIENT") {
+                        event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
+                                    ManagerEvents::MANAGE_PATIENT, patient_task, manager_task, nullptr);
+                    }
+                    
+                    else if (process == "MANAGE_MEDICAL_HOUR") {
+                        event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
+                                    ManagerEvents::MANAGE_MEDICAL_HOUR, patient_task, manager_task, nullptr);
+                    }
+                    
+                    else if (process == "MANAGE_TEST_HOUR") {
+                        event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
+                                    ManagerEvents::MANAGE_TEST_HOUR, patient_task, manager_task, nullptr);
+                    }
+                    
+                    else if (process == "MANAGE_SOCIAL_HOUR") {
+                        event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
+                                    ManagerEvents::MANAGE_SOCIAL_HOUR, patient_task, manager_task, nullptr);
+                    }
+                    
+                    else if (process == "MANAGE_PSYCHO_HOUR") {
+                        event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
+                                    ManagerEvents::MANAGE_PSYCHO_HOUR, patient_task, manager_task, nullptr);
+                    }
+                    
+                    else if (process == "RE_EVALUATE_LOW_RISK") {
+                        event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
+                                    ManagerEvents::RE_EVALUATE_LOW_RISK, patient_task, manager_task, nullptr);
+                    }
+                    
+                    else if (process == "RE_EVALUATE_MANAGED") {
+                        event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
+                                    ManagerEvents::RE_EVALUATE_MANAGED, patient_task, manager_task, nullptr);
+                    }
+
+                    event_list->insertEvent(event_task);
+                }
+
                 // ------------------------------------------------------
             }
         }
 
         e = event_list->nextEvent();
         assert(e != nullptr);
-
         if(e->getCallerType() != CallerType::SYSTEM && e->getCallerPtr() != nullptr)
         {
             agent = e->getObjectivePtr();

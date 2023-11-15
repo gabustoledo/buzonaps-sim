@@ -192,7 +192,7 @@ void Patient::processEvent(Event * e) {
 
 void Patient::processAnswerConsent(Event * e) {
     SimConfig * sim_config = SimConfig::getInstance("");
-    double PRE_CLASSIFY_CLINICAL_RISK_TIME = sim_config->getParams()["pre_classify_clinical_risk_time"].get<double>();
+    // double PRE_CLASSIFY_CLINICAL_RISK_TIME = sim_config->getParams()["pre_classify_clinical_risk_time"].get<double>();
     double ACCEPT_CONSENT_PROB = sim_config->getParams()["accept_consent_prob"].get<double>();
 
     random_device rd;
@@ -200,10 +200,11 @@ void Patient::processAnswerConsent(Event * e) {
     uniform_real_distribution<> dist(0.0, 1.0);
     double prob = dist(gen);
     if (prob < ACCEPT_CONSENT_PROB) {
+        // Tarea que debe hacer el manager
         printf("\t[INSERT - PRE_CLASSIFY_CLINICAL_RISK] \n");
-        Event * ev = new Event(CallerType::AGENT_PATIENT, this->getId(), e->getStartTime() + e->getExecTime(), PRE_CLASSIFY_CLINICAL_RISK_TIME, 
-                            ManagerEvents::PRE_CLASSIFY_CLINICAL_RISK, this, this->getManager(), nullptr);
-        this->event_list->insertEvent(ev);
+        // Event * ev = new Event(CallerType::AGENT_PATIENT, this->getId(), e->getStartTime() + e->getExecTime(), PRE_CLASSIFY_CLINICAL_RISK_TIME, 
+        //                     ManagerEvents::PRE_CLASSIFY_CLINICAL_RISK, this, this->getManager(), nullptr);
+        // this->event_list->insertEvent(ev);
     }
     json log;
     log["agent_type"] = "PATIENT";
@@ -230,6 +231,7 @@ void Patient::processReceiveMedicalHour(Event * e) {
 
     double prob = dist(gen);
     if (prob < ATTEND_MEDICAL_HOUR_PROB) {
+        // Tarea que debe hacer el paciente
         printf("\t[INSERT - ATTEND_MEDICAL_HOUR] \n");
         Event * ev = new Event(CallerType::AGENT_PATIENT, this->getId(), e->getStartTime() + e->getExecTime(), ATTEND_MEDICAL_HOUR_TIME, 
                                 PatientEvents::ATTEND_MEDICAL_HOUR, this, this, nullptr);
@@ -268,6 +270,7 @@ void Patient::processReceiveTestHour(Event * e) {
 
     double prob = dist(gen);
     if (prob < ATTEND_TEST_HOUR_PROB) {
+        // Tarea que debe hacer el paciente
         printf("\t[INSERT - ATTEND_TEST_HOUR] \n");
         Event * ev = new Event(CallerType::AGENT_PATIENT, this->getId(), e->getStartTime() + e->getExecTime(), ATTEND_TEST_HOUR_TIME, 
                                 PatientEvents::ATTEND_TEST_HOUR, this, this, nullptr);
@@ -305,6 +308,7 @@ void Patient::processReceiveSocialHour(Event * e) {
 
     double prob = dist(gen);
     if (prob < ATTEND_SOCIAL_HOUR_PROB) {
+        // Tarea que debe hacer el paciente
         printf("\t[INSERT - ATTEND_SOCIAL_HOUR] \n");
         Event * ev = new Event(CallerType::AGENT_PATIENT, this->getId(), e->getStartTime() + e->getExecTime(), ATTEND_SOCIAL_HOUR_TIME, 
                                 PatientEvents::ATTEND_SOCIAL_HOUR, this, this, nullptr);
@@ -342,6 +346,7 @@ void Patient::processReceivePsychoHour(Event * e) {
 
     double prob = dist(gen);
     if (prob < ATTEND_PSYCHO_HOUR_PROB) {
+        // Tarea que debe hacer el paciente
         printf("\t[INSERT - ATTEND_PSYCHO_HOUR] \n");
         Event * ev = new Event(CallerType::AGENT_PATIENT, this->getId(), e->getStartTime() + e->getExecTime(), ATTEND_PSYCHO_HOUR_TIME, 
                                 PatientEvents::ATTEND_PSYCHO_HOUR, this, this, nullptr);
