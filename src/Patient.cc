@@ -1,4 +1,5 @@
 #include "../includes/Patient.h"
+#include <curl/curl.h>
 
 int Patient::_curr_id(0);
 
@@ -135,52 +136,52 @@ RiskCategories Patient::calcFinalRisk() {
 }
 
 void Patient::processEvent(Event * e) {
-    printf("[PROCESS PATIENT EVENT - MANAGER %d - PATIENT %d] \n", this->manager->getId(), this->id);
+    // printf("[PROCESS PATIENT EVENT - MANAGER %d - PATIENT %d] \n", this->manager->getId(), this->id);
 
     switch (e->getEventType())
     {
     case PatientEvents::ANSWER_CONSENT:
-        printf("\t[PROCESS - ANSWER_CONSENT] \n");
+        // printf("\t[PROCESS - ANSWER_CONSENT] \n");
         this->processAnswerConsent(e);
         break;
 
     case PatientEvents::RECEIVE_MEDICAL_HOUR:
-        printf("\t[PROCESS - RECEIVE_MEDICAL_HOUR] \n");
+        // printf("\t[PROCESS - RECEIVE_MEDICAL_HOUR] \n");
         this->processReceiveMedicalHour(e);
         break;
 
     case PatientEvents::RECEIVE_TEST_HOUR:
-        printf("\t[PROCESS - RECEIVE_TEST_HOUR] \n");
+        // printf("\t[PROCESS - RECEIVE_TEST_HOUR] \n");
         this->processReceiveTestHour(e);
         break;
 
     case PatientEvents::RECEIVE_SOCIAL_HOUR:
-        printf("\t[PROCESS - RECEIVE_SOCIAL_HOUR] \n");
+        // printf("\t[PROCESS - RECEIVE_SOCIAL_HOUR] \n");
         this->processReceiveSocialHour(e);
         break;
 
     case PatientEvents::RECEIVE_PSYCHO_HOUR:
-        printf("\t[PROCESS - RECEIVE_PSYCHO_HOUR] \n");
+        // printf("\t[PROCESS - RECEIVE_PSYCHO_HOUR] \n");
         this->processReceivePsychoHour(e);
         break;
     
     case PatientEvents::ATTEND_MEDICAL_HOUR:
-        printf("\t[PROCESS - ATTEND_MEDICAL_HOUR] \n");
+        // printf("\t[PROCESS - ATTEND_MEDICAL_HOUR] \n");
         this->processAttendMedicalHour(e);
         break;
 
     case PatientEvents::ATTEND_TEST_HOUR:
-        printf("\t[PROCESS - ATTEND_TEST_HOUR] \n");
+        // printf("\t[PROCESS - ATTEND_TEST_HOUR] \n");
         this->processAttendTestHour(e);
         break;
 
     case PatientEvents::ATTEND_SOCIAL_HOUR:
-        printf("\t[PROCESS - ATTEND_SOCIAL_HOUR] \n");
+        // printf("\t[PROCESS - ATTEND_SOCIAL_HOUR] \n");
         this->processAttendSocialHour(e);
         break;
 
     case PatientEvents::ATTEND_PSYCHO_HOUR:
-        printf("\t[PROCESS - ATTEND_PSYCHO_HOUR] \n");
+        // printf("\t[PROCESS - ATTEND_PSYCHO_HOUR] \n");d
         this->processAttendPsychoHour(e);
         break;
     
@@ -201,10 +202,25 @@ void Patient::processAnswerConsent(Event * e) {
     double prob = dist(gen);
     if (prob < ACCEPT_CONSENT_PROB) {
         // Tarea que debe hacer el manager
-        printf("\t[INSERT - PRE_CLASSIFY_CLINICAL_RISK] \n");
+        // printf("\t[INSERT - PRE_CLASSIFY_CLINICAL_RISK] \n");
         // Event * ev = new Event(CallerType::AGENT_PATIENT, this->getId(), e->getStartTime() + e->getExecTime(), PRE_CLASSIFY_CLINICAL_RISK_TIME, 
         //                     ManagerEvents::PRE_CLASSIFY_CLINICAL_RISK, this, this->getManager(), nullptr);
         // this->event_list->insertEvent(ev);
+        CURL *curl;
+        // CURLcode res;
+        curl_global_init(CURL_GLOBAL_DEFAULT);
+        curl = curl_easy_init();
+
+        std::string url_base = "";
+        url_base = "http://localhost:3000/api/sim/noautoriza/" + std::to_string(this->getId());
+
+        if (curl) {
+            // Realiza la solicitud GET
+            curl_easy_setopt(curl, CURLOPT_URL, url_base.c_str());
+
+            curl_easy_perform(curl);
+            curl_easy_cleanup(curl);
+        }
     }
     json log;
     log["agent_type"] = "PATIENT";
@@ -232,7 +248,7 @@ void Patient::processReceiveMedicalHour(Event * e) {
     double prob = dist(gen);
     if (prob < ATTEND_MEDICAL_HOUR_PROB) {
         // Tarea que debe hacer el paciente
-        printf("\t[INSERT - ATTEND_MEDICAL_HOUR] \n");
+        // printf("\t[INSERT - ATTEND_MEDICAL_HOUR] \n");
         Event * ev = new Event(CallerType::AGENT_PATIENT, this->getId(), e->getStartTime() + e->getExecTime(), ATTEND_MEDICAL_HOUR_TIME, 
                                 PatientEvents::ATTEND_MEDICAL_HOUR, this, this, nullptr);
         this->event_list->insertEvent(ev);
@@ -271,7 +287,7 @@ void Patient::processReceiveTestHour(Event * e) {
     double prob = dist(gen);
     if (prob < ATTEND_TEST_HOUR_PROB) {
         // Tarea que debe hacer el paciente
-        printf("\t[INSERT - ATTEND_TEST_HOUR] \n");
+        // printf("\t[INSERT - ATTEND_TEST_HOUR] \n");
         Event * ev = new Event(CallerType::AGENT_PATIENT, this->getId(), e->getStartTime() + e->getExecTime(), ATTEND_TEST_HOUR_TIME, 
                                 PatientEvents::ATTEND_TEST_HOUR, this, this, nullptr);
         this->event_list->insertEvent(ev);// Si va, se agrega a las horas a las que ha asisitido con valor 1
@@ -309,7 +325,7 @@ void Patient::processReceiveSocialHour(Event * e) {
     double prob = dist(gen);
     if (prob < ATTEND_SOCIAL_HOUR_PROB) {
         // Tarea que debe hacer el paciente
-        printf("\t[INSERT - ATTEND_SOCIAL_HOUR] \n");
+        // printf("\t[INSERT - ATTEND_SOCIAL_HOUR] \n");d
         Event * ev = new Event(CallerType::AGENT_PATIENT, this->getId(), e->getStartTime() + e->getExecTime(), ATTEND_SOCIAL_HOUR_TIME, 
                                 PatientEvents::ATTEND_SOCIAL_HOUR, this, this, nullptr);
         this->event_list->insertEvent(ev);// Si va, se agrega a las horas a las que ha asisitido con valor 1
@@ -347,7 +363,7 @@ void Patient::processReceivePsychoHour(Event * e) {
     double prob = dist(gen);
     if (prob < ATTEND_PSYCHO_HOUR_PROB) {
         // Tarea que debe hacer el paciente
-        printf("\t[INSERT - ATTEND_PSYCHO_HOUR] \n");
+        // printf("\t[INSERT - ATTEND_PSYCHO_HOUR] \n");
         Event * ev = new Event(CallerType::AGENT_PATIENT, this->getId(), e->getStartTime() + e->getExecTime(), ATTEND_PSYCHO_HOUR_TIME, 
                                 PatientEvents::ATTEND_PSYCHO_HOUR, this, this, nullptr);
         this->event_list->insertEvent(ev);// Si va, se agrega a las horas a las que ha asisitido con valor 1

@@ -27,12 +27,12 @@ map<Patient *, bool> Manager::getPatients() {
 
 void Manager::processEvent(Event * e) {
 
-    printf("[PROCESS MANAGER EVENT - MANAGER %d - PATIENT %d] \n", this->id, e->getCallerId());
+    // printf("[PROCESS MANAGER EVENT - MANAGER %d - PATIENT %d] \n", this->id, e->getCallerId());
 
     // Si el evento ocurre fuera del horario laboral del gestor, se inserta nuevamente el evento al inicio de su jornada
     double out_of_time = this->outOfTime();
     if (out_of_time != 0) {
-        printf("\t[MANAGER OUT OF TIME - EVENT TYPE %d] \n", e->getEventType());
+        // printf("\t[MANAGER OUT OF TIME - EVENT TYPE %d] \n", e->getEventType());
         double start_time = e->getStartTime() + out_of_time;
         Event * ev = new Event(e->getCallerType(), e->getCallerId(), start_time, e->getExecTime(), 
                                 e->getEventType(), e->getCallerPtr(), e->getObjectivePtr(), nullptr);
@@ -42,52 +42,52 @@ void Manager::processEvent(Event * e) {
     else {
         switch (e->getEventType()) {
         case ManagerEvents::ASK_CONSENT:
-            printf("\t[PROCESS - ASK_CONSENT] \n");
+            // printf("\t[PROCESS - ASK_CONSENT] \n");
             this->processAskConsent(e);
             break;
         
         case ManagerEvents::PRE_CLASSIFY_CLINICAL_RISK:
-            printf("\t[PROCESS - PRE_CLASSIFY_CLINICAL_RISK] \n");
+            // printf("\t[PROCESS - PRE_CLASSIFY_CLINICAL_RISK] \n");
             this->processPreClassifyClinicalRisk(e);
             break;
 
         case ManagerEvents::PRE_CLASSIFY_SOCIAL_RISK:
-            printf("\t[PROCESS - PRE_CLASSIFY_SOCIAL_RISK] \n");
+            // printf("\t[PROCESS - PRE_CLASSIFY_SOCIAL_RISK] \n");
             this->processPreClassifySocialRisk(e);
             break;
 
         case ManagerEvents::MANAGE_PATIENT:
-            printf("\t[PROCESS - MANAGE_PATIENT] \n");
+            // printf("\t[PROCESS - MANAGE_PATIENT] \n");
             this->processManagePatient(e);
             break;
 
         case ManagerEvents::MANAGE_MEDICAL_HOUR:
-            printf("\t[PROCESS - MANAGE_MEDICAL_HOUR] \n");
+            // printf("\t[PROCESS - MANAGE_MEDICAL_HOUR] \n");d
             this->processMedicalHour(e);
             break;
 
         case ManagerEvents::MANAGE_TEST_HOUR:
-            printf("\t[PROCESS - MANAGE_TEST_HOUR] \n");
+            // printf("\t[PROCESS - MANAGE_TEST_HOUR] \n");
             this->processTestHour(e);
             break;
 
         case ManagerEvents::MANAGE_SOCIAL_HOUR:
-            printf("\t[PROCESS - MANAGE_SOCIAL_HOUR] \n");
+            // printf("\t[PROCESS - MANAGE_SOCIAL_HOUR] \n");d
             this->processSocialHour(e);
             break;
 
         case ManagerEvents::MANAGE_PSYCHO_HOUR:
-            printf("\t[PROCESS - MANAGE_PSYCHO_HOUR] \n");
+            // printf("\t[PROCESS - MANAGE_PSYCHO_HOUR] \n");
             this->processPsychoHour(e);
             break;
         
         case ManagerEvents::RE_EVALUATE_LOW_RISK:
-            printf("\t[PROCESS - RE_EVALUATE_LOW_RISK] \n");
+            // printf("\t[PROCESS - RE_EVALUATE_LOW_RISK] \n");
             this->processReEvaluateLowRisk(e);
             break;
 
         case ManagerEvents::RE_EVALUATE_MANAGED:
-            printf("\t[PROCESS - RE_EVALUATE_MANAGED] \n");
+            // printf("\t[PROCESS - RE_EVALUATE_MANAGED] \n");
             this->processReEvaluateManaged(e);
             break;
 
@@ -103,7 +103,7 @@ void Manager::processAskConsent(Event * e) {
     double ANSWER_CONSENT_TIME = sim_config->getParams()["answer_consent_time"].get<double>();
 
     // Tarea que debe hacer el paciente
-    printf("\t[INSERT - ANSWER_CONSENT] \n");
+    // printf("\t[INSERT - ANSWER_CONSENT] \n");
     Event * ev = new Event(CallerType::AGENT_MANAGER, this->getId(), e->getStartTime() + e->getExecTime(), ANSWER_CONSENT_TIME, 
                     PatientEvents::ANSWER_CONSENT, this, e->getCallerPtr(), nullptr);
     this->event_list->insertEvent(ev);
@@ -151,7 +151,7 @@ void Manager::processPreClassifyClinicalRisk(Event * e) {
 
         // Tarea que debe hacer el manager
         //TODO: Registrar el resultado del riesgo clínico
-        printf("\t[INSERT - PRE_CLASSIFY_SOCIAL_RISK] \n");
+        // printf("\t[INSERT - PRE_CLASSIFY_SOCIAL_RISK] \n");
         // Event * ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), PRE_CLASSIFY_SOCIAL_RISK_TIME, 
         //                     ManagerEvents::PRE_CLASSIFY_SOCIAL_RISK, e->getCallerPtr(), this, nullptr); // Se determina como agente objetivo el mismo gestor dado que es este quien procesa el siguiente evento
         //this->event_list->insertEvent(ev);
@@ -201,13 +201,13 @@ void Manager::processPreClassifySocialRisk(Event * e) {
         RiskCategories final_risk = patient->calcFinalRisk();
         if (final_risk == RiskCategories::MEDIUM || final_risk == RiskCategories::HIGH) {
             // Tarea que debe hacer el manager
-            printf("\t[INSERT - MANAGE_PATIENT] \n");
+            // printf("\t[INSERT - MANAGE_PATIENT] \n");d
             // Event * ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), MANAGE_PATIENT_TIME, 
             //                     ManagerEvents::MANAGE_PATIENT, e->getCallerPtr(), this, nullptr); // Se determina como agente objetivo el mismo gestor dado que es este quien procesa el siguiente evento
             // this->event_list->insertEvent(ev);
         } else {
             // Tarea que debe hacer el manager
-            printf("\t[INSERT - RE_EVALUATE_LOW_RISK] \n");
+            // printf("\t[INSERT - RE_EVALUATE_LOW_RISK] \n");
             // Event * ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), RE_EVALUATE_LOW_RISK_TIME, 
             //                     ManagerEvents::RE_EVALUATE_LOW_RISK, e->getCallerPtr(), this, nullptr); // Se determina como agente objetivo el mismo gestor dado que es este quien procesa el siguiente evento
             // this->event_list->insertEvent(ev);
@@ -233,7 +233,7 @@ void Manager::processReEvaluateLowRisk(Event * e) {
     // double PRE_CLASSIFY_CLINICAL_RISK_TIME = sim_config->getParams()["pre_classify_clinical_risk_time"].get<double>();
 
     // Tarea que debe hacer el manager
-    printf("\t[INSERT - PRE_CLASSIFY_CLINICAL_RISK] \n");
+    // printf("\t[INSERT - PRE_CLASSIFY_CLINICAL_RISK] \n");d
     // Event * ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), PRE_CLASSIFY_CLINICAL_RISK_TIME, 
     //                         ManagerEvents::PRE_CLASSIFY_CLINICAL_RISK, e->getCallerPtr(), this, nullptr);
     // this->event_list->insertEvent(ev);
@@ -256,7 +256,7 @@ void Manager::processReEvaluateManaged(Event * e) {
     // double PRE_CLASSIFY_CLINICAL_RISK_TIME = sim_config->getParams()["pre_classify_clinical_risk_time"].get<double>();
 
     // Tarea que debe hacer el manager
-    printf("\t[INSERT - PRE_CLASSIFY_CLINICAL_RISK] \n");
+    // printf("\t[INSERT - PRE_CLASSIFY_CLINICAL_RISK] \n");
     // Event * ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), PRE_CLASSIFY_CLINICAL_RISK_TIME, 
     //                         ManagerEvents::PRE_CLASSIFY_CLINICAL_RISK, e->getCallerPtr(), this, nullptr);
     // this->event_list->insertEvent(ev);
@@ -296,7 +296,7 @@ void Manager::processManagePatient(Event * e) {
     double medical_prob = dist(gen);
     if (medical_prob < MEDICAL_HOUR_PROB) {
         // Tarea que debe hacer el manager
-        printf("\t[INSERT - MANAGE_MEDICAL_HOUR] \n");
+        // printf("\t[INSERT - MANAGE_MEDICAL_HOUR] \n");
         // ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), MANAGE_MEDICAL_HOUR_TIME, 
         //                         ManagerEvents::MANAGE_MEDICAL_HOUR, e->getCallerPtr(), this, nullptr);
         // this->event_list->insertEvent(ev);
@@ -306,7 +306,7 @@ void Manager::processManagePatient(Event * e) {
     double test_prob = dist(gen);
     if (test_prob < TEST_HOUR_PROB) {
         // Tarea que debe hacer el manager
-        printf("\t[INSERT - MANAGE_TEST_HOUR] \n");
+        // printf("\t[INSERT - MANAGE_TEST_HOUR] \n");
         // ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), MANAGE_TEST_HOUR_TIME, 
         //                         ManagerEvents::MANAGE_TEST_HOUR, e->getCallerPtr(), this, nullptr);
         // this->event_list->insertEvent(ev);
@@ -316,7 +316,7 @@ void Manager::processManagePatient(Event * e) {
     double social_prob = dist(gen);
     if (social_prob < SOCIAL_HOUR_PROB) {
         // Tarea que debe hacer el manager
-        printf("\t[INSERT - MANAGE_SOCIAL_HOUR] \n");
+        // printf("\t[INSERT - MANAGE_SOCIAL_HOUR] \n");
         // ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), MANAGE_SOCIAL_HOUR_TIME, 
         //                         ManagerEvents::MANAGE_SOCIAL_HOUR, e->getCallerPtr(), this, nullptr);
         // this->event_list->insertEvent(ev);
@@ -326,7 +326,7 @@ void Manager::processManagePatient(Event * e) {
     double psycho_prob = dist(gen);
     if (psycho_prob < PSYCHO_HOUR_PROB) {
         // Tarea que debe hacer el manager
-        printf("\t[INSERT - MANAGE_PSYCHO_HOUR] \n");
+        // printf("\t[INSERT - MANAGE_PSYCHO_HOUR] \n");
         // ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), MANAGE_PSYCHO_HOUR_TIME, 
         //                         ManagerEvents::MANAGE_PSYCHO_HOUR, e->getCallerPtr(), this, nullptr);
         // this->event_list->insertEvent(ev);
@@ -334,7 +334,7 @@ void Manager::processManagePatient(Event * e) {
 
     // Tarea que debe hacer el manager
     // Se inserta el evento de reevaluar el riesgo
-    printf("\t[INSERT - RE_EVALUATE_MANAGED] \n");
+    // printf("\t[INSERT - RE_EVALUATE_MANAGED] \n");
     // ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), RE_EVALUATE_MANAGED_TIME, 
     //                         ManagerEvents::RE_EVALUATE_MANAGED, e->getCallerPtr(), this, nullptr);
     // this->event_list->insertEvent(ev);
@@ -365,7 +365,7 @@ void Manager::processMedicalHour(Event * e) {
     double RECEIVE_MEDICAL_HOUR_TIME = sim_config->getParams()["receive_medical_hour_time"].get<double>();
 
     // Tarea que debe hacer el paciente
-    printf("\t[INSERT - RECEIVE_MEDICAL_HOUR] \n");
+    // printf("\t[INSERT - RECEIVE_MEDICAL_HOUR] \n");
     Event * ev = new Event(CallerType::AGENT_MANAGER, this->getId(), e->getStartTime() + e->getExecTime(), RECEIVE_MEDICAL_HOUR_TIME, 
                             PatientEvents::RECEIVE_MEDICAL_HOUR, this, e->getCallerPtr(), nullptr);
     this->event_list->insertEvent(ev);
@@ -388,7 +388,7 @@ void Manager::processTestHour(Event * e) {
     double RECEIVE_TEST_HOUR_TIME = sim_config->getParams()["receive_test_hour_time"].get<double>();
 
     // Tarea que debe hacer el paciente
-    printf("\t[INSERT - RECEIVE_TEST_HOUR] \n");
+    // printf("\t[INSERT - RECEIVE_TEST_HOUR] \n");
     Event * ev = new Event(CallerType::AGENT_MANAGER, this->getId(), e->getStartTime() + e->getExecTime(), RECEIVE_TEST_HOUR_TIME, 
                             PatientEvents::RECEIVE_TEST_HOUR, this, e->getCallerPtr(), nullptr);
     this->event_list->insertEvent(ev);
@@ -411,7 +411,7 @@ void Manager::processSocialHour(Event * e) {
     double RECEIVE_SOCIAL_HOUR_TIME = sim_config->getParams()["receive_social_hour_time"].get<double>();
 
     // Tarea que debe hacer el paciente
-    printf("\t[INSERT - RECEIVE_SOCIAL_HOUR] \n");
+    // printf("\t[INSERT - RECEIVE_SOCIAL_HOUR] \n");
     Event * ev = new Event(CallerType::AGENT_MANAGER, this->getId(), e->getStartTime() + e->getExecTime(), RECEIVE_SOCIAL_HOUR_TIME, 
                             PatientEvents::RECEIVE_SOCIAL_HOUR, this, e->getCallerPtr(), nullptr);
     this->event_list->insertEvent(ev);
@@ -434,7 +434,7 @@ void Manager::processPsychoHour(Event * e) {
     double RECEIVE_PSYCHO_HOUR_TIME = sim_config->getParams()["receive_psycho_hour_time"].get<double>();
 
     // Tarea que debe hacer el paciente
-    printf("\t[INSERT - RECEIVE_PSYCHO_HOUR] \n");
+    // printf("\t[INSERT - RECEIVE_PSYCHO_HOUR] \n");
     Event * ev = new Event(CallerType::AGENT_MANAGER, this->getId(), e->getStartTime() + e->getExecTime(), RECEIVE_PSYCHO_HOUR_TIME, 
                             PatientEvents::RECEIVE_PSYCHO_HOUR, this, e->getCallerPtr(), nullptr);
     this->event_list->insertEvent(ev);

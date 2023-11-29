@@ -105,6 +105,8 @@ int main(int argc, char *argv[]) {
     while(!event_list->isEmpty() && event_list->getClock() <= END_SIM) {
         last_clock = event_list->getClock();
 
+        printf("last_clock %f\n", last_clock);
+
         // Se comprueba cuando termina el dia
         int day = last_clock/24;
         if (current_day != day){
@@ -135,6 +137,7 @@ int main(int argc, char *argv[]) {
                 }
                 std::string clockStr = std::to_string(last_clock);
                 state_day += "{\"clock\":\"" + clockStr + "\"}\n";
+                cout << state_day << endl;
 
                 // realiza json y conexion post---------------------
 
@@ -175,6 +178,8 @@ int main(int argc, char *argv[]) {
 
                     // Limpia y libera los recursos de cURL
                     curl_easy_cleanup(curl);
+                }else{
+                    printf("problemsa con el post del state\n");
                 }
 
                 // -------------------------------------------------
@@ -236,62 +241,65 @@ int main(int argc, char *argv[]) {
                     string process = element.at("process").get<string>();
                     double execute_time = element.at("execute_time").get<double>();
 
-                    Patient *patient_task = sys->get_patient_by_id(id_patient);
-                    Manager *manager_task = sys->get_manager_by_id(id_manager);
+                    if (!(id_manager == -1)){
 
-                    Event * event_task;
-                    // Dependiendo de cual sea el process, se debe hacer diferente evento
-                    if (process == "ASK_CONSENT") {
-                        event_task = new Event(CallerType::AGENT_MANAGER, id_manager, clock_init, execute_time, 
-                                    ManagerEvents::ASK_CONSENT, patient_task, manager_task, nullptr);
-                    }
-                    
-                    else if (process == "PRE_CLASSIFY_CLINICAL_RISK") {
-                        event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
-                                    ManagerEvents::PRE_CLASSIFY_CLINICAL_RISK, patient_task, manager_task, nullptr);
-                    }
-                    
-                    else if (process == "PRE_CLASSIFY_SOCIAL_RISK") {
-                        event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
-                                    ManagerEvents::PRE_CLASSIFY_SOCIAL_RISK, patient_task, manager_task, nullptr);
-                    }
-                    
-                    else if (process == "MANAGE_PATIENT") {
-                        event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
-                                    ManagerEvents::MANAGE_PATIENT, patient_task, manager_task, nullptr);
-                    }
-                    
-                    else if (process == "MANAGE_MEDICAL_HOUR") {
-                        event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
-                                    ManagerEvents::MANAGE_MEDICAL_HOUR, patient_task, manager_task, nullptr);
-                    }
-                    
-                    else if (process == "MANAGE_TEST_HOUR") {
-                        event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
-                                    ManagerEvents::MANAGE_TEST_HOUR, patient_task, manager_task, nullptr);
-                    }
-                    
-                    else if (process == "MANAGE_SOCIAL_HOUR") {
-                        event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
-                                    ManagerEvents::MANAGE_SOCIAL_HOUR, patient_task, manager_task, nullptr);
-                    }
-                    
-                    else if (process == "MANAGE_PSYCHO_HOUR") {
-                        event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
-                                    ManagerEvents::MANAGE_PSYCHO_HOUR, patient_task, manager_task, nullptr);
-                    }
-                    
-                    else if (process == "RE_EVALUATE_LOW_RISK") {
-                        event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
-                                    ManagerEvents::RE_EVALUATE_LOW_RISK, patient_task, manager_task, nullptr);
-                    }
-                    
-                    else if (process == "RE_EVALUATE_MANAGED") {
-                        event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
-                                    ManagerEvents::RE_EVALUATE_MANAGED, patient_task, manager_task, nullptr);
-                    }
+                        Patient *patient_task = sys->get_patient_by_id(id_patient);
+                        Manager *manager_task = sys->get_manager_by_id(id_manager);
 
-                    event_list->insertEvent(event_task);
+                        Event * event_task;
+                        // Dependiendo de cual sea el process, se debe hacer diferente evento
+                        if (process == "ASK_CONSENT") {
+                            event_task = new Event(CallerType::AGENT_MANAGER, id_manager, clock_init, execute_time, 
+                                        ManagerEvents::ASK_CONSENT, patient_task, manager_task, nullptr);
+                        }
+                        
+                        else if (process == "PRE_CLASSIFY_CLINICAL_RISK") {
+                            event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
+                                        ManagerEvents::PRE_CLASSIFY_CLINICAL_RISK, patient_task, manager_task, nullptr);
+                        }
+                        
+                        else if (process == "PRE_CLASSIFY_SOCIAL_RISK") {
+                            event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
+                                        ManagerEvents::PRE_CLASSIFY_SOCIAL_RISK, patient_task, manager_task, nullptr);
+                        }
+                        
+                        else if (process == "MANAGE_PATIENT") {
+                            event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
+                                        ManagerEvents::MANAGE_PATIENT, patient_task, manager_task, nullptr);
+                        }
+                        
+                        else if (process == "MANAGE_MEDICAL_HOUR") {
+                            event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
+                                        ManagerEvents::MANAGE_MEDICAL_HOUR, patient_task, manager_task, nullptr);
+                        }
+                        
+                        else if (process == "MANAGE_TEST_HOUR") {
+                            event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
+                                        ManagerEvents::MANAGE_TEST_HOUR, patient_task, manager_task, nullptr);
+                        }
+                        
+                        else if (process == "MANAGE_SOCIAL_HOUR") {
+                            event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
+                                        ManagerEvents::MANAGE_SOCIAL_HOUR, patient_task, manager_task, nullptr);
+                        }
+                        
+                        else if (process == "MANAGE_PSYCHO_HOUR") {
+                            event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
+                                        ManagerEvents::MANAGE_PSYCHO_HOUR, patient_task, manager_task, nullptr);
+                        }
+                        
+                        else if (process == "RE_EVALUATE_LOW_RISK") {
+                            event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
+                                        ManagerEvents::RE_EVALUATE_LOW_RISK, patient_task, manager_task, nullptr);
+                        }
+                        
+                        else if (process == "RE_EVALUATE_MANAGED") {
+                            event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
+                                        ManagerEvents::RE_EVALUATE_MANAGED, patient_task, manager_task, nullptr);
+                        }
+
+                        event_list->insertEvent(event_task);
+                    }
                 }
 
                 // ------------------------------------------------------
@@ -304,8 +312,8 @@ int main(int argc, char *argv[]) {
         {
             agent = e->getObjectivePtr();
             assert(last_clock <= event_list->getClock());
-            printf("----------------------------------------------------------------------------------------------------\n");
-            printf("[ID EVENT %d] - [CLOCK %lf]\n", e->getId(), event_list->getClock());
+            // printf("----------------------------------------------------------------------------------------------------\n");
+            // printf("[ID EVENT %d] - [CLOCK %lf]\n", e->getId(), event_list->getClock());
             agent->processEvent(e);
             continue; 
         }
