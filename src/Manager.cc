@@ -1,4 +1,5 @@
 #include "../includes/Manager.h"
+#include <curl/curl.h>
 
 int Manager::_curr_id(0);
 
@@ -148,6 +149,24 @@ void Manager::processPreClassifyClinicalRisk(Event * e) {
         if (patient->getClinicalRisk() == RiskCategories::UNDEFINED) {
             patient->setClinicalRisk(clinical_risk);
         } 
+        patient->setClinicalRisk(clinical_risk);
+
+        std::string id_patient_str = std::to_string(((Patient *)e->getCallerPtr())->getId());
+        std::string id_manager_str = std::to_string(this->getId());
+        std::string process_str = "1";
+
+        std::string url = "http://localhost:3000/api/sim/pendiente/" + id_patient_str + "/" + id_manager_str + "/" + process_str;
+
+        CURL *curl = curl_easy_init();
+        if(curl) {
+            curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+
+            CURLcode res = curl_easy_perform(curl);
+            if(res != CURLE_OK)
+                std::cerr << "CURL error: " << curl_easy_strerror(res) << std::endl;
+
+            curl_easy_cleanup(curl);
+        }
 
         // Tarea que debe hacer el manager
         //TODO: Registrar el resultado del riesgo clínico
@@ -200,12 +219,46 @@ void Manager::processPreClassifySocialRisk(Event * e) {
         //TODO: Registrar el resultado del riesgo social
         RiskCategories final_risk = patient->calcFinalRisk();
         if (final_risk == RiskCategories::MEDIUM || final_risk == RiskCategories::HIGH) {
+
+            std::string id_patient_str = std::to_string(((Patient *)e->getCallerPtr())->getId());
+            std::string id_manager_str = std::to_string(this->getId());
+            std::string process_str = "2";
+
+            std::string url = "http://localhost:3000/api/sim/pendiente/" + id_patient_str + "/" + id_manager_str + "/" + process_str;
+
+            CURL *curl = curl_easy_init();
+            if(curl) {
+                curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+
+                CURLcode res = curl_easy_perform(curl);
+                if(res != CURLE_OK)
+                    std::cerr << "CURL error: " << curl_easy_strerror(res) << std::endl;
+
+                curl_easy_cleanup(curl);
+            }
             // Tarea que debe hacer el manager
             // printf("\t[INSERT - MANAGE_PATIENT] \n");d
             // Event * ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), MANAGE_PATIENT_TIME, 
             //                     ManagerEvents::MANAGE_PATIENT, e->getCallerPtr(), this, nullptr); // Se determina como agente objetivo el mismo gestor dado que es este quien procesa el siguiente evento
             // this->event_list->insertEvent(ev);
         } else {
+
+            std::string id_patient_str = std::to_string(((Patient *)e->getCallerPtr())->getId());
+            std::string id_manager_str = std::to_string(this->getId());
+            std::string process_str = "7";
+
+            std::string url = "http://localhost:3000/api/sim/pendiente/" + id_patient_str + "/" + id_manager_str + "/" + process_str;
+
+            CURL *curl = curl_easy_init();
+            if(curl) {
+                curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+
+                CURLcode res = curl_easy_perform(curl);
+                if(res != CURLE_OK)
+                    std::cerr << "CURL error: " << curl_easy_strerror(res) << std::endl;
+
+                curl_easy_cleanup(curl);
+            }
             // Tarea que debe hacer el manager
             // printf("\t[INSERT - RE_EVALUATE_LOW_RISK] \n");
             // Event * ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), RE_EVALUATE_LOW_RISK_TIME, 
@@ -232,6 +285,23 @@ void Manager::processReEvaluateLowRisk(Event * e) {
     // SimConfig * sim_config = SimConfig::getInstance("");
     // double PRE_CLASSIFY_CLINICAL_RISK_TIME = sim_config->getParams()["pre_classify_clinical_risk_time"].get<double>();
 
+    std::string id_patient_str = std::to_string(((Patient *)e->getCallerPtr())->getId());
+    std::string id_manager_str = std::to_string(this->getId());
+    std::string process_str = "0";
+
+    std::string url = "http://localhost:3000/api/sim/pendiente/" + id_patient_str + "/" + id_manager_str + "/" + process_str;
+
+    CURL *curl = curl_easy_init();
+    if(curl) {
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+
+        CURLcode res = curl_easy_perform(curl);
+        if(res != CURLE_OK)
+            std::cerr << "CURL error: " << curl_easy_strerror(res) << std::endl;
+
+        curl_easy_cleanup(curl);
+    }
+
     // Tarea que debe hacer el manager
     // printf("\t[INSERT - PRE_CLASSIFY_CLINICAL_RISK] \n");d
     // Event * ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), PRE_CLASSIFY_CLINICAL_RISK_TIME, 
@@ -254,6 +324,23 @@ void Manager::processReEvaluateLowRisk(Event * e) {
 void Manager::processReEvaluateManaged(Event * e) {
     // SimConfig * sim_config = SimConfig::getInstance("");
     // double PRE_CLASSIFY_CLINICAL_RISK_TIME = sim_config->getParams()["pre_classify_clinical_risk_time"].get<double>();
+
+    std::string id_patient_str = std::to_string(((Patient *)e->getCallerPtr())->getId());
+    std::string id_manager_str = std::to_string(this->getId());
+    std::string process_str = "0";
+
+    std::string url = "http://localhost:3000/api/sim/pendiente/" + id_patient_str + "/" + id_manager_str + "/" + process_str;
+
+    CURL *curl = curl_easy_init();
+    if(curl) {
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+
+        CURLcode res = curl_easy_perform(curl);
+        if(res != CURLE_OK)
+            std::cerr << "CURL error: " << curl_easy_strerror(res) << std::endl;
+
+        curl_easy_cleanup(curl);
+    }
 
     // Tarea que debe hacer el manager
     // printf("\t[INSERT - PRE_CLASSIFY_CLINICAL_RISK] \n");
@@ -295,6 +382,23 @@ void Manager::processManagePatient(Event * e) {
     // Se gestionan las horas médicas
     double medical_prob = dist(gen);
     if (medical_prob < MEDICAL_HOUR_PROB) {
+
+        std::string id_patient_str = std::to_string(((Patient *)e->getCallerPtr())->getId());
+        std::string id_manager_str = std::to_string(this->getId());
+        std::string process_str = "3";
+
+        std::string url = "http://localhost:3000/api/sim/pendiente/" + id_patient_str + "/" + id_manager_str + "/" + process_str;
+
+        CURL *curl = curl_easy_init();
+        if(curl) {
+            curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+
+            CURLcode res = curl_easy_perform(curl);
+            if(res != CURLE_OK)
+                std::cerr << "CURL error: " << curl_easy_strerror(res) << std::endl;
+
+            curl_easy_cleanup(curl);
+        }
         // Tarea que debe hacer el manager
         // printf("\t[INSERT - MANAGE_MEDICAL_HOUR] \n");
         // ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), MANAGE_MEDICAL_HOUR_TIME, 
@@ -305,6 +409,24 @@ void Manager::processManagePatient(Event * e) {
     // Se gestionan las horas a exámenes
     double test_prob = dist(gen);
     if (test_prob < TEST_HOUR_PROB) {
+        
+
+        std::string id_patient_str = std::to_string(((Patient *)e->getCallerPtr())->getId());
+        std::string id_manager_str = std::to_string(this->getId());
+        std::string process_str = "4";
+
+        std::string url = "http://localhost:3000/api/sim/pendiente/" + id_patient_str + "/" + id_manager_str + "/" + process_str;
+
+        CURL *curl = curl_easy_init();
+        if(curl) {
+            curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+
+            CURLcode res = curl_easy_perform(curl);
+            if(res != CURLE_OK)
+                std::cerr << "CURL error: " << curl_easy_strerror(res) << std::endl;
+
+            curl_easy_cleanup(curl);
+        }
         // Tarea que debe hacer el manager
         // printf("\t[INSERT - MANAGE_TEST_HOUR] \n");
         // ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), MANAGE_TEST_HOUR_TIME, 
@@ -315,6 +437,23 @@ void Manager::processManagePatient(Event * e) {
     // Se gestionan las horas con asistente social
     double social_prob = dist(gen);
     if (social_prob < SOCIAL_HOUR_PROB) {
+
+        std::string id_patient_str = std::to_string(((Patient *)e->getCallerPtr())->getId());
+        std::string id_manager_str = std::to_string(this->getId());
+        std::string process_str = "5";
+
+        std::string url = "http://localhost:3000/api/sim/pendiente/" + id_patient_str + "/" + id_manager_str + "/" + process_str;
+
+        CURL *curl = curl_easy_init();
+        if(curl) {
+            curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+
+            CURLcode res = curl_easy_perform(curl);
+            if(res != CURLE_OK)
+                std::cerr << "CURL error: " << curl_easy_strerror(res) << std::endl;
+
+            curl_easy_cleanup(curl);
+        }
         // Tarea que debe hacer el manager
         // printf("\t[INSERT - MANAGE_SOCIAL_HOUR] \n");
         // ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), MANAGE_SOCIAL_HOUR_TIME, 
@@ -325,11 +464,45 @@ void Manager::processManagePatient(Event * e) {
     // Se gestionan las horas para atención psicológica
     double psycho_prob = dist(gen);
     if (psycho_prob < PSYCHO_HOUR_PROB) {
+
+        std::string id_patient_str = std::to_string(((Patient *)e->getCallerPtr())->getId());
+        std::string id_manager_str = std::to_string(this->getId());
+        std::string process_str = "6";
+
+        std::string url = "http://localhost:3000/api/sim/pendiente/" + id_patient_str + "/" + id_manager_str + "/" + process_str;
+
+        CURL *curl = curl_easy_init();
+        if(curl) {
+            curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+
+            CURLcode res = curl_easy_perform(curl);
+            if(res != CURLE_OK)
+                std::cerr << "CURL error: " << curl_easy_strerror(res) << std::endl;
+
+            curl_easy_cleanup(curl);
+        }
         // Tarea que debe hacer el manager
         // printf("\t[INSERT - MANAGE_PSYCHO_HOUR] \n");
         // ev = new Event(CallerType::AGENT_PATIENT, ((Patient *)e->getCallerPtr())->getId(), e->getStartTime() + e->getExecTime(), MANAGE_PSYCHO_HOUR_TIME, 
         //                         ManagerEvents::MANAGE_PSYCHO_HOUR, e->getCallerPtr(), this, nullptr);
         // this->event_list->insertEvent(ev);
+    }
+
+    std::string id_patient_str = std::to_string(((Patient *)e->getCallerPtr())->getId());
+    std::string id_manager_str = std::to_string(this->getId());
+    std::string process_str = "8";
+
+    std::string url = "http://localhost:3000/api/sim/pendiente/" + id_patient_str + "/" + id_manager_str + "/" + process_str;
+
+    CURL *curl = curl_easy_init();
+    if(curl) {
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+
+        CURLcode res = curl_easy_perform(curl);
+        if(res != CURLE_OK)
+            std::cerr << "CURL error: " << curl_easy_strerror(res) << std::endl;
+
+        curl_easy_cleanup(curl);
     }
 
     // Tarea que debe hacer el manager

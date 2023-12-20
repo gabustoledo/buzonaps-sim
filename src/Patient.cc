@@ -132,6 +132,9 @@ RiskCategories Patient::calcFinalRisk() {
         stats->updateIncreasedRiskEvents();
     }
 
+    // Actualizar riesgos
+    this->clinical_risk = classifyIntRisk(clinical_r);
+
     return new_risk;
 }
 
@@ -201,26 +204,43 @@ void Patient::processAnswerConsent(Event * e) {
     uniform_real_distribution<> dist(0.0, 1.0);
     double prob = dist(gen);
     if (prob < ACCEPT_CONSENT_PROB) {
+
+        std::string id_patient_str = std::to_string(this->getId());
+        std::string id_manager_str = std::to_string(this->getManager()->getId());
+        std::string process_str = "0";
+
+        std::string url = "http://localhost:3000/api/sim/pendiente/" + id_patient_str + "/" + id_manager_str + "/" + process_str;
+
+        CURL *curl = curl_easy_init();
+        if(curl) {
+            curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+
+            CURLcode res = curl_easy_perform(curl);
+            if(res != CURLE_OK)
+                std::cerr << "CURL error: " << curl_easy_strerror(res) << std::endl;
+
+            curl_easy_cleanup(curl);
+        }
         // Tarea que debe hacer el manager
         // printf("\t[INSERT - PRE_CLASSIFY_CLINICAL_RISK] \n");
         // Event * ev = new Event(CallerType::AGENT_PATIENT, this->getId(), e->getStartTime() + e->getExecTime(), PRE_CLASSIFY_CLINICAL_RISK_TIME, 
         //                     ManagerEvents::PRE_CLASSIFY_CLINICAL_RISK, this, this->getManager(), nullptr);
         // this->event_list->insertEvent(ev);
-        CURL *curl;
-        // CURLcode res;
-        curl_global_init(CURL_GLOBAL_DEFAULT);
-        curl = curl_easy_init();
+        // CURL *curl;
+        // // CURLcode res;
+        // curl_global_init(CURL_GLOBAL_DEFAULT);
+        // curl = curl_easy_init();
 
-        std::string url_base = "";
-        url_base = "http://localhost:3000/api/sim/noautoriza/" + std::to_string(this->getId());
+        // std::string url_base = "";
+        // url_base = "http://localhost:3000/api/sim/noautoriza/" + std::to_string(this->getId());
 
-        if (curl) {
-            // Realiza la solicitud GET
-            curl_easy_setopt(curl, CURLOPT_URL, url_base.c_str());
+        // if (curl) {
+        //     // Realiza la solicitud GET
+        //     curl_easy_setopt(curl, CURLOPT_URL, url_base.c_str());
 
-            curl_easy_perform(curl);
-            curl_easy_cleanup(curl);
-        }
+        //     curl_easy_perform(curl);
+        //     curl_easy_cleanup(curl);
+        // }
     }
     json log;
     log["agent_type"] = "PATIENT";

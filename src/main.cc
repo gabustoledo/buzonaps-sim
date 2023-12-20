@@ -105,7 +105,7 @@ int main(int argc, char *argv[]) {
     while(!event_list->isEmpty() && event_list->getClock() <= END_SIM) {
         last_clock = event_list->getClock();
 
-        printf("last_clock %f\n", last_clock);
+        // printf("last_clock %f\n", last_clock);
 
         // Se comprueba cuando termina el dia
         int day = last_clock/24;
@@ -137,7 +137,7 @@ int main(int argc, char *argv[]) {
                 }
                 std::string clockStr = std::to_string(last_clock);
                 state_day += "{\"clock\":\"" + clockStr + "\"}\n";
-                cout << state_day << endl;
+                // cout << state_day << endl;
 
                 // realiza json y conexion post---------------------
 
@@ -155,14 +155,36 @@ int main(int argc, char *argv[]) {
 
                 for (const std::string& jsonString : jsonStrings) {
                     json jsonObj = json::parse(jsonString);
-                    jsonArray.push_back(jsonObj);
+
+                    json filteredJson;
+
+                    vector<string> attributesToKeep = {"agent_type", "clinical_risk", "manager_id", "patient_id", "sim_clock", "process", "vacio", "clock"};
+
+                    // Iterar sobre los atributos que deseas conservar
+                    for (const auto& attr : attributesToKeep) {
+                        if (jsonObj.find(attr) != jsonObj.end()) {
+                            // Añadir el atributo al nuevo objeto JSON
+                            filteredJson[attr] = jsonObj[attr];
+                        }
+                    }
+
+                    jsonArray.push_back(filteredJson);
                 }
                 std::string jsonStr = jsonArray.dump();
+
+                // Calcular el tamaño en bytes
+                size_t tamaño_bytes = jsonStr.size();
+
+                // Convertir bytes a megabytes
+                double tamaño_mb = static_cast<double>(tamaño_bytes) / (1024 * 1024);
+
+                std::cout << "El tamaño del JSON es: " << tamaño_mb << " MB" << std::endl;
 
                 // std::cout << jsonStr << std::endl;
 
                 url = "http://localhost:3000/api/sim/state";
                 curl = curl_easy_init();
+                printf("Post de estado\n");
                 if (curl) {
                     // Establece la URL de destino
                     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
@@ -192,7 +214,7 @@ int main(int argc, char *argv[]) {
                 url = "http://localhost:3000/api/rl/task";
                 curl = curl_easy_init();
                 json jsonObjTask;
-
+                printf("Get de tareas\n");
                 if (curl) {
                     bool emptyResponse = true;
 
@@ -296,6 +318,8 @@ int main(int argc, char *argv[]) {
                         else if (process == "RE_EVALUATE_MANAGED") {
                             event_task = new Event(CallerType::AGENT_PATIENT, id_manager, clock_init, execute_time, 
                                         ManagerEvents::RE_EVALUATE_MANAGED, patient_task, manager_task, nullptr);
+                        }else{
+                            printf("no se encontro nadiiii\n\n");
                         }
 
                         event_list->insertEvent(event_task);
@@ -318,6 +342,15 @@ int main(int argc, char *argv[]) {
             continue; 
         }
         sys->processEvent(e);
+    }
+
+    if (event_list->isEmpty()){
+        printf("no hay mas eventos\n");
+    }
+
+    if (event_list->getClock() > END_SIM){
+        printf("se llego al finl del clock\n");
+        std::cout << event_list->getClock() << std::endl;
     }
 
     stats->writeOutput("./out/general", time.str());
